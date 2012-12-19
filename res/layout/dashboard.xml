@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dashboard_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <ToggleButton
+            android:id="@+id/query_rate_toggle_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:disabledAlpha="1.5"
+            android:textOff="Auto"
+            android:textOn="Auto" 
+            android:layout_weight="1" />
+        <EditText
+            android:id="@+id/exchange_rate_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/exchange_rate_edit_text_hint"
+            android:inputType="number|numberDecimal" 
+        	android:layout_weight="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <Spinner
+            android:id="@+id/source_currency_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/currencycodes" />
+        <TextView
+            android:id="@+id/source_currency_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <Spinner
+            android:id="@+id/target_currency_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/currencycodes" />
+        <TextView
+            android:id="@+id/target_currency_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
