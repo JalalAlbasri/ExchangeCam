@@ -197,11 +197,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	private ViewfinderView viewfinderView;
 	private SurfaceView surfaceView;
 	private SurfaceHolder surfaceHolder;
-//	private TextView statusViewBottom;
-//	private TextView statusViewTop;
-//	private TextView statusViewTopRight;
-//	private TextView translationView;
-//	private View debugStatusViews;
+	//	private TextView statusViewBottom;
+	//	private TextView statusViewTop;
+	//	private TextView statusViewTopRight;
+	//	private TextView translationView;
+	//	private View debugStatusViews;
 	private View dashboardContainer;
 	private OcrResult lastResult;
 	private String currentPrice;
@@ -264,15 +264,16 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		setContentView(R.layout.capture);
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
 		dashboardContainer = (FrameLayout) findViewById(R.id.dashboard_container);
-//		debugStatusViews = findViewById(R.id.debug_status_views);
 
-//		statusViewBottom = (TextView) findViewById(R.id.status_view_bottom);
-//		registerForContextMenu(statusViewBottom);
-//		statusViewTop = (TextView) findViewById(R.id.status_view_top);
-//		registerForContextMenu(statusViewTop);
-//
-//		statusViewTopRight = (TextView) findViewById(R.id.status_view_top_right);
-//		registerForContextMenu(statusViewTopRight);
+		//		debugStatusViews = findViewById(R.id.debug_status_views);
+
+		//		statusViewBottom = (TextView) findViewById(R.id.status_view_bottom);
+		//		registerForContextMenu(statusViewBottom);
+		//		statusViewTop = (TextView) findViewById(R.id.status_view_top);
+		//		registerForContextMenu(statusViewTop);
+		//
+		//		statusViewTopRight = (TextView) findViewById(R.id.status_view_top_right);
+		//		registerForContextMenu(statusViewTopRight);
 
 		handler = null;
 		lastResult = null;
@@ -280,7 +281,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		hasSurface = false;
 		beepManager = new BeepManager(this);
 		dashboardOpen = false;
-		
+
 		// Camera shutter button
 		//    if (DISPLAY_SHUTTER_BUTTON) {
 		//      shutterButton = (ShutterButton) findViewById(R.id.shutter_button);
@@ -294,6 +295,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		cameraManager = new CameraManager(getApplication());
 		viewfinderView.setCameraManager(cameraManager);
 
+		openDashboardFragment();
+		
 		// Set listener to change the size of the viewfinder rectangle.
 		viewfinderView.setOnTouchListener(new View.OnTouchListener() {
 			int lastX = -1;
@@ -362,58 +365,58 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 					} catch (NullPointerException e) {
 						Log.e(TAG, "Framing rect not available", e);
 					}
-//					try {
-//						Rect rect = cameraManager.getFramingRect();
-//
-//						final int BUFFER = 50;
-//						final int BIG_BUFFER = 60;
-//						if (lastX >= 0) {
-//							// Adjust the size of the viewfinder rectangle. Check if the touch event occurs in the corner areas first, because the regions overlap.
-//							if (((currentX >= rect.left - BIG_BUFFER && currentX <= rect.left + BIG_BUFFER) || (lastX >= rect.left - BIG_BUFFER && lastX <= rect.left + BIG_BUFFER))
-//									&& ((currentY <= rect.top + BIG_BUFFER && currentY >= rect.top - BIG_BUFFER) || (lastY <= rect.top + BIG_BUFFER && lastY >= rect.top - BIG_BUFFER))) {
-//								// Top left corner: adjust both top and left sides
-//								cameraManager.adjustFramingRect( 2 * (lastX - currentX), 2 * (lastY - currentY));
-//								viewfinderView.removeResultText();
-//							} else if (((currentX >= rect.right - BIG_BUFFER && currentX <= rect.right + BIG_BUFFER) || (lastX >= rect.right - BIG_BUFFER && lastX <= rect.right + BIG_BUFFER)) 
-//									&& ((currentY <= rect.top + BIG_BUFFER && currentY >= rect.top - BIG_BUFFER) || (lastY <= rect.top + BIG_BUFFER && lastY >= rect.top - BIG_BUFFER))) {
-//								// Top right corner: adjust both top and right sides
-//								cameraManager.adjustFramingRect( 2 * (currentX - lastX), 2 * (lastY - currentY));
-//								viewfinderView.removeResultText();
-//							} else if (((currentX >= rect.left - BIG_BUFFER && currentX <= rect.left + BIG_BUFFER) || (lastX >= rect.left - BIG_BUFFER && lastX <= rect.left + BIG_BUFFER))
-//									&& ((currentY <= rect.bottom + BIG_BUFFER && currentY >= rect.bottom - BIG_BUFFER) || (lastY <= rect.bottom + BIG_BUFFER && lastY >= rect.bottom - BIG_BUFFER))) {
-//								// Bottom left corner: adjust both bottom and left sides
-//								cameraManager.adjustFramingRect(2 * (lastX - currentX), 2 * (currentY - lastY));
-//								viewfinderView.removeResultText();
-//							} else if (((currentX >= rect.right - BIG_BUFFER && currentX <= rect.right + BIG_BUFFER) || (lastX >= rect.right - BIG_BUFFER && lastX <= rect.right + BIG_BUFFER)) 
-//									&& ((currentY <= rect.bottom + BIG_BUFFER && currentY >= rect.bottom - BIG_BUFFER) || (lastY <= rect.bottom + BIG_BUFFER && lastY >= rect.bottom - BIG_BUFFER))) {
-//								// Bottom right corner: adjust both bottom and right sides
-//								cameraManager.adjustFramingRect(2 * (currentX - lastX), 2 * (currentY - lastY));
-//								viewfinderView.removeResultText();
-//							} else if (((currentX >= rect.left - BUFFER && currentX <= rect.left + BUFFER) || (lastX >= rect.left - BUFFER && lastX <= rect.left + BUFFER))
-//									&& ((currentY <= rect.bottom && currentY >= rect.top) || (lastY <= rect.bottom && lastY >= rect.top))) {
-//								// Adjusting left side: event falls within BUFFER pixels of left side, and between top and bottom side limits
-//								cameraManager.adjustFramingRect(2 * (lastX - currentX), 0);
-//								viewfinderView.removeResultText();
-//							} else if (((currentX >= rect.right - BUFFER && currentX <= rect.right + BUFFER) || (lastX >= rect.right - BUFFER && lastX <= rect.right + BUFFER))
-//									&& ((currentY <= rect.bottom && currentY >= rect.top) || (lastY <= rect.bottom && lastY >= rect.top))) {
-//								// Adjusting right side: event falls within BUFFER pixels of right side, and between top and bottom side limits
-//								cameraManager.adjustFramingRect(2 * (currentX - lastX), 0);
-//								viewfinderView.removeResultText();
-//							} else if (((currentY <= rect.top + BUFFER && currentY >= rect.top - BUFFER) || (lastY <= rect.top + BUFFER && lastY >= rect.top - BUFFER))
-//									&& ((currentX <= rect.right && currentX >= rect.left) || (lastX <= rect.right && lastX >= rect.left))) {
-//								// Adjusting top side: event falls within BUFFER pixels of top side, and between left and right side limits
-//								cameraManager.adjustFramingRect(0, 2 * (lastY - currentY));
-//								viewfinderView.removeResultText();
-//							} else if (((currentY <= rect.bottom + BUFFER && currentY >= rect.bottom - BUFFER) || (lastY <= rect.bottom + BUFFER && lastY >= rect.bottom - BUFFER))
-//									&& ((currentX <= rect.right && currentX >= rect.left) || (lastX <= rect.right && lastX >= rect.left))) {
-//								// Adjusting bottom side: event falls within BUFFER pixels of bottom side, and between left and right side limits
-//								cameraManager.adjustFramingRect(0, 2 * (currentY - lastY));
-//								viewfinderView.removeResultText();
-//							}     
-//						}
-//					} catch (NullPointerException e) {
-//						Log.e(TAG, "Framing rect not available", e);
-//					}
+					//					try {
+					//						Rect rect = cameraManager.getFramingRect();
+					//
+					//						final int BUFFER = 50;
+					//						final int BIG_BUFFER = 60;
+					//						if (lastX >= 0) {
+					//							// Adjust the size of the viewfinder rectangle. Check if the touch event occurs in the corner areas first, because the regions overlap.
+					//							if (((currentX >= rect.left - BIG_BUFFER && currentX <= rect.left + BIG_BUFFER) || (lastX >= rect.left - BIG_BUFFER && lastX <= rect.left + BIG_BUFFER))
+					//									&& ((currentY <= rect.top + BIG_BUFFER && currentY >= rect.top - BIG_BUFFER) || (lastY <= rect.top + BIG_BUFFER && lastY >= rect.top - BIG_BUFFER))) {
+					//								// Top left corner: adjust both top and left sides
+					//								cameraManager.adjustFramingRect( 2 * (lastX - currentX), 2 * (lastY - currentY));
+					//								viewfinderView.removeResultText();
+					//							} else if (((currentX >= rect.right - BIG_BUFFER && currentX <= rect.right + BIG_BUFFER) || (lastX >= rect.right - BIG_BUFFER && lastX <= rect.right + BIG_BUFFER)) 
+					//									&& ((currentY <= rect.top + BIG_BUFFER && currentY >= rect.top - BIG_BUFFER) || (lastY <= rect.top + BIG_BUFFER && lastY >= rect.top - BIG_BUFFER))) {
+					//								// Top right corner: adjust both top and right sides
+					//								cameraManager.adjustFramingRect( 2 * (currentX - lastX), 2 * (lastY - currentY));
+					//								viewfinderView.removeResultText();
+					//							} else if (((currentX >= rect.left - BIG_BUFFER && currentX <= rect.left + BIG_BUFFER) || (lastX >= rect.left - BIG_BUFFER && lastX <= rect.left + BIG_BUFFER))
+					//									&& ((currentY <= rect.bottom + BIG_BUFFER && currentY >= rect.bottom - BIG_BUFFER) || (lastY <= rect.bottom + BIG_BUFFER && lastY >= rect.bottom - BIG_BUFFER))) {
+					//								// Bottom left corner: adjust both bottom and left sides
+					//								cameraManager.adjustFramingRect(2 * (lastX - currentX), 2 * (currentY - lastY));
+					//								viewfinderView.removeResultText();
+					//							} else if (((currentX >= rect.right - BIG_BUFFER && currentX <= rect.right + BIG_BUFFER) || (lastX >= rect.right - BIG_BUFFER && lastX <= rect.right + BIG_BUFFER)) 
+					//									&& ((currentY <= rect.bottom + BIG_BUFFER && currentY >= rect.bottom - BIG_BUFFER) || (lastY <= rect.bottom + BIG_BUFFER && lastY >= rect.bottom - BIG_BUFFER))) {
+					//								// Bottom right corner: adjust both bottom and right sides
+					//								cameraManager.adjustFramingRect(2 * (currentX - lastX), 2 * (currentY - lastY));
+					//								viewfinderView.removeResultText();
+					//							} else if (((currentX >= rect.left - BUFFER && currentX <= rect.left + BUFFER) || (lastX >= rect.left - BUFFER && lastX <= rect.left + BUFFER))
+					//									&& ((currentY <= rect.bottom && currentY >= rect.top) || (lastY <= rect.bottom && lastY >= rect.top))) {
+					//								// Adjusting left side: event falls within BUFFER pixels of left side, and between top and bottom side limits
+					//								cameraManager.adjustFramingRect(2 * (lastX - currentX), 0);
+					//								viewfinderView.removeResultText();
+					//							} else if (((currentX >= rect.right - BUFFER && currentX <= rect.right + BUFFER) || (lastX >= rect.right - BUFFER && lastX <= rect.right + BUFFER))
+					//									&& ((currentY <= rect.bottom && currentY >= rect.top) || (lastY <= rect.bottom && lastY >= rect.top))) {
+					//								// Adjusting right side: event falls within BUFFER pixels of right side, and between top and bottom side limits
+					//								cameraManager.adjustFramingRect(2 * (currentX - lastX), 0);
+					//								viewfinderView.removeResultText();
+					//							} else if (((currentY <= rect.top + BUFFER && currentY >= rect.top - BUFFER) || (lastY <= rect.top + BUFFER && lastY >= rect.top - BUFFER))
+					//									&& ((currentX <= rect.right && currentX >= rect.left) || (lastX <= rect.right && lastX >= rect.left))) {
+					//								// Adjusting top side: event falls within BUFFER pixels of top side, and between left and right side limits
+					//								cameraManager.adjustFramingRect(0, 2 * (lastY - currentY));
+					//								viewfinderView.removeResultText();
+					//							} else if (((currentY <= rect.bottom + BUFFER && currentY >= rect.bottom - BUFFER) || (lastY <= rect.bottom + BUFFER && lastY >= rect.bottom - BUFFER))
+					//									&& ((currentX <= rect.right && currentX >= rect.left) || (lastX <= rect.right && lastX >= rect.left))) {
+					//								// Adjusting bottom side: event falls within BUFFER pixels of bottom side, and between left and right side limits
+					//								cameraManager.adjustFramingRect(0, 2 * (currentY - lastY));
+					//								viewfinderView.removeResultText();
+					//							}     
+					//						}
+					//					} catch (NullPointerException e) {
+					//						Log.e(TAG, "Framing rect not available", e);
+					//					}
 					v.invalidate();
 					lastX = currentX;
 					lastY = currentY;
@@ -602,29 +605,29 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-//		if (keyCode == KeyEvent.KEYCODE_BACK) {
-//
-//			// First check if we're paused in continuous mode, and if so, just unpause.
-//			if (isPaused) {
-//				Log.d(TAG, "only resuming continuous recognition, not quitting...");
-//				resumeContinuousDecoding();
-//				return true;
-//			}
-//
-//			// Exit the app if we're not viewing an OCR result.
-//			if (lastResult == null) {
-//				setResult(RESULT_CANCELED);
-//				finish();
-//				return true;
-//			} else {
-//				// Go back to previewing in regular OCR mode.
-//				resetStatusView();
-//				if (handler != null) {
-//					handler.sendEmptyMessage(R.id.restart_preview);
-//				}
-//				return true;
-//			}
-//		} 
+		//		if (keyCode == KeyEvent.KEYCODE_BACK) {
+		//
+		//			// First check if we're paused in continuous mode, and if so, just unpause.
+		//			if (isPaused) {
+		//				Log.d(TAG, "only resuming continuous recognition, not quitting...");
+		//				resumeContinuousDecoding();
+		//				return true;
+		//			}
+		//
+		//			// Exit the app if we're not viewing an OCR result.
+		//			if (lastResult == null) {
+		//				setResult(RESULT_CANCELED);
+		//				finish();
+		//				return true;
+		//			} else {
+		//				// Go back to previewing in regular OCR mode.
+		//				resetStatusView();
+		//				if (handler != null) {
+		//					handler.sendEmptyMessage(R.id.restart_preview);
+		//				}
+		//				return true;
+		//			}
+		//		} 
 		//    else if (keyCode == KeyEvent.KEYCODE_CAMERA) {
 		//      if (isContinuousModeActive) {
 		//        onShutterButtonPressContinuous();
@@ -633,6 +636,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		//      }
 		//      return true;
 		//    }
+		/*
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			FragmentManager fm = getFragmentManager();
 			DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
@@ -647,30 +651,31 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 				return true;
 			}
 		}
-		
-		else if (keyCode == KeyEvent.KEYCODE_FOCUS) {      
+		 */
+		//		else 
+		if (keyCode == KeyEvent.KEYCODE_FOCUS) {      
 			// Only perform autofocus if user is not holding down the button.
 			if (event.getRepeatCount() == 0) {
 				cameraManager.requestAutoFocus(500L);
 			}
 			return true;
 		}
-		
+		/*
 		else if(keyCode == KeyEvent.KEYCODE_MENU) {
 			FragmentManager fm = getFragmentManager();
 			DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
 			if (dashboardFragment == null) {
-				/*
-				 * TODO: Definately not the right place to do this, 
-				 * Try and use the CameraConfigurationManager. 
-				 */
+		 *
+		 * TODO: Definately not the right place to do this, 
+		 * Try and use the CameraConfigurationManager. 
+		 *
 				Display display = getWindowManager().getDefaultDisplay();
 				Point size = new Point();
 				display.getSize(size);
 				int width = size.x;
 				int height = size.y;
 				dashboardContainer.setVisibility(View.VISIBLE);
-				
+
 				dashboardContainer.setLayoutParams(new FrameLayout.LayoutParams(width/3, height, Gravity.RIGHT));
 				FragmentTransaction ft = fm.beginTransaction();
 				dashboardFragment = new DashboardFragment();
@@ -695,38 +700,38 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 				return true;
 			}
 		}
-		
+		 */
 		return super.onKeyDown(keyCode, event);
 	}
 
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		//    MenuInflater inflater = getMenuInflater();
-//		//    inflater.inflate(R.menu.options_menu, menu);
-//		super.onCreateOptionsMenu(menu);
-//		menu.add(0, SETTINGS_ID, 0, "Settings").setIcon(android.R.drawable.ic_menu_preferences);
-//		menu.add(0, ABOUT_ID, 0, "About").setIcon(android.R.drawable.ic_menu_info_details);
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		Intent intent;
-//		switch (item.getItemId()) {
-//		case SETTINGS_ID: {
-//			intent = new Intent().setClass(this, PreferencesActivity.class);
-//			startActivity(intent);
-//			break;
-//		}
-//		case ABOUT_ID: {
-//			intent = new Intent(this, HelpActivity.class);
-//			intent.putExtra(HelpActivity.REQUESTED_PAGE_KEY, HelpActivity.ABOUT_PAGE);
-//			startActivity(intent);
-//			break;
-//		}
-//		}
-//		return super.onOptionsItemSelected(item);
-//	}
+	//	@Override
+	//	public boolean onCreateOptionsMenu(Menu menu) {
+	//		//    MenuInflater inflater = getMenuInflater();
+	//		//    inflater.inflate(R.menu.options_menu, menu);
+	//		super.onCreateOptionsMenu(menu);
+	//		menu.add(0, SETTINGS_ID, 0, "Settings").setIcon(android.R.drawable.ic_menu_preferences);
+	//		menu.add(0, ABOUT_ID, 0, "About").setIcon(android.R.drawable.ic_menu_info_details);
+	//		return true;
+	//	}
+	//
+	//	@Override
+	//	public boolean onOptionsItemSelected(MenuItem item) {
+	//		Intent intent;
+	//		switch (item.getItemId()) {
+	//		case SETTINGS_ID: {
+	//			intent = new Intent().setClass(this, PreferencesActivity.class);
+	//			startActivity(intent);
+	//			break;
+	//		}
+	//		case ABOUT_ID: {
+	//			intent = new Intent(this, HelpActivity.class);
+	//			intent.putExtra(HelpActivity.REQUESTED_PAGE_KEY, HelpActivity.ABOUT_PAGE);
+	//			startActivity(intent);
+	//			break;
+	//		}
+	//		}
+	//		return super.onOptionsItemSelected(item);
+	//	}
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		Log.d(TAG, "surfaceDestroyed()");
@@ -1052,32 +1057,32 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 			Integer meanConfidence = ocrResult.getMeanConfidence();
 
-//			if (CONTINUOUS_DISPLAY_RECOGNIZED_TEXT) {
-//				// Display the recognized text on the screen
-//				statusViewTop.setText(ocrResult.getText());
-//				int scaledSize = Math.max(22, 32 - ocrResult.getText().length() / 4);
-//				statusViewTop.setTextSize(TypedValue.COMPLEX_UNIT_SP, scaledSize);
-//				statusViewTop.setTextColor(Color.BLACK);
-//				statusViewTop.setBackgroundResource(R.color.status_top_text_background);
-//
-//				statusViewTop.getBackground().setAlpha(meanConfidence * (255 / 100));
-//
-//			}
-//
-//			if (CONTINUOUS_DISPLAY_METADATA) {
-//				// Display recognition-related metadata at the bottom of the screen
-//				long recognitionTimeRequired = ocrResult.getRecognitionTimeRequired();
-//				statusViewBottom.setTextSize(14);
-//				statusViewBottom.setText("OCR: " + sourceLanguageReadable + " - Max confidence: " + 
-//						maxConfidence + " - Time required: " + recognitionTimeRequired + " ms");
-//			}
+			//			if (CONTINUOUS_DISPLAY_RECOGNIZED_TEXT) {
+			//				// Display the recognized text on the screen
+			//				statusViewTop.setText(ocrResult.getText());
+			//				int scaledSize = Math.max(22, 32 - ocrResult.getText().length() / 4);
+			//				statusViewTop.setTextSize(TypedValue.COMPLEX_UNIT_SP, scaledSize);
+			//				statusViewTop.setTextColor(Color.BLACK);
+			//				statusViewTop.setBackgroundResource(R.color.status_top_text_background);
+			//
+			//				statusViewTop.getBackground().setAlpha(meanConfidence * (255 / 100));
+			//
+			//			}
+			//
+			//			if (CONTINUOUS_DISPLAY_METADATA) {
+			//				// Display recognition-related metadata at the bottom of the screen
+			//				long recognitionTimeRequired = ocrResult.getRecognitionTimeRequired();
+			//				statusViewBottom.setTextSize(14);
+			//				statusViewBottom.setText("OCR: " + sourceLanguageReadable + " - Max confidence: " + 
+			//						maxConfidence + " - Time required: " + recognitionTimeRequired + " ms");
+			//			}
 		}
 	}
 
 	void dispatchResultToView(OcrResultText ocrResultText, int priceIndex) {
 		FragmentManager fm = getFragmentManager();
 		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
-		
+
 		if (dashboardFragment != null) {
 			dashboardFragment.updateTextViews(ocrResultText, priceIndex);	
 		}
@@ -1095,22 +1100,22 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		viewfinderView.removeResultText();
 		FragmentManager fm = getFragmentManager();
 		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
-		
+
 		if (dashboardFragment != null) {
 			dashboardFragment.removeResultText();	
 		}
 
-//		// Reset the text in the recognized text box.
-//		statusViewTop.setText("");
-//		statusViewTopRight.setText("");    
-//
-//		if (CONTINUOUS_DISPLAY_METADATA) {
-//			// Color text delimited by '-' as red.
-//			statusViewBottom.setTextSize(14);
-//			CharSequence cs = setSpanBetweenTokens("OCR: " + sourceLanguageReadable + " - OCR failed - Time required: " 
-//					+ obj.getTimeRequired() + " ms", "-", new ForegroundColorSpan(0xFFFF0000));
-//			statusViewBottom.setText(cs);
-//		}
+		//		// Reset the text in the recognized text box.
+		//		statusViewTop.setText("");
+		//		statusViewTopRight.setText("");    
+		//
+		//		if (CONTINUOUS_DISPLAY_METADATA) {
+		//			// Color text delimited by '-' as red.
+		//			statusViewBottom.setTextSize(14);
+		//			CharSequence cs = setSpanBetweenTokens("OCR: " + sourceLanguageReadable + " - OCR failed - Time required: " 
+		//					+ obj.getTimeRequired() + " ms", "-", new ForegroundColorSpan(0xFFFF0000));
+		//			statusViewBottom.setText(cs);
+		//		}
 	}
 
 	/**
@@ -1198,22 +1203,22 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	 * Resets view elements.
 	 */
 	private void resetStatusView() {
-//		if (CONTINUOUS_DISPLAY_METADATA) {
-//			statusViewBottom.setText("");
-//			statusViewBottom.setTextSize(14);
-//			statusViewBottom.setTextColor(getResources().getColor(R.color.status_text));
-//			statusViewBottom.setVisibility(View.VISIBLE);
-//		}
-//		if (CONTINUOUS_DISPLAY_RECOGNIZED_TEXT) {
-//			statusViewTop.setText("");
-//			statusViewTop.setTextSize(14);
-//			statusViewTop.setVisibility(View.VISIBLE);
-//			statusViewTopRight.setText("");
-//			statusViewTopRight.setTextSize(14);
-//			statusViewTopRight.setVisibility(View.VISIBLE);
-//		}
-//		viewfinderView.setVisibility(View.VISIBLE);
-//		debugStatusViews.setVisibility(View.VISIBLE);
+		//		if (CONTINUOUS_DISPLAY_METADATA) {
+		//			statusViewBottom.setText("");
+		//			statusViewBottom.setTextSize(14);
+		//			statusViewBottom.setTextColor(getResources().getColor(R.color.status_text));
+		//			statusViewBottom.setVisibility(View.VISIBLE);
+		//		}
+		//		if (CONTINUOUS_DISPLAY_RECOGNIZED_TEXT) {
+		//			statusViewTop.setText("");
+		//			statusViewTop.setTextSize(14);
+		//			statusViewTop.setVisibility(View.VISIBLE);
+		//			statusViewTopRight.setText("");
+		//			statusViewTopRight.setTextSize(14);
+		//			statusViewTopRight.setVisibility(View.VISIBLE);
+		//		}
+		//		viewfinderView.setVisibility(View.VISIBLE);
+		//		debugStatusViews.setVisibility(View.VISIBLE);
 		//    if (DISPLAY_SHUTTER_BUTTON) {
 		//      shutterButton.setVisibility(View.VISIBLE);
 		//    }
@@ -1235,7 +1240,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	void setStatusViewForContinuous() {
 		viewfinderView.removeResultText();
 		if (CONTINUOUS_DISPLAY_METADATA) {
-//			statusViewBottom.setText("OCR: " + sourceLanguageReadable + " - waiting for OCR...");
+			//			statusViewBottom.setText("OCR: " + sourceLanguageReadable + " - waiting for OCR...");
 		}
 	}
 
@@ -1505,6 +1510,29 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			.setTitle(title)
 			.setMessage(message)
 			.show();
+		}
+	}
+
+	public void openDashboardFragment() {
+		//Open Dashboard
+		FragmentManager fm = getFragmentManager();
+		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
+		if (dashboardFragment == null) {
+			Log.d(TAG, "openDashboardFragment");
+			Display display = getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			dashboardContainer.setLayoutParams(new FrameLayout.LayoutParams(size.x/3, size.y, Gravity.RIGHT));
+
+			FragmentTransaction ft = fm.beginTransaction();
+			dashboardFragment = new DashboardFragment();
+
+			ft.replace(R.id.dashboard_container, dashboardFragment, "DASHBOARD_FRAGMENT");
+			ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+			//ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+			//ft.addToBackStack(null);
+			ft.commit();
+			getCameraManager().adjustFramingRect(0, 0);
 		}
 	}
 }
