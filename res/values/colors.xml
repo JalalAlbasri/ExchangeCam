@@ -30,4 +30,7 @@
   <color name="viewfinder_corners">#33B5E5</color> <!-- four corner elements for viewfinder -->
   <color name="viewfinder_frame">#33B5E5</color> <!-- viewfinder rectangle -->
   <color name="viewfinder_mask">#60000000</color>  <!-- viewfinder exterior darkened area -->
+  <color name="character_boxes">#33B5E5</color>
+  <color name="currency_text">#33B5E5</color>
+  
 </resources>

@@ -50,7 +50,7 @@ public final class ViewfinderView extends View {
 	static final boolean DRAW_REGION_BOXES = false;
 
 	/** Flag to draw boxes representing the results from TessBaseAPI::GetTextlines(). */
-	static final boolean DRAW_TEXTLINE_BOXES = true;
+	static final boolean DRAW_TEXTLINE_BOXES = false;
 
 	/** Flag to draw boxes representing the results from TessBaseAPI::GetStrips(). */
 	static final boolean DRAW_STRIP_BOXES = false;
@@ -59,7 +59,7 @@ public final class ViewfinderView extends View {
 	static final boolean DRAW_WORD_BOXES = true;
 
 	/** Flag to draw word text with a background varying from transparent to opaque. */
-	static final boolean DRAW_TRANSPARENT_WORD_BACKGROUNDS = true;
+	static final boolean DRAW_TRANSPARENT_WORD_BACKGROUNDS = false;
 
 	/** Flag to draw boxes representing the results from TessBaseAPI::GetCharacters(). */
 	static final boolean DRAW_CHARACTER_BOXES = false;
@@ -71,7 +71,7 @@ public final class ViewfinderView extends View {
 	static final boolean DRAW_CHARACTER_TEXT = false;
 
 	/** Flag to draw the price **/
-	static final boolean DRAW_PRICE = true;
+	static final boolean DRAW_PRICE = false;
 
 	private CameraManager cameraManager;
 	private final Paint paint;
@@ -201,13 +201,20 @@ public final class ViewfinderView extends View {
 				}
 
 				if (DRAW_WORD_BOXES) {
-					paint.setAlpha(0xFF);
-					paint.setColor(0xFF00CCFF);
-					paint.setStyle(Style.STROKE);
+					paint.setColor(getResources().getColor(R.color.character_boxes));
+					paint.setAlpha(100);
+					paint.setStyle(Style.FILL);
 					paint.setStrokeWidth(1);
-					for (int i = 0; i < wordBoundingBoxes.size(); i++) {
+					if (price < wordBoundingBoxes.size()) {
 						// Draw a bounding box around the word
-						rect = wordBoundingBoxes.get(i);
+						rect = wordBoundingBoxes.get(price);
+						canvas.drawRect(
+								frame.left + rect.left * scaleX,
+								frame.top + rect.top * scaleY, 
+								frame.left + rect.right * scaleX, 
+								frame.top + rect.bottom * scaleY, paint);
+						paint.setAlpha(255);
+						paint.setStyle(Style.STROKE);
 						canvas.drawRect(
 								frame.left + rect.left * scaleX,
 								frame.top + rect.top * scaleY, 
@@ -372,9 +379,19 @@ public final class ViewfinderView extends View {
 
 				if (DRAW_CHARACTER_BOXES) {
 					// Draw bounding boxes around each character
-					paint.setAlpha(0xA0);
-					paint.setColor(0xFF00FF00);
-					paint.setStyle(Style.STROKE);
+					paint.setColor(getResources().getColor(R.color.character_boxes));
+					paint.setAlpha(100);
+					paint.setStyle(Style.FILL);
+					paint.setStrokeWidth(1);
+					for (int c = 0; c < characterBoundingBoxes.size(); c++) {
+						Rect characterRect = characterBoundingBoxes.get(c);
+						canvas.drawRect(frame.left + characterRect.left * scaleX,
+								frame.top + characterRect.top * scaleY, 
+								frame.left + characterRect.right * scaleX, 
+								frame.top + characterRect.bottom * scaleY, paint);
+					}
+					paint.setAlpha(255);
+					paint.setStyle(Style.FILL);
 					paint.setStrokeWidth(1);
 					for (int c = 0; c < characterBoundingBoxes.size(); c++) {
 						Rect characterRect = characterBoundingBoxes.get(c);

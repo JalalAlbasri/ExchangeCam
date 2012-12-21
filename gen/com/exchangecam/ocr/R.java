@@ -26,6 +26,10 @@ containing a value of this type.
         public static final int customFont=0x7f010000;
     }
     public static final class color {
+        /**  viewfinder exterior darkened area 
+         */
+        public static final int character_boxes=0x7f07000b;
+        public static final int currency_text=0x7f07000c;
         public static final int help_button_view=0x7f070000;
         /**  help button view background color 
          */
@@ -62,9 +66,10 @@ containing a value of this type.
         public static final int background=0x7f020000;
         public static final int background_pressed=0x7f020001;
         public static final int ic_launcher=0x7f020002;
-        public static final int shutter=0x7f020003;
-        public static final int shutter_button=0x7f020004;
-        public static final int shutter_pressed=0x7f020005;
+        public static final int screen=0x7f020003;
+        public static final int shutter=0x7f020004;
+        public static final int shutter_button=0x7f020005;
+        public static final int shutter_pressed=0x7f020006;
     }
     public static final class id {
         public static final int camera_preview=0x7f080008;

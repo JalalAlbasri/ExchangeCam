@@ -1529,8 +1529,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 			ft.replace(R.id.dashboard_container, dashboardFragment, "DASHBOARD_FRAGMENT");
 			ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-			//ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-			//ft.addToBackStack(null);
+//			ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+//			ft.addToBackStack(null);
 			ft.commit();
 			getCameraManager().adjustFramingRect(0, 0);
 		}

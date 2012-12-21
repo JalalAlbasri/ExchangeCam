@@ -108,6 +108,10 @@ public class CurrencyHelper {
 	public static String adjustDecimal(String price, String currencyCode) {
 		Log.d(TAG, "adjustDecimal, isNumeric(price): " + isNumeric(price));
 		Log.d(TAG, "adjustDecimal, price==null: " + (price==null));
+		//Remove all whitespace from price.
+		price = price.replaceAll("\\s", "");
+		//Remove all non-numeric or "," or "." characters from string
+		price = price.replaceAll("[^\\d.,]", "");
 		if (price != null && isNumeric(price)) {
 			Log.d(TAG, "adjustDecimal currencyCode: " + currencyCode);
 			int currencyPrecision = getCurrencyPrecision(currencyCode);
