@@ -36,11 +36,8 @@
         style="@style/DashboardLabels"
         android:text="@string/source_currency_label" />
 
-    <Spinner
-        android:id="@+id/source_currency_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
+    <Spinner android:id="@+id/source_currency_spinner"
+        style="@style/currencySpinner" />
 
     <com.exchangecam.ocr.CurrencyTextView
         android:id="@+id/source_currency_text_view"
@@ -53,9 +50,7 @@
 
     <Spinner
         android:id="@+id/target_currency_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/currencycodes" />
+        style="@style/currencySpinner" />
 
     <com.exchangecam.ocr.CurrencyTextView
         android:id="@+id/target_currency_text_view"

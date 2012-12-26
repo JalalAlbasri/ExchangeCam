@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.util.Log;
 import android.graphics.Rect;
+
+import java.util.Arrays;
 import java.util.List;
 
 import com.exchangecam.ocr.currency.CurrencyHelper;
@@ -39,6 +41,7 @@ public class DashboardFragment extends Fragment {
 	private Spinner mTargetCurrencySpinner;
 	private TextView mSourceCurrencyTextView;
 	private TextView mTargetCurrencyTextView;
+	private String[] mCurrencyCodes;
 	
 	String mSourceCurrency;
 	String mTargetCurrency;
@@ -73,9 +76,11 @@ public class DashboardFragment extends Fragment {
 		mSourceCurrencySpinner.setOnItemSelectedListener(mSourceCurrencySpinnerListener);
 		mTargetCurrencySpinner.setOnItemSelectedListener(mTargetCurrencySpinnerListener);
 		
-		
+		//Array of currency codes.
+		mCurrencyCodes = getResources().getStringArray(R.array.currencycodes);
 		//Populate the Spinners with currency codes
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity, R.array.currencycodes, R.layout.currency_spinner);
+//		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity, R.array.currencycodes, R.layout.currency_spinner);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity, R.array.currencynames, R.layout.currency_spinner);
 		adapter.setDropDownViewResource(R.layout.currency_spinner);
 		mSourceCurrencySpinner.setAdapter(adapter);
 		mTargetCurrencySpinner.setAdapter(adapter);
@@ -104,7 +109,8 @@ public class DashboardFragment extends Fragment {
 		//Set currently selected currencies from preferences
 		mSourceCurrency = prefs.getString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_SOURCE_CURRENCY);
 		ArrayAdapter sourceAdapter = (ArrayAdapter) mSourceCurrencySpinner.getAdapter();
-		int sourcePos = sourceAdapter.getPosition(mSourceCurrency);
+//		int sourcePos = sourceAdapter.getPosition(mSourceCurrency);
+		int sourcePos = Arrays.asList(mCurrencyCodes).indexOf(mSourceCurrency);
 		mSourceCurrencySpinner.setSelection(sourcePos);
 		
 		mTargetCurrency = prefs.getString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_TARGET_CURRENCY);
@@ -154,9 +160,10 @@ public class DashboardFragment extends Fragment {
 	private OnItemSelectedListener mSourceCurrencySpinnerListener = new OnItemSelectedListener() {
 		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-			String item = (String)parent.getItemAtPosition(pos);
+//			String item = (String)parent.getItemAtPosition(pos);
+			mSourceCurrency = mCurrencyCodes[pos]; 
 			SharedPreferences.Editor editor = prefs.edit();
-			editor.putString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, item);
+			editor.putString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, mSourceCurrency);
 			editor.commit();
 		}
 
@@ -170,9 +177,10 @@ public class DashboardFragment extends Fragment {
 	private OnItemSelectedListener mTargetCurrencySpinnerListener = new OnItemSelectedListener() {
 		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-			String item = (String)parent.getItemAtPosition(pos);
+//			String item = (String)parent.getItemAtPosition(pos);
+			mTargetCurrency = mCurrencyCodes[pos];
 			SharedPreferences.Editor editor = prefs.edit();
-			editor.putString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, item);
+			editor.putString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, mTargetCurrency);
 			editor.commit();
 		}
 

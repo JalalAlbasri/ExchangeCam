@@ -14,7 +14,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 
-        <com.exchangecam.ocr.ViewfinderView
+        <com.exchangecam.ocr.ViewfinderView 
             android:id="@+id/viewfinder_view"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -25,11 +25,13 @@
         android:id="@+id/dashboard_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:drawable/editbox_dropdown_dark_frame" />
+        android:background="@drawable/dashboard_background" />
 
 </FrameLayout>
-        <!-- android:background="@android:drawable/editbox_dropdown_dark_frame" -->
+        
 <!--
+        android:background="@android:drawable/editbox_dropdown_dark_frame"
+        android:background="@android:drawable/editbox_dropdown_dark_frame" />
         <RelativeLayout
         android:id="@+id/debug_status_views"
         android:layout_width="fill_parent"

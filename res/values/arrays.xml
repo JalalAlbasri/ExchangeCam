@@ -30,11 +30,6 @@
         <item>Single word</item>
         <item>Vertical block</item>
     </string-array>
-    <string-array name="ocrenginemodes">
-        <item>Tesseract</item>
-        <item>Cube</item>
-        <item>Both</item>
-    </string-array>
     
     <string-array name="currencycodes">
         <item>AED</item>
