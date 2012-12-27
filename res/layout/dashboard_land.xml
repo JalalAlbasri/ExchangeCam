@@ -4,7 +4,8 @@
     android:id="@+id/dashboard_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_gravity="right" >
 
     <TextView
         style="@style/DashboardLabels"

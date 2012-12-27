@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
@@ -7,19 +7,29 @@
     <FrameLayout
         android:id="@+id/camera_preview"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" >
 
         <SurfaceView
             android:id="@+id/preview_view"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 
-        <com.exchangecam.ocr.ViewfinderView 
+        <com.exchangecam.ocr.ViewfinderView
             android:id="@+id/viewfinder_view"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="#0000" />
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/border_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/border"
+        android:scaleType="fitXY" />
 
     <FrameLayout
         android:id="@+id/dashboard_container"
@@ -27,9 +37,7 @@
         android:layout_height="0dp"
         android:background="@drawable/dashboard_background" />
 
-</FrameLayout>
-        
-<!--
+</RelativeLayout><!--
         android:background="@android:drawable/editbox_dropdown_dark_frame"
         android:background="@android:drawable/editbox_dropdown_dark_frame" />
         <RelativeLayout

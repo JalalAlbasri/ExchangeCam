@@ -25,6 +25,8 @@ import com.exchangecam.ocr.R;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -90,6 +92,13 @@ public final class ViewfinderView extends View {
 	private Rect previewFrame;
 	private Rect rect;
 	private CaptureActivity activity;
+	private Rect horizontal;
+	private Rect vertical;
+	
+	private Bitmap topBmp;
+	private Bitmap bottomBmp;
+	private Bitmap leftBmp;
+	private Bitmap rightBmp;
 
 	// This constructor is used when the class is built from an XML resource.
 	public ViewfinderView(Context context, AttributeSet attrs) {
@@ -103,7 +112,16 @@ public final class ViewfinderView extends View {
 		maskColor = resources.getColor(R.color.viewfinder_mask);
 		frameColor = resources.getColor(R.color.viewfinder_frame);
 		cornerColor = resources.getColor(R.color.viewfinder_corners);
+		
 
+		horizontal = new Rect(0,0,41,1);
+		vertical = new Rect(0,0,1,41);
+		
+		topBmp = BitmapFactory.decodeResource(getResources(), R.drawable.top);
+		bottomBmp = BitmapFactory.decodeResource(getResources(), R.drawable.bottom);
+		leftBmp = BitmapFactory.decodeResource(getResources(), R.drawable.left);
+		rightBmp = BitmapFactory.decodeResource(getResources(), R.drawable.right);
+		
 		//bounds = new Rect();
 		previewFrame = new Rect();
 		rect = new Rect();
@@ -460,7 +478,19 @@ public final class ViewfinderView extends View {
 			}
 
 		}
-		// Draw a two pixel solid border inside the framing rect
+		
+		Rect top = new Rect(frame.left, frame.top, frame.right + 1, frame.top + 2);
+		Rect left = new Rect(frame.left, frame.top + 2, frame.left + 2, frame.bottom - 1);
+		Rect right = new Rect(frame.right - 1, frame.top, frame.right + 1, frame.bottom - 1);
+		Rect bottom = new Rect(frame.left, frame.bottom - 1, frame.right + 1, frame.bottom + 1);
+		
+		//Draw framing rect with bitmap
+//		canvas.drawBitmap(topBmp, horizontal, top, null);
+//		canvas.drawBitmap(bottomBmp, horizontal, bottom, null);
+//		canvas.drawBitmap(leftBmp, vertical, left, null);
+//		canvas.drawBitmap(rightBmp, vertical, right, null);
+//		
+//		// Draw a two pixel solid border inside the framing rect
 		paint.setAlpha(0);
 		paint.setStyle(Style.FILL);
 		paint.setColor(frameColor);
@@ -470,6 +500,9 @@ public final class ViewfinderView extends View {
 		canvas.drawRect(frame.left, frame.bottom - 1, frame.right + 1, frame.bottom + 1, paint);
 
 		// Draw the framing rect corner UI elements
+		/*paint.setAlpha(0);
+		paint.setStyle(Style.FILL);
+		paint.setColor(frameColor);*/
 		paint.setColor(cornerColor);
 		canvas.drawRect(frame.left - 15, frame.top - 15, frame.left + 15, frame.top, paint);
 		canvas.drawRect(frame.left - 15, frame.top, frame.left, frame.top + 15, paint);

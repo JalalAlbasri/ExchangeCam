@@ -64,28 +64,34 @@ containing a value of this type.
     public static final class drawable {
         public static final int background=0x7f020000;
         public static final int background_pressed=0x7f020001;
-        public static final int dashboard_background=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int screen=0x7f020004;
-        public static final int shutter=0x7f020005;
-        public static final int shutter_button=0x7f020006;
-        public static final int shutter_pressed=0x7f020007;
+        public static final int border=0x7f020002;
+        public static final int bottom=0x7f020003;
+        public static final int dashboard_background=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int left=0x7f020006;
+        public static final int right=0x7f020007;
+        public static final int screen=0x7f020008;
+        public static final int shutter=0x7f020009;
+        public static final int shutter_button=0x7f02000a;
+        public static final int shutter_pressed=0x7f02000b;
+        public static final int top=0x7f02000c;
     }
     public static final class id {
+        public static final int border_view=0x7f08000b;
         public static final int camera_preview=0x7f080008;
-        public static final int dashboard_container=0x7f08000b;
-        public static final int dashboard_view=0x7f08000c;
+        public static final int dashboard_container=0x7f08000c;
+        public static final int dashboard_view=0x7f08000d;
         public static final int decode=0x7f080000;
         public static final int decode_failed=0x7f080001;
         public static final int decode_succeeded=0x7f080002;
-        public static final int done_button=0x7f080014;
-        public static final int exchange_rate_edit_text=0x7f08000e;
-        public static final int help_contents=0x7f080013;
+        public static final int done_button=0x7f080015;
+        public static final int exchange_rate_edit_text=0x7f08000f;
+        public static final int help_contents=0x7f080014;
         public static final int ocr_continuous_decode=0x7f080003;
         public static final int ocr_continuous_decode_failed=0x7f080004;
         public static final int ocr_continuous_decode_succeeded=0x7f080005;
         public static final int preview_view=0x7f080009;
-        public static final int query_rate_toggle_button=0x7f08000d;
+        public static final int query_rate_toggle_button=0x7f08000e;
         /** 
   <item type="id" name="ocr_decode"/>
   <item type="id" name="ocr_decode_failed"/>
@@ -94,10 +100,10 @@ containing a value of this type.
          */
         public static final int quit=0x7f080006;
         public static final int restart_preview=0x7f080007;
-        public static final int source_currency_spinner=0x7f08000f;
-        public static final int source_currency_text_view=0x7f080010;
-        public static final int target_currency_spinner=0x7f080011;
-        public static final int target_currency_text_view=0x7f080012;
+        public static final int source_currency_spinner=0x7f080010;
+        public static final int source_currency_text_view=0x7f080011;
+        public static final int target_currency_spinner=0x7f080012;
+        public static final int target_currency_text_view=0x7f080013;
         public static final int viewfinder_view=0x7f08000a;
     }
     public static final class layout {

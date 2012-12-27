@@ -77,6 +77,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Fragment;
@@ -334,7 +335,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 		String previousSourceLanguageCodeOcr = sourceLanguageCodeOcr;
 		int previousOcrEngineMode = ocrEngineMode;
-
+		openDashboardFragment();
 		retrievePreferences();
 
 		// Set up the camera preview surface.
@@ -976,8 +977,21 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			Display display = getWindowManager().getDefaultDisplay();
 			Point size = new Point();
 			display.getSize(size);
-			dashboardContainer.setLayoutParams(new FrameLayout.LayoutParams(size.x/3, size.y, Gravity.RIGHT));
-
+//			dashboardContainer.setLayoutParams(new FrameLayout.LayoutParams(size.x/3, size.y, Gravity.RIGHT));
+			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(size.x/3, size.y);
+			params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+			dashboardContainer.setLayoutParams(params);
+			
+			ImageView borderline = (ImageView)findViewById(R.id.border_view);
+			params = new RelativeLayout.LayoutParams(40, size.y);
+			params.addRule(RelativeLayout.LEFT_OF, dashboardContainer.getId());
+			borderline.setLayoutParams(params);
+			
+			
+//			dashboardContainer.setLayoutParams(new RelativeLayout.LayoutParams(size.x/3, size.y));
+			
+//			borderline.setLayoutParams(new new FrameLayout.LayoutParams())
+			
 			FragmentTransaction ft = fm.beginTransaction();
 			dashboardFragment = new DashboardFragment();
 

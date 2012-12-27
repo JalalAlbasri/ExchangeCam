@@ -99,28 +99,34 @@ public class CurrencyHelper {
 	 * @return formatted price; string
 	 */
 	public static String formatPrice(String price, String currencyCode) {
-		price = price.replaceAll("[^\\d.,]", "");
-		price = adjustDecimal(price, currencyCode);
-		price = getCurrencySymbol(currencyCode) + " " + price;
-		return price;
-	}
-	
-	public static String adjustDecimal(String price, String currencyCode) {
-		Log.d(TAG, "adjustDecimal, isNumeric(price): " + isNumeric(price));
-		Log.d(TAG, "adjustDecimal, price==null: " + (price==null));
 		//Remove all whitespace from price.
 		price = price.replaceAll("\\s", "");
 		//Remove all non-numeric or "," or "." characters from string
 		price = price.replaceAll("[^\\d.,]", "");
+		price = adjustDecimal(price, currencyCode);
+		price = getCurrencySymbol(currencyCode) + " " + price;
+		
+		return price;
+	}
+	
+	private static String adjustDecimal(String price, String currencyCode) {
 		if (price != null && isNumeric(price)) {
-			Log.d(TAG, "adjustDecimal currencyCode: " + currencyCode);
 			int currencyPrecision = getCurrencyPrecision(currencyCode);
-			Log.d(TAG, "currencyPrecision:" + currencyPrecision);
+			//String contains a comma
+			if (price.indexOf(",") != -1) { 
+				//look for comma used instead of decimal
+				if (price.matches(".*(,[\\d]{" + currencyPrecision + "})")) { 
+					//replace last comma with a deciaml
+					StringBuilder b = new StringBuilder(price);
+					b.replace(price.lastIndexOf(","), price.lastIndexOf(",")+1, ".");
+					price = b.toString();
+				}
+			}
+			//remove all remaining commas
+			price = price.replace(",", "");
+					
 	        BigDecimal roundVal = new BigDecimal(price);
 	        roundVal = roundVal.setScale(currencyPrecision, BigDecimal.ROUND_HALF_UP);
-	        //roundVal.round(new MathContext(currencyPrecision, RoundingMode.HALF_UP));
-	        Log.d(TAG, "roundVal.doubleValue():" + roundVal.doubleValue());
-	        Log.d(TAG, "roundVal.toString():" + roundVal.toString());
 	        return roundVal.toString();
 	    }
 		return "-3";
