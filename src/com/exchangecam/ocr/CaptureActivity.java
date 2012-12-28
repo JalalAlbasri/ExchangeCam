@@ -368,7 +368,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		//TODO: Check if the conversion rate is out of date.
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
-		if (!autoExchangeRate) {
+		if (autoExchangeRate) {
 			initQueryConversionRate();
 		}
 	}
@@ -662,17 +662,20 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		}
 		dialog = new ProgressDialog(this);
 
+		//TODO: remove
 //		if (handler != null) {
 //			handler.quitSynchronously();     
 //		}
 		autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
 		
-		//Do not update if rate is fresh.
-		long millis = prefs.getLong(PreferencesActivity.KEY_EXCHANGE_RATE_TIMESTAMP, EXCHANGE_RATE_TIMESTAMP);
-		long diff = (new Date()).getTime() - millis;
-		Date diffDate = new Date(diff);
-		if (diffDate.getMinutes() > EXCHANGE_RATE_REFRESH_MINS && autoExchangeRate){
-			new QueryConversionRateAysncTask(this, dialog, sourceCurrencyCode, targetCurrencyCode).execute();
+		if (autoExchangeRate) {
+			//Do not update if rate is fresh.
+			long millis = prefs.getLong(PreferencesActivity.KEY_EXCHANGE_RATE_TIMESTAMP, EXCHANGE_RATE_TIMESTAMP);
+			long diff = (new Date()).getTime() - millis;
+			Date diffDate = new Date(diff);
+			if (diffDate.getMinutes() > EXCHANGE_RATE_REFRESH_MINS){
+				new QueryConversionRateAysncTask(this, dialog, sourceCurrencyCode, targetCurrencyCode).execute();
+			}
 		}
 	}
 
@@ -933,8 +936,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		editor.putString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_TARGET_CURRENCY).commit();
 		editor.putString(PreferencesActivity.KEY_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_EXCHANGE_RATE).commit();
 		editor.putBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE).commit();
-		//TODO: Might end up resetting values to default every time app opens.
-		editor.commit();
+		//TODO: This commit is unnecessary
+//		editor.commit();
 	}
 
 	void displayProgressDialog() {
@@ -1029,18 +1032,23 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	private OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
 		public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
 			Log.d(TAG, "onSharedPreferenceChanged()");
+			autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
 			if (key.equals(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE)) {
 				sourceCurrencyCode = prefs.getString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_SOURCE_CURRENCY);
 				if (autoExchangeRate) {
 					initQueryConversionRate();
 				}
-
 			} else if (key.equals(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE)) {
 				targetCurrencyCode = prefs.getString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_TARGET_CURRENCY);
 				if (autoExchangeRate) {
 					initQueryConversionRate();
 				}
+			} else if (key.equals(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE)) {
+				if (autoExchangeRate) {
+					initQueryConversionRate();
+				}
 			}
+			
 		}
 	};
 }

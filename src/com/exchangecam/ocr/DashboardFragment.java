@@ -161,6 +161,7 @@ public class DashboardFragment extends Fragment implements ExchangeErrorDialogLi
 
 	private OnClickListener mToggleButtonListener = new OnClickListener() {
 		public void onClick(View v) {
+			Log.d(TAG, "onClick AutoButton isChecked?: " + mAutoExchangeRateToggleButton.isChecked());
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.putBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, mAutoExchangeRateToggleButton.isChecked());
 			editor.commit();

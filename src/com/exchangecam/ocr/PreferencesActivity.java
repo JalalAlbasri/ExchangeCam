@@ -75,8 +75,7 @@ public class PreferencesActivity extends PreferenceActivity implements
                                 .findPreference(KEY_TARGET_CURRENCY_PREFERENCE);
                 editTextPreferenceExchangeRate = (EditTextPreference) getPreferenceScreen()
                                 .findPreference(KEY_EXCHANGE_RATE_PREFERENCE);
-                checkBoxPreferenceAutoExchangeRate = (CheckBoxPreference) getPreferenceScreen()
-                		.findPreference(KEY_AUTO_EXCHANGE_RATE_PREFERENCE);
+
         }
 
         /**
