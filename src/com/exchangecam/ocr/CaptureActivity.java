@@ -453,6 +453,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	@Override
 	protected void onPause() {
+		Log.d(TAG, "onPause()");
 		if (handler != null) {
 			handler.quitSynchronously();
 		}
@@ -480,6 +481,17 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			baseApi.end();
 		}
 		super.onDestroy();
+		
+		FragmentManager fm = getFragmentManager();
+		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
+		Log.d(TAG, "onPause after remove, dashboardFragment == null: " + (dashboardFragment == null));
+		if (dashboardFragment != null) {
+			Log.d(TAG, "removing fragment");
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.remove(dashboardFragment);
+			ft.commit();
+		}
+		Log.d(TAG, "onPause before remove, dashboardFragment == null: " + (dashboardFragment == null));		
 	}
 
 	@Override
@@ -970,37 +982,45 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	public void openDashboardFragment() {
 		//Open Dashboard
+		Log.d(TAG, "openDashboardFragment()");
 		FragmentManager fm = getFragmentManager();
 		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
-		if (dashboardFragment == null) {
-			Log.d(TAG, "openDashboardFragment");
-			Display display = getWindowManager().getDefaultDisplay();
-			Point size = new Point();
-			display.getSize(size);
-//			dashboardContainer.setLayoutParams(new FrameLayout.LayoutParams(size.x/3, size.y, Gravity.RIGHT));
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(size.x/3, size.y);
-			params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-			dashboardContainer.setLayoutParams(params);
-			
-			ImageView borderline = (ImageView)findViewById(R.id.border_view);
-			params = new RelativeLayout.LayoutParams(40, size.y);
-			params.addRule(RelativeLayout.LEFT_OF, dashboardContainer.getId());
-			borderline.setLayoutParams(params);
-			
-			
-//			dashboardContainer.setLayoutParams(new RelativeLayout.LayoutParams(size.x/3, size.y));
-			
-//			borderline.setLayoutParams(new new FrameLayout.LayoutParams())
-			
+		Log.d(TAG, "dashboardFragment == null: " + (dashboardFragment == null));
+		if (dashboardFragment != null) {
+			Log.d(TAG, "removing fragment");
 			FragmentTransaction ft = fm.beginTransaction();
-			dashboardFragment = new DashboardFragment();
-
-			ft.replace(R.id.dashboard_container, dashboardFragment, "DASHBOARD_FRAGMENT");
-			ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//			ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-//			ft.addToBackStack(null);
+			ft.remove(dashboardFragment);
 			ft.commit();
-			getCameraManager().adjustFramingRect(0, 0);
 		}
+
+
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		//			dashboardContainer.setLayoutParams(new FrameLayout.LayoutParams(size.x/3, size.y, Gravity.RIGHT));
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(size.x/3, size.y);
+		params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+		dashboardContainer.setLayoutParams(params);
+
+		ImageView borderline = (ImageView)findViewById(R.id.border_view);
+		params = new RelativeLayout.LayoutParams(40, size.y);
+		params.addRule(RelativeLayout.LEFT_OF, dashboardContainer.getId());
+		borderline.setLayoutParams(params);
+
+
+		//			dashboardContainer.setLayoutParams(new RelativeLayout.LayoutParams(size.x/3, size.y));
+
+		//			borderline.setLayoutParams(new new FrameLayout.LayoutParams())
+
+		FragmentTransaction ft = fm.beginTransaction();
+		dashboardFragment = new DashboardFragment();
+
+		ft.replace(R.id.dashboard_container, dashboardFragment, "DASHBOARD_FRAGMENT");
+		//			ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+		//			ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+		//			ft.addToBackStack(null);
+		ft.commit();
+//		getCameraManager().adjustFramingRect(0, 0);
+
 	}
 }
