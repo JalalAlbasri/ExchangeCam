@@ -21,4 +21,8 @@
     <string name="exchange_rate_label">Exchange Rate</string>
     <string name="source_currency_label">From:</string>
     <string name="target_currency_label">To:</string>
+    <string name="dialog_exchange_error">The exchange rate could not be retrieved. Would you like to set it manually?</string>
+    <string name="dialog_exchange_cancel">Cancel</string>
+    <string name="dialog_exchange_manual">Set Manually</string>
+    <string name="dialog_exchange_error_title">Uh-Oh!</string>
 </resources>

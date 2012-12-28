@@ -118,6 +118,10 @@ containing a value of this type.
     }
     public static final class string {
         public static final int app_name=0x7f090000;
+        public static final int dialog_exchange_cancel=0x7f090006;
+        public static final int dialog_exchange_error=0x7f090005;
+        public static final int dialog_exchange_error_title=0x7f090008;
+        public static final int dialog_exchange_manual=0x7f090007;
         public static final int exchange_rate_edit_text_hint=0x7f090001;
         public static final int exchange_rate_label=0x7f090002;
         public static final int source_currency_label=0x7f090003;
@@ -127,6 +131,7 @@ containing a value of this type.
         public static final int DashboardLabels=0x7f0a0000;
         public static final int currencyDisplay=0x7f0a0002;
         public static final int currencySpinner=0x7f0a0001;
+        public static final int exchangeErrorDialog=0x7f0a0003;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;

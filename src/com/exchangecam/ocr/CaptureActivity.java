@@ -34,6 +34,7 @@ import com.exchangecam.ocr.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -664,11 +665,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 //		if (handler != null) {
 //			handler.quitSynchronously();     
 //		}
+		autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
+		
 		//Do not update if rate is fresh.
 		long millis = prefs.getLong(PreferencesActivity.KEY_EXCHANGE_RATE_TIMESTAMP, EXCHANGE_RATE_TIMESTAMP);
 		long diff = (new Date()).getTime() - millis;
 		Date diffDate = new Date(diff);
-		if (diffDate.getMinutes() > EXCHANGE_RATE_REFRESH_MINS ){
+		if (diffDate.getMinutes() > EXCHANGE_RATE_REFRESH_MINS && autoExchangeRate){
 			new QueryConversionRateAysncTask(this, dialog, sourceCurrencyCode, targetCurrencyCode).execute();
 		}
 	}
@@ -972,6 +975,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			.setMessage(message)
 			.show();
 		}
+	}
+	
+	public void showExchangeErrorDialog() {
+		DialogFragment dialog = new ExchangeErrorDialogFragment();
+		dialog.show(getFragmentManager(), "ExchangeErrorDialogFragment");
 	}
 
 	public void openDashboardFragment() {

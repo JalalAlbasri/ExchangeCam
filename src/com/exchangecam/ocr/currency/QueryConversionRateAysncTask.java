@@ -90,7 +90,8 @@ public class QueryConversionRateAysncTask extends
 			}
 			
 		} else {
-			activity.showErrorMessage("Error", "Unable to retrieve exchange rate", false);
+//			activity.showErrorMessage("Error", "Unable to retrieve exchange rate", false);
+			activity.showExchangeErrorDialog();
 		}	
 	}
 }
