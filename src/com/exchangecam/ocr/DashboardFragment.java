@@ -34,7 +34,7 @@ import android.preference.PreferenceManager;
 public class DashboardFragment extends Fragment {
 	private static final String TAG = DashboardFragment.class.getSimpleName();
 	private CaptureActivity mActivity;
-	
+
 	private ToggleButton mAutoExchangeRateToggleButton;
 	private EditText mExchangeRateEditText;
 	private Spinner mSourceCurrencySpinner;
@@ -42,27 +42,27 @@ public class DashboardFragment extends Fragment {
 	private TextView mSourceCurrencyTextView;
 	private TextView mTargetCurrencyTextView;
 	private String[] mCurrencyCodes;
-	
+
 	String mSourceCurrency;
 	String mTargetCurrency;
-	
+
 	private SharedPreferences prefs;
-	
-	
+
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		mActivity = (CaptureActivity) activity;
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		//Apply Holo theme to the layout
 		Context context = new ContextThemeWrapper(mActivity, android.R.style.Theme_Holo);
 		LayoutInflater holoInflater = inflater.cloneInContext(context);
 		View dashboardView = holoInflater.inflate(R.layout.dashboard_land, container, false);
-		
+
 		//Retrieve layout widgets from View
 		mAutoExchangeRateToggleButton = (ToggleButton) dashboardView.findViewById(R.id.query_rate_toggle_button);
 		mExchangeRateEditText = (EditText) dashboardView.findViewById(R.id.exchange_rate_edit_text);
@@ -70,33 +70,33 @@ public class DashboardFragment extends Fragment {
 		mTargetCurrencySpinner = (Spinner) dashboardView.findViewById(R.id.target_currency_spinner);
 		mSourceCurrencyTextView = (TextView) dashboardView.findViewById(R.id.source_currency_text_view);
 		mTargetCurrencyTextView = (TextView) dashboardView.findViewById(R.id.target_currency_text_view);
-		
+
 		//Register Listeners for widget input events
 		mAutoExchangeRateToggleButton.setOnClickListener(mToggleButtonListener);
 		mSourceCurrencySpinner.setOnItemSelectedListener(mSourceCurrencySpinnerListener);
 		mTargetCurrencySpinner.setOnItemSelectedListener(mTargetCurrencySpinnerListener);
-		
+
 		//Array of currency codes.
 		mCurrencyCodes = getResources().getStringArray(R.array.currencycodes);
 		//Populate the Spinners with currency codes
-//		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity, R.array.currencycodes, R.layout.currency_spinner);
+		//		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity, R.array.currencycodes, R.layout.currency_spinner);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity, R.array.currencynames, R.layout.currency_spinner);
 		adapter.setDropDownViewResource(R.layout.currency_spinner);
 		mSourceCurrencySpinner.setAdapter(adapter);
 		mTargetCurrencySpinner.setAdapter(adapter);
-		
+
 		mSourceCurrencyTextView.setText("0");
 		mTargetCurrencyTextView.setText("0");
 
 		retrievePreferences();
-		
+
 		return dashboardView;
 	}
-	
+
 	private void retrievePreferences() {
 		//Retrieve SharedPreferences
 		prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-		
+
 		//Set Toggle Button status from preferences
 		mAutoExchangeRateToggleButton.setChecked(
 				prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE));
@@ -109,24 +109,30 @@ public class DashboardFragment extends Fragment {
 		//Set currently selected currencies from preferences
 		mSourceCurrency = prefs.getString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_SOURCE_CURRENCY);
 		ArrayAdapter sourceAdapter = (ArrayAdapter) mSourceCurrencySpinner.getAdapter();
-//		int sourcePos = sourceAdapter.getPosition(mSourceCurrency);
+		//		int sourcePos = sourceAdapter.getPosition(mSourceCurrency);
 		int sourcePos = Arrays.asList(mCurrencyCodes).indexOf(mSourceCurrency);
 		mSourceCurrencySpinner.setSelection(sourcePos);
-		
+
 		mTargetCurrency = prefs.getString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_TARGET_CURRENCY);
 		ArrayAdapter targetAdapter = (ArrayAdapter) mSourceCurrencySpinner.getAdapter();
 		int targetPos = targetAdapter.getPosition(mTargetCurrency);
 		mTargetCurrencySpinner.setSelection(targetPos);
-		
+
 	}
-	
+
+	public void updateExchangeRateEditText() {
+		//Retrive excange rate from preferences
+		mExchangeRateEditText.setText(
+				prefs.getString(PreferencesActivity.KEY_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_EXCHANGE_RATE));
+	}
+
 	public void updateTextViews(OcrResultText resultText, int priceIndex) {
 		Log.d(TAG, "updateTextViews");
-		
+
 		String[] words = resultText.getText().replace("\n"," ").split(" ");
 		String price = "0";
 		String convertedPrice = "0";
-		
+
 		if (priceIndex < words.length) {
 			price = words[priceIndex];
 			convertedPrice = CurrencyHelper.convert(mActivity, words[priceIndex]);				
@@ -136,18 +142,18 @@ public class DashboardFragment extends Fragment {
 		mSourceCurrencyTextView.setText(price);
 		mTargetCurrencyTextView.setText(convertedPrice);
 	}
-	
+
 	public void removeResultText() {
-//		Log.d(TAG, "removeResultText()");
-	if (mSourceCurrencyTextView != null) {
+		//		Log.d(TAG, "removeResultText()");
+		if (mSourceCurrencyTextView != null) {
 			mSourceCurrencyTextView.setText("0.00");
 		}
 		if (mTargetCurrencyTextView != null) {
 			mTargetCurrencyTextView.setText("0.00");
 		}
 	}
-		
-	
+
+
 	private OnClickListener mToggleButtonListener = new OnClickListener() {
 		public void onClick(View v) {
 			SharedPreferences.Editor editor = prefs.edit();
@@ -156,11 +162,11 @@ public class DashboardFragment extends Fragment {
 			mExchangeRateEditText.setEnabled(!mAutoExchangeRateToggleButton.isChecked());
 		}
 	};
-	
+
 	private OnItemSelectedListener mSourceCurrencySpinnerListener = new OnItemSelectedListener() {
 		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-//			String item = (String)parent.getItemAtPosition(pos);
+			//			String item = (String)parent.getItemAtPosition(pos);
 			mSourceCurrency = mCurrencyCodes[pos]; 
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.putString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, mSourceCurrency);
@@ -173,11 +179,11 @@ public class DashboardFragment extends Fragment {
 			// Do Nothing.
 		}	
 	};
-	
+
 	private OnItemSelectedListener mTargetCurrencySpinnerListener = new OnItemSelectedListener() {
 		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-//			String item = (String)parent.getItemAtPosition(pos);
+			//			String item = (String)parent.getItemAtPosition(pos);
 			mTargetCurrency = mCurrencyCodes[pos];
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.putString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, mTargetCurrency);
@@ -190,9 +196,9 @@ public class DashboardFragment extends Fragment {
 			// Do Nothing.
 		}
 	};
-	
-	
-	
-	
-	
+
+
+
+
+
 }

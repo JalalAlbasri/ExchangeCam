@@ -45,6 +45,7 @@ public class PreferencesActivity extends PreferenceActivity implements
         public static final String KEY_NOT_OUR_RESULTS_SHOWN = "preferences_not_our_results_shown";
         public static final String KEY_REVERSE_IMAGE = "preferences_reverse_image";
         public static final String KEY_VIBRATE = "preferences_vibrate";
+        public static final String KEY_EXCHANGE_RATE_TIMESTAMP = "exchange_rate_timestamp";
 
         private ListPreference listPreferenceSourceCurrency;
         private ListPreference listPreferenceTargetCurrency;

@@ -1,9 +1,13 @@
 package com.exchangecam.ocr.currency;
 
+import java.util.Date;
+
 import com.exchangecam.ocr.CaptureActivity;
+import com.exchangecam.ocr.DashboardFragment;
 import com.exchangecam.ocr.PreferencesActivity;
 import com.exchangecam.ocr.currency.QueryConversionRate;
 
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -78,6 +82,13 @@ public class QueryConversionRateAysncTask extends
 			//Update exchange rate in shared preferences.
 			SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 	        sharedPreferences.edit().putString(PreferencesActivity.KEY_EXCHANGE_RATE_PREFERENCE, conversionRate).commit();
+	        sharedPreferences.edit().putLong(PreferencesActivity.KEY_EXCHANGE_RATE_TIMESTAMP, (new Date()).getTime());
+			FragmentManager fm = activity.getFragmentManager();
+			DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
+			if (dashboardFragment != null) {
+				dashboardFragment.updateExchangeRateEditText();
+			}
+			
 		} else {
 			activity.showErrorMessage("Error", "Unable to retrieve exchange rate", false);
 		}	

@@ -88,6 +88,7 @@ import android.R.animator;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
 
@@ -143,7 +144,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	 */
 	static final int LOWER_WORD_CONFIDENCE_THRESHOLD = 30;
 	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 70;
-
+	
+	static final long EXCHANGE_RATE_TIMESTAMP = 0;
+	static final long EXCHANGE_RATE_REFRESH_MINS = 20;
 
 	// Context menu
 	private static final int SETTINGS_ID = Menu.FIRST;
@@ -658,10 +661,16 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		}
 		dialog = new ProgressDialog(this);
 
-		if (handler != null) {
-			handler.quitSynchronously();     
+//		if (handler != null) {
+//			handler.quitSynchronously();     
+//		}
+		//Do not update if rate is fresh.
+		long millis = prefs.getLong(PreferencesActivity.KEY_EXCHANGE_RATE_TIMESTAMP, EXCHANGE_RATE_TIMESTAMP);
+		long diff = (new Date()).getTime() - millis;
+		Date diffDate = new Date(diff);
+		if (diffDate.getMinutes() > EXCHANGE_RATE_REFRESH_MINS ){
+			new QueryConversionRateAysncTask(this, dialog, sourceCurrencyCode, targetCurrencyCode).execute();
 		}
-		new QueryConversionRateAysncTask(this, dialog, sourceCurrencyCode, targetCurrencyCode).execute();
 	}
 
 
@@ -879,22 +888,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		return false;
 	}
 	
-	private OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-		public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-			if (key.equals(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE)) {
-				sourceCurrencyCode = prefs.getString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_SOURCE_CURRENCY);
-				if (!autoExchangeRate) {
-					initQueryConversionRate();
-				}
-
-			} else if (key.equals(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE)) {
-				targetCurrencyCode = prefs.getString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_TARGET_CURRENCY);
-				if (!autoExchangeRate) {
-					initQueryConversionRate();
-				}
-			}
-		}
-	};
+	
 	
 
 	/**
@@ -1023,4 +1017,22 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 //		getCameraManager().adjustFramingRect(0, 0);
 
 	}
+	
+	private OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+		public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+			Log.d(TAG, "onSharedPreferenceChanged()");
+			if (key.equals(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE)) {
+				sourceCurrencyCode = prefs.getString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_SOURCE_CURRENCY);
+				if (autoExchangeRate) {
+					initQueryConversionRate();
+				}
+
+			} else if (key.equals(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE)) {
+				targetCurrencyCode = prefs.getString(PreferencesActivity.KEY_TARGET_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_TARGET_CURRENCY);
+				if (autoExchangeRate) {
+					initQueryConversionRate();
+				}
+			}
+		}
+	};
 }
