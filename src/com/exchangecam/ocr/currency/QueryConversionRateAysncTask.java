@@ -88,6 +88,7 @@ public class QueryConversionRateAysncTask extends
 			if (dashboardFragment != null) {
 				dashboardFragment.updateExchangeRateEditText();
 			}
+			activity.showUpdatedExcahngeRate();
 			
 		} else {
 //			activity.showErrorMessage("Error", "Unable to retrieve exchange rate", false);

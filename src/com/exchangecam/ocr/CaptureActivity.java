@@ -145,7 +145,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	 */
 	static final int LOWER_WORD_CONFIDENCE_THRESHOLD = 30;
 	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 70;
-	
+
 	static final long EXCHANGE_RATE_TIMESTAMP = 0;
 	static final long EXCHANGE_RATE_REFRESH_MINS = 20;
 
@@ -245,7 +245,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		viewfinderView.setCameraManager(cameraManager);
 
 		openDashboardFragment();
-		
+
 		// Set listener to change the size of the viewfinder rectangle.
 		viewfinderView.setOnTouchListener(new View.OnTouchListener() {
 			int lastX = -1;
@@ -314,7 +314,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 					} catch (NullPointerException e) {
 						Log.e(TAG, "Framing rect not available", e);
 					}
-					
+
 					v.invalidate();
 					lastX = currentX;
 					lastY = currentY;
@@ -368,7 +368,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		//TODO: Check if the conversion rate is out of date.
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
-		if (autoExchangeRate) {
+		if (autoExchangeRate && exchangeRateIsOld()) {
 			initQueryConversionRate();
 		}
 	}
@@ -485,7 +485,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			baseApi.end();
 		}
 		super.onDestroy();
-		
+
 		FragmentManager fm = getFragmentManager();
 		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
 		Log.d(TAG, "onPause after remove, dashboardFragment == null: " + (dashboardFragment == null));
@@ -663,19 +663,15 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		dialog = new ProgressDialog(this);
 
 		//TODO: remove
-//		if (handler != null) {
-//			handler.quitSynchronously();     
-//		}
+		//		if (handler != null) {
+		//			handler.quitSynchronously();     
+		//		}
 		autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
-		
+
+		Log.d(TAG, "initQueryConversionRate(), autoExchangeRate == " + (autoExchangeRate));
 		if (autoExchangeRate) {
-			//Do not update if rate is fresh.
-			long millis = prefs.getLong(PreferencesActivity.KEY_EXCHANGE_RATE_TIMESTAMP, EXCHANGE_RATE_TIMESTAMP);
-			long diff = (new Date()).getTime() - millis;
-			Date diffDate = new Date(diff);
-			if (diffDate.getMinutes() > EXCHANGE_RATE_REFRESH_MINS){
-				new QueryConversionRateAysncTask(this, dialog, sourceCurrencyCode, targetCurrencyCode).execute();
-			}
+			Log.d(TAG, "Querying Exchange Rate");
+			new QueryConversionRateAysncTask(this, dialog, sourceCurrencyCode, targetCurrencyCode).execute();
 		}
 	}
 
@@ -700,7 +696,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		// Display the name of the OCR engine we're initializing in the indeterminate progress dialog box
 		indeterminateDialog = new ProgressDialog(this);
 		indeterminateDialog.setTitle("Please wait");
-		
+
 		if (handler != null) {
 			handler.quitSynchronously();     
 		}
@@ -711,7 +707,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		.execute(storageRoot.toString());
 	}
 
-	
+
 	/**
 	 * Displays information relating to the results of a successful real-time OCR request.
 	 * 
@@ -822,19 +818,20 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	private void resetStatusView() {
 		lastResult = null;
 		viewfinderView.removeResultText();
-		
+
 		FragmentManager fm = getFragmentManager();
 		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
 
 		if (dashboardFragment != null) {
 			dashboardFragment.removeResultText();	
 		}
-		
+
 	}
 
 	/** Displays a pop-up message showing the name of the current OCR source language. */
-	void showLanguageName() {   
-		Toast toast = Toast.makeText(this, "OCR: " + sourceLanguageReadable, Toast.LENGTH_LONG);
+	public void showUpdatedExcahngeRate() {   
+		Toast toast = Toast.makeText(this, "Exchange Rate Updated", Toast.LENGTH_LONG);
+		//				+ sourceLanguageReadable, Toast.LENGTH_LONG);
 		toast.setGravity(Gravity.TOP, 0, 0);
 		toast.show();
 	}
@@ -893,15 +890,15 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		}
 		return false;
 	}
-	
-	
-	
+
+
+
 
 	/**
 	 * Gets values from shared preferences and sets the corresponding data members in this activity.
 	 */
 	private void retrievePreferences() {
-		
+
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 		// Retrieve from preferences, and set in this Activity, the language preferences
@@ -937,7 +934,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		editor.putString(PreferencesActivity.KEY_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_EXCHANGE_RATE).commit();
 		editor.putBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE).commit();
 		//TODO: This commit is unnecessary
-//		editor.commit();
+		editor.commit();
 	}
 
 	void displayProgressDialog() {
@@ -979,7 +976,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			.show();
 		}
 	}
-	
+
 	public void showExchangeErrorDialog() {
 		DialogFragment dialog = new ExchangeErrorDialogFragment();
 		dialog.show(getFragmentManager(), "ExchangeErrorDialogFragment");
@@ -1025,13 +1022,22 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		//			ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
 		//			ft.addToBackStack(null);
 		ft.commit();
-//		getCameraManager().adjustFramingRect(0, 0);
+		//		getCameraManager().adjustFramingRect(0, 0);
 
 	}
-	
+
+	private boolean exchangeRateIsOld() {
+		//Do not update if rate is fresh.
+		long millis = prefs.getLong(PreferencesActivity.KEY_EXCHANGE_RATE_TIMESTAMP, EXCHANGE_RATE_TIMESTAMP);
+		long diff = (new Date()).getTime() - millis;
+		Date diffDate = new Date(diff);
+		Log.d(TAG, "Freshness: " + diffDate.getMinutes());
+		return (diffDate.getMinutes() > EXCHANGE_RATE_REFRESH_MINS);
+	}
+
 	private OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
 		public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-			Log.d(TAG, "onSharedPreferenceChanged()");
+			Log.d(TAG, "onSharedPreferenceChanged() " + key);
 			autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
 			if (key.equals(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE)) {
 				sourceCurrencyCode = prefs.getString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_SOURCE_CURRENCY);
@@ -1048,7 +1054,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 					initQueryConversionRate();
 				}
 			}
-			
+
 		}
 	};
 }
