@@ -61,6 +61,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextMenu;
+import android.view.ContextThemeWrapper;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -660,8 +661,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		if (dialog != null) {
 			dialog.dismiss();
 		}
-		dialog = new ProgressDialog(this);
-
+		Context c = new ContextThemeWrapper(this, R.style.indeterminateProgressDialog);
+		dialog = new ProgressDialog(c);
 		//TODO: remove
 		//		if (handler != null) {
 		//			handler.quitSynchronously();     

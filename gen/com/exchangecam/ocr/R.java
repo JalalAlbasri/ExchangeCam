@@ -131,7 +131,9 @@ containing a value of this type.
         public static final int DashboardLabels=0x7f0a0000;
         public static final int currencyDisplay=0x7f0a0002;
         public static final int currencySpinner=0x7f0a0001;
+        public static final int dashboardFragmentStyle=0x7f0a0005;
         public static final int exchangeErrorDialog=0x7f0a0003;
+        public static final int indeterminateProgressDialog=0x7f0a0004;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;

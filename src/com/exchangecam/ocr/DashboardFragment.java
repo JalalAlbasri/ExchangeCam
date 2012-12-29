@@ -62,7 +62,7 @@ public class DashboardFragment extends Fragment implements ExchangeErrorDialogLi
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		//Apply Holo theme to the layout
-		Context context = new ContextThemeWrapper(mActivity, android.R.style.Theme_Holo);
+		Context context = new ContextThemeWrapper(mActivity, R.style.dashboardFragmentStyle);
 		LayoutInflater holoInflater = inflater.cloneInContext(context);
 		View dashboardView = holoInflater.inflate(R.layout.dashboard_land, container, false);
 
