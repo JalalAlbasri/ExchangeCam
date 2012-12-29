@@ -129,7 +129,7 @@ public class CurrencyHelper {
 	        roundVal = roundVal.setScale(currencyPrecision, BigDecimal.ROUND_HALF_UP);
 	        return roundVal.toString();
 	    }
-		return "-3";
+		return "0";
 	}
 	
 	public static boolean isNumeric(String str) {
@@ -158,7 +158,7 @@ public class CurrencyHelper {
 			String convertedValue = Double.toString(sourceAmountDbl * conversionRateDbl);
 			return formatPrice(convertedValue, targetCurrencyCode);
 		}
-		return "-2";	
+		return "0";	
 	}
 
 }

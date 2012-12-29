@@ -108,8 +108,12 @@ public final class CameraManager {
 	 */
 	public synchronized void closeDriver() {
 		if (camera != null) {
+			
+
+			Long time = System.currentTimeMillis();
 			camera.release();
 			camera = null;
+			Log.d(TAG, "onPauseTimer, camera.release(): " + (System.currentTimeMillis()-time));
 
 			// Make sure to clear these each time we close the camera, so that any scanning rect
 			// requested by intent is forgotten.
@@ -241,28 +245,20 @@ public final class CameraManager {
 	public synchronized void adjustFramingRect(int deltaWidth, int deltaHeight) {
 		if (initialized) {
 			Point screenResolution = configManager.getScreenResolution();
-			int delta = deltaWidth + deltaHeight;
 			// Set maximum and minimum sizes
-			if ((framingRect.width() + delta > screenResolution.x - 8) || (framingRect.width() + delta < 50)) {
-				delta = 0;
+			if ((framingRect.width() + deltaWidth > screenResolution.x - 8) || (framingRect.width() + deltaWidth < 50)) {
+				deltaWidth = 0;
 			}
-			if ((framingRect.height() + delta > screenResolution.y - 8) || (framingRect.height() + delta < 50)) {
-				delta = 0;
+			if ((framingRect.height() + deltaHeight > screenResolution.y - 8) || (framingRect.height() + deltaHeight < 50)) {
+				deltaHeight = 0;
 			}
 
 
-			int newWidth = framingRect.width() + delta;
-			int newHeight = framingRect.height() + delta;
-			//			if (dashboardOpen) {
+			int newWidth = framingRect.width() + deltaWidth;
+			int newHeight = framingRect.height() + deltaHeight;
 			int leftOffset = ((screenResolution.x * 2/3) - newWidth) /2 ;
 			int topOffset = (screenResolution.y - newHeight) / 2;
 			framingRect = new Rect(leftOffset, topOffset, leftOffset + newWidth, topOffset + newHeight);
-			//			}
-			//			else {
-			//				int leftOffset = ((screenResolution.x) - newWidth) /2 ;
-			//				int topOffset = (screenResolution.y - newHeight) / 2;
-			//				framingRect = new Rect(leftOffset, topOffset, leftOffset + newWidth, topOffset + newHeight);
-			//			}
 			framingRectInPreview = null;
 		} else {
 			requestedFramingRectWidth = deltaWidth;

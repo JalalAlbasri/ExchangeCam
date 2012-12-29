@@ -93,7 +93,18 @@ import java.io.IOException;
 import java.util.Date;
 
 public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
+	
+	/*
+	 * UPPER AND LOWER THRESHOLDS FOR WORD CONFIDNCE DISPLAY OF RECOGNIZED WORDS
+	 */
 
+	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 65;
+	static final int LOWER_WORD_CONFIDENCE_THRESHOLD = 5;
+	
+	static final long EXCHANGE_RATE_TIMESTAMP = 0;
+	static final long EXCHANGE_RATE_REFRESH_MINS = 20;
+
+	
 	private static final String TAG = CaptureActivity.class.getSimpleName();
 
 	// Note: These constants will be overridden by any default values defined in preferences.xml.
@@ -141,14 +152,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	/** Minimum mean confidence score necessary to not reject single-shot OCR result. Currently unused. */
 	static final int MINIMUM_MEAN_CONFIDENCE = 0; // 0 means don't reject any scored results
 
-	/*
-	 * UPPER AND LOWER THRESHOLDS FOR WORD CONFIDNCE DISPLAY OF RECOGNIZED WORDS
-	 */
-	static final int LOWER_WORD_CONFIDENCE_THRESHOLD = 30;
-	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 70;
-
-	static final long EXCHANGE_RATE_TIMESTAMP = 0;
-	static final long EXCHANGE_RATE_REFRESH_MINS = 20;
 
 	// Context menu
 	private static final int SETTINGS_ID = Menu.FIRST;
@@ -273,42 +276,42 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 							if (((currentX >= rect.left - BIG_BUFFER && currentX <= rect.left + BIG_BUFFER) || (lastX >= rect.left - BIG_BUFFER && lastX <= rect.left + BIG_BUFFER))
 									&& ((currentY <= rect.top + BIG_BUFFER && currentY >= rect.top - BIG_BUFFER) || (lastY <= rect.top + BIG_BUFFER && lastY >= rect.top - BIG_BUFFER))) {
 								// Top left corner: adjust both top and left sides
-								cameraManager.adjustFramingRect( (lastX - currentX), (lastY - currentY));
+								cameraManager.adjustFramingRect( 2 * (lastX - currentX), 2 *  (lastY - currentY));
 								viewfinderView.removeResultText();
 							} else if (((currentX >= rect.right - BIG_BUFFER && currentX <= rect.right + BIG_BUFFER) || (lastX >= rect.right - BIG_BUFFER && lastX <= rect.right + BIG_BUFFER)) 
 									&& ((currentY <= rect.top + BIG_BUFFER && currentY >= rect.top - BIG_BUFFER) || (lastY <= rect.top + BIG_BUFFER && lastY >= rect.top - BIG_BUFFER))) {
 								// Top right corner: adjust both top and right sides
-								cameraManager.adjustFramingRect( (currentX - lastX), (lastY - currentY));
+								cameraManager.adjustFramingRect( 2 * (currentX - lastX), 2 * (lastY - currentY));
 								viewfinderView.removeResultText();
 							} else if (((currentX >= rect.left - BIG_BUFFER && currentX <= rect.left + BIG_BUFFER) || (lastX >= rect.left - BIG_BUFFER && lastX <= rect.left + BIG_BUFFER))
 									&& ((currentY <= rect.bottom + BIG_BUFFER && currentY >= rect.bottom - BIG_BUFFER) || (lastY <= rect.bottom + BIG_BUFFER && lastY >= rect.bottom - BIG_BUFFER))) {
 								// Bottom left corner: adjust both bottom and left sides
-								cameraManager.adjustFramingRect((lastX - currentX), (currentY - lastY));
+								cameraManager.adjustFramingRect(2 * (lastX - currentX), 2 * (currentY - lastY));
 								viewfinderView.removeResultText();
 							} else if (((currentX >= rect.right - BIG_BUFFER && currentX <= rect.right + BIG_BUFFER) || (lastX >= rect.right - BIG_BUFFER && lastX <= rect.right + BIG_BUFFER)) 
 									&& ((currentY <= rect.bottom + BIG_BUFFER && currentY >= rect.bottom - BIG_BUFFER) || (lastY <= rect.bottom + BIG_BUFFER && lastY >= rect.bottom - BIG_BUFFER))) {
 								// Bottom right corner: adjust both bottom and right sides
-								cameraManager.adjustFramingRect((currentX - lastX), (currentY - lastY));
+								cameraManager.adjustFramingRect(2 * (currentX - lastX), 2 * (currentY - lastY));
 								viewfinderView.removeResultText();
 							} else if (((currentX >= rect.left - BUFFER && currentX <= rect.left + BUFFER) || (lastX >= rect.left - BUFFER && lastX <= rect.left + BUFFER))
 									&& ((currentY <= rect.bottom && currentY >= rect.top) || (lastY <= rect.bottom && lastY >= rect.top))) {
 								// Adjusting left side: event falls within BUFFER pixels of left side, and between top and bottom side limits
-								cameraManager.adjustFramingRect((lastX - currentX), 0);
+								cameraManager.adjustFramingRect(2 * (lastX - currentX), 0);
 								viewfinderView.removeResultText();
 							} else if (((currentX >= rect.right - BUFFER && currentX <= rect.right + BUFFER) || (lastX >= rect.right - BUFFER && lastX <= rect.right + BUFFER))
 									&& ((currentY <= rect.bottom && currentY >= rect.top) || (lastY <= rect.bottom && lastY >= rect.top))) {
 								// Adjusting right side: event falls within BUFFER pixels of right side, and between top and bottom side limits
-								cameraManager.adjustFramingRect((currentX - lastX), 0);
+								cameraManager.adjustFramingRect(2 * (currentX - lastX), 0);
 								viewfinderView.removeResultText();
 							} else if (((currentY <= rect.top + BUFFER && currentY >= rect.top - BUFFER) || (lastY <= rect.top + BUFFER && lastY >= rect.top - BUFFER))
 									&& ((currentX <= rect.right && currentX >= rect.left) || (lastX <= rect.right && lastX >= rect.left))) {
 								// Adjusting top side: event falls within BUFFER pixels of top side, and between left and right side limits
-								cameraManager.adjustFramingRect(0, (lastY - currentY));
+								cameraManager.adjustFramingRect(0, 2 * (lastY - currentY));
 								viewfinderView.removeResultText();
 							} else if (((currentY <= rect.bottom + BUFFER && currentY >= rect.bottom - BUFFER) || (lastY <= rect.bottom + BUFFER && lastY >= rect.bottom - BUFFER))
 									&& ((currentX <= rect.right && currentX >= rect.left) || (lastX <= rect.right && lastX >= rect.left))) {
 								// Adjusting bottom side: event falls within BUFFER pixels of bottom side, and between left and right side limits
-								cameraManager.adjustFramingRect(0, (currentY - lastY));
+								cameraManager.adjustFramingRect(0, 2 * (currentY - lastY));
 								viewfinderView.removeResultText();
 							}     
 						}
@@ -458,19 +461,28 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	@Override
 	protected void onPause() {
+		Long time = System.currentTimeMillis();
 		Log.d(TAG, "onPause()");
 		if (handler != null) {
 			handler.quitSynchronously();
 		}
+		Log.d(TAG, "onPauseTimer, handler.quitSynchronously(): " + (System.currentTimeMillis()-time));
 
+		time = System.currentTimeMillis();
+		
 		// Stop using the camera, to avoid conflicting with other camera-based apps
 		cameraManager.closeDriver();
+		Log.d(TAG, "onPauseTimer, cameraManager.closeDriver(): " + (System.currentTimeMillis()-time));
+		
+		time = System.currentTimeMillis();
 
 		if (!hasSurface) {
 			SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
 			SurfaceHolder surfaceHolder = surfaceView.getHolder();
 			surfaceHolder.removeCallback(this);
 		}
+		Log.d(TAG, "onPauseTimer, surfaceHolder.removeCallback(this): " + (System.currentTimeMillis()-time));
+
 		super.onPause();
 	}
 
@@ -598,7 +610,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	//		}
 	//		return super.onOptionsItemSelected(item);
 	//	}
-
+	
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		Log.d(TAG, "surfaceDestroyed()");
 		hasSurface = false;
@@ -663,10 +675,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		}
 		Context c = new ContextThemeWrapper(this, R.style.indeterminateProgressDialog);
 		dialog = new ProgressDialog(c);
-		//TODO: remove
-		//		if (handler != null) {
-		//			handler.quitSynchronously();     
-		//		}
 		autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
 
 		Log.d(TAG, "initQueryConversionRate(), autoExchangeRate == " + (autoExchangeRate));
