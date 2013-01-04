@@ -84,7 +84,7 @@ public class DashboardFragment extends Fragment implements ExchangeErrorDialogLi
 		//Populate the Spinners with currency codes
 		//		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity, R.array.currencycodes, R.layout.currency_spinner);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(mActivity, R.array.currencynames, R.layout.currency_spinner);
-		adapter.setDropDownViewResource(R.layout.currency_spinner);
+		adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
 		mSourceCurrencySpinner.setAdapter(adapter);
 		mTargetCurrencySpinner.setAdapter(adapter);
 

@@ -972,7 +972,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	 */
 	public void showErrorMessage(String title, String message, Boolean quit) {
 		if(quit) {
-			new AlertDialog.Builder(this)
+			Context c = new ContextThemeWrapper(this, R.style.indeterminateProgressDialog);
+			new AlertDialog.Builder(c)
 			.setTitle(title)
 			.setMessage(message)
 			.setOnCancelListener(new FinishListener(this))
