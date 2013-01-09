@@ -94,6 +94,9 @@ public final class ViewfinderView extends View {
 	private CaptureActivity activity;
 	private Rect horizontal;
 	private Rect vertical;
+	private Rect bounds;
+	
+	private Rect top, bottom, left, right;
 	
 	private Bitmap topBmp;
 	private Bitmap bottomBmp;
@@ -112,7 +115,11 @@ public final class ViewfinderView extends View {
 		maskColor = resources.getColor(R.color.viewfinder_mask);
 		frameColor = resources.getColor(R.color.viewfinder_frame);
 		cornerColor = resources.getColor(R.color.viewfinder_corners);
-		
+		bounds = new Rect();
+		top = new Rect();
+		bottom = new Rect();
+		left = new Rect();
+		right = new Rect();
 
 		horizontal = new Rect(0,0,41,1);
 		vertical = new Rect(0,0,1,41);
@@ -297,7 +304,7 @@ public final class ViewfinderView extends View {
 							paint.setTextSize(100);
 							paint.setTextScaleX(1.0f);
 							// ask the paint for the bounding rect if it were to draw this text
-							Rect bounds = new Rect();
+							bounds.setEmpty();
 							paint.getTextBounds(words[i], 0, words[i].length(), bounds);
 							// get the height that would have been produced
 							int h = bounds.bottom - bounds.top;
@@ -359,7 +366,7 @@ public final class ViewfinderView extends View {
 							paint.setTextSize(100);
 							paint.setTextScaleX(1.0f);
 							// ask the paint for the bounding rect if it were to draw this text
-							Rect bounds = new Rect();
+							bounds.setEmpty();
 							paint.getTextBounds(words[price], 0, words[price].length(), bounds);
 							// get the height that would have been produced
 							int h = bounds.bottom - bounds.top;
@@ -452,7 +459,7 @@ public final class ViewfinderView extends View {
 								paint.setTextScaleX(1.0f);
 
 								// ask the paint for the bounding rect if it were to draw this text
-								Rect bounds = new Rect();
+								bounds.setEmpty();
 								paint.getTextBounds(letter, 0, letter.length(), bounds);
 
 								// get the height that would have been produced
@@ -479,10 +486,10 @@ public final class ViewfinderView extends View {
 
 		}
 		
-		Rect top = new Rect(frame.left, frame.top, frame.right + 1, frame.top + 2);
-		Rect left = new Rect(frame.left, frame.top + 2, frame.left + 2, frame.bottom - 1);
-		Rect right = new Rect(frame.right - 1, frame.top, frame.right + 1, frame.bottom - 1);
-		Rect bottom = new Rect(frame.left, frame.bottom - 1, frame.right + 1, frame.bottom + 1);
+		top.set(frame.left, frame.top, frame.right + 1, frame.top + 2);
+		left.set(frame.left, frame.top + 2, frame.left + 2, frame.bottom - 1);
+		right.set(frame.right - 1, frame.top, frame.right + 1, frame.bottom - 1);
+		bottom.set(frame.left, frame.bottom - 1, frame.right + 1, frame.bottom + 1);
 		
 		//Draw framing rect with bitmap
 //		canvas.drawBitmap(topBmp, horizontal, top, null);
