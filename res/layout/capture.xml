@@ -4,6 +4,8 @@
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
 
+
+    
     <FrameLayout
         android:id="@+id/camera_preview"
         android:layout_width="fill_parent"

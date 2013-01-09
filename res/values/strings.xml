@@ -18,11 +18,11 @@
 <resources>
     <string name="app_name">Exchange Cam</string>
     <string name="exchange_rate_edit_text_hint">Exchange Rate</string>
-    <string name="exchange_rate_label">Exchange Rate</string>
-    <string name="source_currency_label">From:</string>
-    <string name="target_currency_label">To:</string>
-    <string name="dialog_exchange_error">The exchange rate could not be retrieved. Would you like to set it manually?</string>
+    <string name="exchange_rate_label">EXCHANGE RATE</string>
+    <string name="source_currency_label">FROM</string>
+    <string name="target_currency_label">TO</string>
+    <string name="dialog_exchange_error">The Exchange Rate could not be retrieved. Do you want to set it manually?</string>
     <string name="dialog_exchange_cancel">Cancel</string>
     <string name="dialog_exchange_manual">Set Manually</string>
-    <string name="dialog_exchange_error_title">Uh-Oh!</string>
+    <string name="dialog_exchange_error_title">Uh-oh!</string>
 </resources>

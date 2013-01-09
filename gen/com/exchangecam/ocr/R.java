@@ -29,6 +29,7 @@ containing a value of this type.
          */
         public static final int character_boxes=0x7f07000b;
         public static final int currency_text=0x7f07000c;
+        public static final int dashboard_labels=0x7f07000d;
         public static final int help_button_view=0x7f070000;
         /**  help button view background color 
          */
@@ -67,14 +68,15 @@ containing a value of this type.
         public static final int border=0x7f020002;
         public static final int bottom=0x7f020003;
         public static final int dashboard_background=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int left=0x7f020006;
-        public static final int right=0x7f020007;
-        public static final int screen=0x7f020008;
-        public static final int shutter=0x7f020009;
-        public static final int shutter_button=0x7f02000a;
-        public static final int shutter_pressed=0x7f02000b;
-        public static final int top=0x7f02000c;
+        public static final int dashboard_rule=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int left=0x7f020007;
+        public static final int right=0x7f020008;
+        public static final int screen=0x7f020009;
+        public static final int shutter=0x7f02000a;
+        public static final int shutter_button=0x7f02000b;
+        public static final int shutter_pressed=0x7f02000c;
+        public static final int top=0x7f02000d;
     }
     public static final class id {
         public static final int border_view=0x7f08000b;
@@ -131,9 +133,10 @@ containing a value of this type.
         public static final int DashboardLabels=0x7f0a0000;
         public static final int currencyDisplay=0x7f0a0002;
         public static final int currencySpinner=0x7f0a0001;
-        public static final int dashboardFragmentStyle=0x7f0a0005;
-        public static final int exchangeErrorDialog=0x7f0a0003;
-        public static final int indeterminateProgressDialog=0x7f0a0004;
+        public static final int dashboardFragmentStyle=0x7f0a0006;
+        public static final int dashboardRule=0x7f0a0003;
+        public static final int exchangeErrorDialog=0x7f0a0004;
+        public static final int indeterminateProgressDialog=0x7f0a0005;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;

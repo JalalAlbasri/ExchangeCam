@@ -32,5 +32,6 @@
   <color name="viewfinder_mask">#60000000</color>  <!-- viewfinder exterior darkened area -->
   <color name="character_boxes">#33B5E5</color>
   <color name="currency_text">#33B5E5</color>
+  <color name="dashboard_labels">#CCCCCC</color>
   
 </resources>

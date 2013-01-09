@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2008 ZXing authors
- * Copyright 2011 Robert Theis
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package com.exchangecam.ocr;
 
@@ -109,8 +93,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	// Note: These constants will be overridden by any default values defined in preferences.xml.
 
-	public static final String DEFAULT_SOURCE_CURRENCY = "AUD";
-	public static final String DEFAULT_TARGET_CURRENCY = "BHD";
+	public static final String DEFAULT_SOURCE_CURRENCY = "USD";
+	public static final String DEFAULT_TARGET_CURRENCY = "EUR";
 	public static final String DEFAULT_EXCHANGE_RATE = "0";
 	public static final Boolean DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE = true;
 
@@ -451,11 +435,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			handler = new CaptureActivityHandler(this, cameraManager, isContinuousModeActive);
 
 		} catch (IOException ioe) {
-			showErrorMessage("Error", "Could not initialize camera. Please try restarting device.", true);
+			showErrorMessage("Uh-oh!", "Could not connect to the camera. Please try restarting the device", true);
 		} catch (RuntimeException e) {
 			// Barcode Scanner has seen crashes in the wild of this variety:
 			// java.?lang.?RuntimeException: Fail to connect to camera service
-			showErrorMessage("Error", "Could not initialize camera. Please try restarting device.", true);
+			showErrorMessage("Uh-oh!", "Could not connect to the camera. Please try restarting the device", true);
 		}   
 	}
 
@@ -888,20 +872,17 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 				Intent intent = new Intent(this, HelpActivity.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 
-				// Show the default page on a clean install, and the what's new page on an upgrade.
-				String page = lastVersion == 0 ? HelpActivity.DEFAULT_PAGE : HelpActivity.WHATS_NEW_PAGE;
-				intent.putExtra(HelpActivity.REQUESTED_PAGE_KEY, page);
-				startActivity(intent);
-				return true;
+//				// Show the default page on a clean install, and the what's new page on an upgrade.
+//				String page = lastVersion == 0 ? HelpActivity.DEFAULT_PAGE : HelpActivity.WHATS_NEW_PAGE;
+//				intent.putExtra(HelpActivity.REQUESTED_PAGE_KEY, page);
+//				startActivity(intent);
+//				return true;
 			}
 		} catch (PackageManager.NameNotFoundException e) {
 			Log.w(TAG, e);
 		}
 		return false;
 	}
-
-
-
 
 	/**
 	 * Gets values from shared preferences and sets the corresponding data members in this activity.
@@ -980,7 +961,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			.setPositiveButton( "Done", new FinishListener(this))
 			.show();
 		} else {
-			new AlertDialog.Builder(this)
+			Context c = new ContextThemeWrapper(this, R.style.exchangeErrorDialog);
+			new AlertDialog.Builder(c)
 			.setTitle(title)
 			.setMessage(message)
 			.show();

@@ -32,9 +32,6 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import org.xeustechnologies.jtar.TarEntry;
-import org.xeustechnologies.jtar.TarInputStream;
-
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import android.app.ProgressDialog;
