@@ -1,6 +1,6 @@
 
 package com.exchangecam.ocr;
-
+import com.exchangecam.ocr.R;
 
 import com.exchangecam.ocr.BeepManager;
 import com.exchangecam.ocr.HelpActivity;
@@ -14,8 +14,8 @@ import com.exchangecam.ocr.currency.QueryConversionRateAysncTask;
 //import com.exchangecam.ocr.language.TranslateAsyncTask;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
-import com.exchangecam.ocr.R;
 
+import android.os.StrictMode;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
@@ -77,18 +77,18 @@ import java.io.IOException;
 import java.util.Date;
 
 public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
-	
+
 	/*
 	 * UPPER AND LOWER THRESHOLDS FOR WORD CONFIDNCE DISPLAY OF RECOGNIZED WORDS
 	 */
 
 	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 65;
 	static final int LOWER_WORD_CONFIDENCE_THRESHOLD = 5;
-	
+
 	static final long EXCHANGE_RATE_TIMESTAMP = 0;
 	static final long EXCHANGE_RATE_REFRESH_MINS = 20;
 
-	
+
 	private static final String TAG = CaptureActivity.class.getSimpleName();
 
 	// Note: These constants will be overridden by any default values defined in preferences.xml.
@@ -187,6 +187,20 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	@Override
 	public void onCreate(Bundle icicle) {
+		//Enable StrictMode for debugging Unintentional network and disk accesses on the main thread.
+		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+		.detectDiskReads()
+		.detectDiskWrites()
+		.detectNetwork()   // or .detectAll() for all detectable problems
+		.penaltyLog()
+		.build());
+		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+		.detectLeakedSqlLiteObjects()
+		.detectLeakedClosableObjects()
+		.penaltyLog()
+		.penaltyDeath()
+		.build());
+
 		super.onCreate(icicle);
 
 		checkFirstLaunch();
@@ -453,11 +467,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		Log.d(TAG, "onPauseTimer, handler.quitSynchronously(): " + (System.currentTimeMillis()-time));
 
 		time = System.currentTimeMillis();
-		
+
 		// Stop using the camera, to avoid conflicting with other camera-based apps
 		cameraManager.closeDriver();
 		Log.d(TAG, "onPauseTimer, cameraManager.closeDriver(): " + (System.currentTimeMillis()-time));
-		
+
 		time = System.currentTimeMillis();
 
 		if (!hasSurface) {
@@ -594,7 +608,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	//		}
 	//		return super.onOptionsItemSelected(item);
 	//	}
-	
+
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		Log.d(TAG, "surfaceDestroyed()");
 		hasSurface = false;
@@ -727,6 +741,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 						maxConfidenceIndex = i;
 					}
 				}
+
 
 				if (!words[maxConfidenceIndex].equals("") &&
 						CurrencyHelper.isPrice(this, words[maxConfidenceIndex])) {
@@ -872,11 +887,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 				Intent intent = new Intent(this, HelpActivity.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 
-//				// Show the default page on a clean install, and the what's new page on an upgrade.
-//				String page = lastVersion == 0 ? HelpActivity.DEFAULT_PAGE : HelpActivity.WHATS_NEW_PAGE;
-//				intent.putExtra(HelpActivity.REQUESTED_PAGE_KEY, page);
-//				startActivity(intent);
-//				return true;
+				//				// Show the default page on a clean install, and the what's new page on an upgrade.
+				//				String page = lastVersion == 0 ? HelpActivity.DEFAULT_PAGE : HelpActivity.WHATS_NEW_PAGE;
+				//				intent.putExtra(HelpActivity.REQUESTED_PAGE_KEY, page);
+				//				startActivity(intent);
+				//				return true;
 			}
 		} catch (PackageManager.NameNotFoundException e) {
 			Log.w(TAG, e);
