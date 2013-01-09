@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res/com.exchangecam.ocr"
+    xmlns:custom="http://schemas.android.com/apk/res/com.lab117.exchangecam"
     android:id="@+id/dashboard_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -59,7 +59,7 @@
         android:id="@+id/source_currency_spinner"
         style="@style/currencySpinner" />
 
-    <com.exchangecam.ocr.CurrencyTextView
+    <com.lab117.exchangecam.CurrencyTextView
         android:id="@+id/source_currency_text_view"
         style="@style/currencyDisplay"
         
@@ -82,7 +82,7 @@
         android:id="@+id/target_currency_spinner"
         style="@style/currencySpinner" />
 
-    <com.exchangecam.ocr.CurrencyTextView
+    <com.lab117.exchangecam.CurrencyTextView
         android:id="@+id/target_currency_text_view"
         style="@style/currencyDisplay"
         custom:customFont="fonts/digital.ttf" />

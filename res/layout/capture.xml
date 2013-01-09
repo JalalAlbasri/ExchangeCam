@@ -18,7 +18,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 
-        <com.exchangecam.ocr.ViewfinderView
+        <com.lab117.exchangecam.ViewfinderView
             android:id="@+id/viewfinder_view"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
