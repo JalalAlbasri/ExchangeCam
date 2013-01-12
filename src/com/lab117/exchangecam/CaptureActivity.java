@@ -12,6 +12,10 @@ import com.lab117.exchangecam.currency.QueryConversionRateAysncTask;
 //import com.lab117.exchangecam.camera.ShutterButton;
 //import com.lab117.exchangecam.language.LanguageCodeHelper;
 //import com.lab117.exchangecam.language.TranslateAsyncTask;
+import com.google.ads.Ad;
+import com.google.ads.AdListener;
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 
@@ -76,13 +80,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
+public final class CaptureActivity extends Activity implements SurfaceHolder.Callback, AdListener {
 
 	/*
 	 * UPPER AND LOWER THRESHOLDS FOR WORD CONFIDNCE DISPLAY OF RECOGNIZED WORDS
 	 */
 
-	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 65;
+	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 40;
 	static final int LOWER_WORD_CONFIDENCE_THRESHOLD = 5;
 
 	static final long EXCHANGE_RATE_TIMESTAMP = 0;
@@ -147,6 +151,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	private SurfaceView surfaceView;
 	private SurfaceHolder surfaceHolder;
 	private View dashboardContainer;
+	private AdView adView;
 	private OcrResult lastResult;
 	private String currentPrice;
 	private boolean hasSurface;
@@ -187,19 +192,19 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	@Override
 	public void onCreate(Bundle icicle) {
-		//Enable StrictMode for debugging Unintentional network and disk accesses on the main thread.
-		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-		.detectDiskReads()
-		.detectDiskWrites()
-		.detectNetwork()   // or .detectAll() for all detectable problems
-		.penaltyLog()
-		.build());
-		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-		.detectLeakedSqlLiteObjects()
-		.detectLeakedClosableObjects()
-		.penaltyLog()
-		.penaltyDeath()
-		.build());
+//		//Enable StrictMode for debugging Unintentional network and disk accesses on the main thread.
+//		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+//		.detectDiskReads()
+//		.detectDiskWrites()
+//		.detectNetwork()   // or .detectAll() for all detectable problems
+//		.penaltyLog()
+//		.build());
+//		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+//		.detectLeakedSqlLiteObjects()
+//		.detectLeakedClosableObjects()
+//		.penaltyLog()
+//		.penaltyDeath()
+//		.build());
 
 		super.onCreate(icicle);
 
@@ -215,6 +220,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		setContentView(R.layout.capture);
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
 		dashboardContainer = (FrameLayout) findViewById(R.id.dashboard_container);
+		adView = (AdView) findViewById(R.id.adView);
+		
+		adView.setAdListener(this);
 
 		//		debugStatusViews = findViewById(R.id.debug_status_views);
 
@@ -247,7 +255,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		viewfinderView.setCameraManager(cameraManager);
 
 		openDashboardFragment();
-
+//		adjustAdLocation();
 		// Set listener to change the size of the viewfinder rectangle.
 		viewfinderView.setOnTouchListener(new View.OnTouchListener() {
 			int lastX = -1;
@@ -342,6 +350,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		String previousSourceLanguageCodeOcr = sourceLanguageCodeOcr;
 		int previousOcrEngineMode = ocrEngineMode;
 		openDashboardFragment();
+//		adjustAdLocation();
+
 		retrievePreferences();
 
 		// Set up the camera preview surface.
@@ -480,7 +490,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			surfaceHolder.removeCallback(this);
 		}
 		Log.d(TAG, "onPauseTimer, surfaceHolder.removeCallback(this): " + (System.currentTimeMillis()-time));
-
+			
 		super.onPause();
 	}
 
@@ -495,6 +505,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		if (baseApi != null) {
 			baseApi.end();
 		}
+	    if (adView != null) {
+	        // Destroy the AdView.
+	        adView.destroy();
+	      }
+		
 		super.onDestroy();
 
 		FragmentManager fm = getFragmentManager();
@@ -741,7 +756,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 						maxConfidenceIndex = i;
 					}
 				}
-
+				Log.d(TAG, "maxConfidence: " + maxConfidence);
 
 				if (!words[maxConfidenceIndex].equals("") &&
 						CurrencyHelper.isPrice(this, words[maxConfidenceIndex])) {
@@ -1064,4 +1079,69 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 		}
 	};
+	
+	private void adjustAdLocation() {
+		if (adView != null) {
+			Display display = getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			FrameLayout.LayoutParams adParams = new FrameLayout.LayoutParams(2*size.x/3, FrameLayout.LayoutParams.WRAP_CONTENT);
+			adParams.gravity = Gravity.BOTTOM;
+			adView.setLayoutParams(adParams);
+			
+			Log.w(TAG, "adjustAdLocation, size.x: " + size.x + ", adView.getWidth():" + adView.getWidth() );
+//			adView.setX(());
+//			adView.setX(size.x/2 - adView.getWidth());
+		}
+	}
+	  /** Called when an ad is clicked and about to return to the application. */
+	  @Override
+	  public void onDismissScreen(Ad ad) {
+	    Log.d(TAG, "onDismissScreen"); 
+//	    Toast.makeText(this, "onDismissScreen", Toast.LENGTH_SHORT).show();
+	  }
+
+	  /** Called when an ad was not received. */
+	  @Override
+	  public void onFailedToReceiveAd(Ad ad, AdRequest.ErrorCode error) {
+	    String message = "onFailedToReceiveAd (" + error + ")";
+	    Log.d(TAG, message);
+//	    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+	  }
+
+	  /**
+	   * Called when an ad is clicked and going to start a new Activity that will
+	   * leave the application (e.g. breaking out to the Browser or Maps
+	   * application).
+	   */
+	  @Override
+	  public void onLeaveApplication(Ad ad) {
+	    Log.d(TAG, "onLeaveApplication");
+//	    Toast.makeText(this, "onLeaveApplication", Toast.LENGTH_SHORT).show();
+	  }
+
+	  /**
+	   * Called when an Activity is created in front of the app (e.g. an
+	   * interstitial is shown, or an ad is clicked and launches a new Activity).
+	   */
+	  @Override
+	  public void onPresentScreen(Ad ad) {
+	    Log.d(TAG, "onPresentScreen");
+//	    Toast.makeText(this, "onPresentScreen", Toast.LENGTH_SHORT).show();
+	  }
+
+	  /** Called when an ad is received. */
+	  @Override
+	  public void onReceiveAd(Ad ad) {
+	    Log.w(TAG, "onReceiveAd");
+	    adjustAdLocation();
+//	    Toast.makeText(this, "onReceiveAd", Toast.LENGTH_SHORT).show();
+	  }
+	  
+	  @Override
+	  public void onWindowFocusChanged(boolean hasFocus) {
+	     super.onWindowFocusChanged(hasFocus);
+//	     adjustAdLocation();
+	  }
+	
 }

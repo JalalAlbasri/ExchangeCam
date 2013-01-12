@@ -8,6 +8,7 @@ import com.googlecode.tesseract.android.TessBaseAPI;
 import com.lab117.exchangecam.BeepManager;
 import com.lab117.exchangecam.CaptureActivity;
 import com.lab117.exchangecam.R;
+import com.lab117.exchangecam.currency.CurrencyHelper;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
@@ -154,8 +155,8 @@ final class DecodeHandler extends Handler {
       // presses the shutter button, in addition to maybe wanting to draw boxes/words during the
       // continuous mode recognition.
       ocrResult.setWordBoundingBoxes(baseApi.getWords().getBoxRects());
-      
-      if (ViewfinderView.DRAW_CHARACTER_BOXES || ViewfinderView.DRAW_CHARACTER_TEXT) {
+    
+      if (ViewfinderView.DRAW_CHARACTER_BOXES || ViewfinderView.DRAW_CHARACTER_TEXT || CurrencyHelper.DETECT_SMALL_DECIMAL) {
         ocrResult.setCharacterBoundingBoxes(baseApi.getCharacters().getBoxRects());
       }
     } catch (RuntimeException e) {

@@ -1,0 +1,232 @@
+com.google.ads.AdActivity
+com.google.ads.AdActivity: AdActivity()
+com.google.ads.AdActivity: void onClick(android.view.View)
+com.google.ads.AdRequest$ErrorCode: com.google.ads.AdRequest$ErrorCode[] values()
+com.google.ads.AdRequest$ErrorCode: com.google.ads.AdRequest$ErrorCode valueOf(java.lang.String)
+com.google.ads.AdRequest$Gender: com.google.ads.AdRequest$Gender[] values()
+com.google.ads.AdRequest$Gender: com.google.ads.AdRequest$Gender valueOf(java.lang.String)
+com.google.ads.AdView
+com.google.ads.AdView: AdView(android.app.Activity,com.google.ads.AdSize,java.lang.String)
+com.google.ads.AdView: AdView(android.app.Activity,com.google.ads.AdSize[],java.lang.String)
+com.google.ads.AdView: AdView(android.content.Context,android.util.AttributeSet)
+com.google.ads.AdView: AdView(android.content.Context,android.util.AttributeSet,int)
+com.google.ads.AdView: void setAdListener(com.google.ads.AdListener)
+com.google.ads.ai$b: com.google.ads.ai$b[] values()
+com.google.ads.ai$b: com.google.ads.ai$b valueOf(java.lang.String)
+com.google.ads.doubleclick.DfpAdView
+com.google.ads.doubleclick.DfpAdView: DfpAdView(android.content.Context,android.util.AttributeSet)
+com.google.ads.doubleclick.DfpAdView: DfpAdView(android.content.Context,android.util.AttributeSet,int)
+com.google.ads.doubleclick.DfpAdView: void setAppEventListener(com.google.ads.AppEventListener)
+com.google.ads.doubleclick.DfpAdView: void setSupportedAdSizes(com.google.ads.AdSize[])
+com.google.ads.g$a: com.google.ads.g$a[] values()
+com.google.ads.g$a: com.google.ads.g$a valueOf(java.lang.String)
+com.google.ads.internal.AdVideoView
+com.google.ads.internal.AdVideoView: void setMediaControllerEnabled(boolean)
+com.google.ads.internal.AdVideoView: void setSrc(java.lang.String)
+com.google.ads.internal.AdWebView
+com.google.ads.internal.AdWebView: void setAdActivity(com.google.ads.AdActivity)
+com.google.ads.internal.AdWebView: void setAdSize(com.google.ads.AdSize)
+com.google.ads.internal.AdWebView: void setCustomClose(boolean)
+com.google.ads.internal.AdWebView: void setIsExpandedMraid(boolean)
+com.google.ads.internal.c$d: com.google.ads.internal.c$d[] values()
+com.google.ads.internal.c$d: com.google.ads.internal.c$d valueOf(java.lang.String)
+com.google.ads.searchads.SearchAdRequest$BorderType: com.google.ads.searchads.SearchAdRequest$BorderType[] values()
+com.google.ads.searchads.SearchAdRequest$BorderType: com.google.ads.searchads.SearchAdRequest$BorderType valueOf(java.lang.String)
+com.google.ads.util.AdUtil$UserActivityReceiver
+com.google.ads.util.AdUtil$a: com.google.ads.util.AdUtil$a[] values()
+com.google.ads.util.AdUtil$a: com.google.ads.util.AdUtil$a valueOf(java.lang.String)
+com.google.ads.util.b$a: com.google.ads.util.b$a[] values()
+com.google.ads.util.b$a: com.google.ads.util.b$a valueOf(java.lang.String)
+com.googlecode.leptonica.android.AdaptiveMap
+com.googlecode.leptonica.android.AdaptiveMap: int nativeBackgroundNormMorph(int,int,int,int)
+com.googlecode.leptonica.android.Binarize
+com.googlecode.leptonica.android.Binarize: int nativeOtsuAdaptiveThreshold(int,int,int,int,int,float)
+com.googlecode.leptonica.android.Box
+com.googlecode.leptonica.android.Box: int nativeCreate(int,int,int,int)
+com.googlecode.leptonica.android.Box: int nativeGetX(int)
+com.googlecode.leptonica.android.Box: int nativeGetY(int)
+com.googlecode.leptonica.android.Box: int nativeGetWidth(int)
+com.googlecode.leptonica.android.Box: int nativeGetHeight(int)
+com.googlecode.leptonica.android.Box: void nativeDestroy(int)
+com.googlecode.leptonica.android.Box: boolean nativeGetGeometry(int,int[])
+com.googlecode.leptonica.android.Convert
+com.googlecode.leptonica.android.Convert: int nativeConvertTo8(int)
+com.googlecode.leptonica.android.Enhance
+com.googlecode.leptonica.android.Enhance: int nativeUnsharpMasking(int,int,float)
+com.googlecode.leptonica.android.JpegIO
+com.googlecode.leptonica.android.JpegIO: byte[] nativeCompressToJpeg(int,int,boolean)
+com.googlecode.leptonica.android.Pix
+com.googlecode.leptonica.android.Pix: int nativeCreatePix(int,int,int)
+com.googlecode.leptonica.android.Pix: int nativeCreateFromData(byte[],int,int,int)
+com.googlecode.leptonica.android.Pix: boolean nativeGetData(int,byte[])
+com.googlecode.leptonica.android.Pix: int nativeGetDataSize(int)
+com.googlecode.leptonica.android.Pix: int nativeClone(int)
+com.googlecode.leptonica.android.Pix: int nativeCopy(int)
+com.googlecode.leptonica.android.Pix: boolean nativeInvert(int)
+com.googlecode.leptonica.android.Pix: void nativeDestroy(int)
+com.googlecode.leptonica.android.Pix: boolean nativeGetDimensions(int,int[])
+com.googlecode.leptonica.android.Pix: int nativeGetWidth(int)
+com.googlecode.leptonica.android.Pix: int nativeGetHeight(int)
+com.googlecode.leptonica.android.Pix: int nativeGetDepth(int)
+com.googlecode.leptonica.android.Pix: int nativeGetPixel(int,int,int)
+com.googlecode.leptonica.android.Pix: void nativeSetPixel(int,int,int,int)
+com.googlecode.leptonica.android.Pixa
+com.googlecode.leptonica.android.Pixa: int nativeCreate(int)
+com.googlecode.leptonica.android.Pixa: int nativeCopy(int)
+com.googlecode.leptonica.android.Pixa: int nativeSort(int,int,int)
+com.googlecode.leptonica.android.Pixa: boolean nativeJoin(int,int)
+com.googlecode.leptonica.android.Pixa: int nativeGetCount(int)
+com.googlecode.leptonica.android.Pixa: void nativeDestroy(int)
+com.googlecode.leptonica.android.Pixa: void nativeAddPix(int,int,int)
+com.googlecode.leptonica.android.Pixa: void nativeAddBox(int,int,int)
+com.googlecode.leptonica.android.Pixa: void nativeAdd(int,int,int,int)
+com.googlecode.leptonica.android.Pixa: boolean nativeWriteToFileRandomCmap(int,java.lang.String,int,int)
+com.googlecode.leptonica.android.Pixa: void nativeReplacePix(int,int,int,int)
+com.googlecode.leptonica.android.Pixa: void nativeMergeAndReplacePix(int,int,int)
+com.googlecode.leptonica.android.Pixa: int nativeGetBox(int,int)
+com.googlecode.leptonica.android.Pixa: int nativeGetPix(int,int)
+com.googlecode.leptonica.android.Pixa: boolean nativeGetBoxGeometry(int,int,int[])
+com.googlecode.leptonica.android.ReadFile
+com.googlecode.leptonica.android.ReadFile: int nativeReadMem(byte[],int)
+com.googlecode.leptonica.android.ReadFile: int nativeReadBytes8(byte[],int,int)
+com.googlecode.leptonica.android.ReadFile: boolean nativeReplaceBytes8(int,byte[],int,int)
+com.googlecode.leptonica.android.ReadFile: int nativeReadFiles(java.lang.String,java.lang.String)
+com.googlecode.leptonica.android.ReadFile: int nativeReadFile(java.lang.String)
+com.googlecode.leptonica.android.ReadFile: int nativeReadBitmap(android.graphics.Bitmap)
+com.googlecode.leptonica.android.Rotate
+com.googlecode.leptonica.android.Rotate: int nativeRotate(int,float,boolean)
+com.googlecode.leptonica.android.Scale
+com.googlecode.leptonica.android.Scale: int nativeScale(int,float,float)
+com.googlecode.leptonica.android.Scale$ScaleType: com.googlecode.leptonica.android.Scale$ScaleType[] values()
+com.googlecode.leptonica.android.Scale$ScaleType: com.googlecode.leptonica.android.Scale$ScaleType valueOf(java.lang.String)
+com.googlecode.leptonica.android.Skew
+com.googlecode.leptonica.android.Skew: float nativeFindSkew(int,float,float,int,int,float)
+com.googlecode.leptonica.android.WriteFile
+com.googlecode.leptonica.android.WriteFile: int nativeWriteBytes8(int,byte[])
+com.googlecode.leptonica.android.WriteFile: boolean nativeWriteFiles(int,java.lang.String,int)
+com.googlecode.leptonica.android.WriteFile: byte[] nativeWriteMem(int,int)
+com.googlecode.leptonica.android.WriteFile: boolean nativeWriteImpliedFormat(int,java.lang.String,int,boolean)
+com.googlecode.leptonica.android.WriteFile: boolean nativeWriteBitmap(int,android.graphics.Bitmap)
+com.googlecode.tesseract.android.TessBaseAPI
+com.googlecode.tesseract.android.TessBaseAPI: int mNativeData
+com.googlecode.tesseract.android.TessBaseAPI: void nativeClassInit()
+com.googlecode.tesseract.android.TessBaseAPI: void nativeConstruct()
+com.googlecode.tesseract.android.TessBaseAPI: void nativeFinalize()
+com.googlecode.tesseract.android.TessBaseAPI: boolean nativeInit(java.lang.String,java.lang.String)
+com.googlecode.tesseract.android.TessBaseAPI: boolean nativeInitOem(java.lang.String,java.lang.String,int)
+com.googlecode.tesseract.android.TessBaseAPI: java.lang.String nativeGetInitLanguagesAsString()
+com.googlecode.tesseract.android.TessBaseAPI: void nativeClear()
+com.googlecode.tesseract.android.TessBaseAPI: void nativeEnd()
+com.googlecode.tesseract.android.TessBaseAPI: void nativeSetImageBytes(byte[],int,int,int,int)
+com.googlecode.tesseract.android.TessBaseAPI: void nativeSetImagePix(int)
+com.googlecode.tesseract.android.TessBaseAPI: void nativeSetRectangle(int,int,int,int)
+com.googlecode.tesseract.android.TessBaseAPI: java.lang.String nativeGetUTF8Text()
+com.googlecode.tesseract.android.TessBaseAPI: int nativeMeanConfidence()
+com.googlecode.tesseract.android.TessBaseAPI: int[] nativeWordConfidences()
+com.googlecode.tesseract.android.TessBaseAPI: boolean nativeSetVariable(java.lang.String,java.lang.String)
+com.googlecode.tesseract.android.TessBaseAPI: void nativeSetDebug(boolean)
+com.googlecode.tesseract.android.TessBaseAPI: void nativeSetPageSegMode(int)
+com.googlecode.tesseract.android.TessBaseAPI: int nativeGetRegions()
+com.googlecode.tesseract.android.TessBaseAPI: int nativeGetTextlines()
+com.googlecode.tesseract.android.TessBaseAPI: int nativeGetStrips()
+com.googlecode.tesseract.android.TessBaseAPI: int nativeGetWords()
+com.googlecode.tesseract.android.TessBaseAPI: int nativeGetCharacters()
+com.lab117.exchangecam.CaptureActivity
+com.lab117.exchangecam.CaptureActivity: CaptureActivity()
+com.lab117.exchangecam.CaptureActivityHandler$State: com.lab117.exchangecam.CaptureActivityHandler$State[] values()
+com.lab117.exchangecam.CaptureActivityHandler$State: com.lab117.exchangecam.CaptureActivityHandler$State valueOf(java.lang.String)
+com.lab117.exchangecam.CurrencyTextView
+com.lab117.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context)
+com.lab117.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context,android.util.AttributeSet)
+com.lab117.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context,android.util.AttributeSet,int)
+com.lab117.exchangecam.DashboardFragment
+com.lab117.exchangecam.ExchangeErrorDialogFragment
+com.lab117.exchangecam.HelpActivity
+com.lab117.exchangecam.PreferencesActivity
+com.lab117.exchangecam.PreferencesActivity: PreferencesActivity()
+com.lab117.exchangecam.R$array: int capturemodes
+com.lab117.exchangecam.R$array: int currencycodes
+com.lab117.exchangecam.R$array: int currencynames
+com.lab117.exchangecam.R$array: int pagesegmentationmodes
+com.lab117.exchangecam.R$attr: int customFont
+com.lab117.exchangecam.R$color: int character_boxes
+com.lab117.exchangecam.R$color: int currency_text
+com.lab117.exchangecam.R$color: int dashboard_labels
+com.lab117.exchangecam.R$color: int help_button_view
+com.lab117.exchangecam.R$color: int help_view
+com.lab117.exchangecam.R$color: int result_minor_text
+com.lab117.exchangecam.R$color: int result_text
+com.lab117.exchangecam.R$color: int result_view
+com.lab117.exchangecam.R$color: int status_text
+com.lab117.exchangecam.R$color: int status_top_text_background
+com.lab117.exchangecam.R$color: int translation_text
+com.lab117.exchangecam.R$color: int viewfinder_corners
+com.lab117.exchangecam.R$color: int viewfinder_frame
+com.lab117.exchangecam.R$color: int viewfinder_mask
+com.lab117.exchangecam.R$drawable: int admob
+com.lab117.exchangecam.R$drawable: int background
+com.lab117.exchangecam.R$drawable: int background_pressed
+com.lab117.exchangecam.R$drawable: int border
+com.lab117.exchangecam.R$drawable: int bottom
+com.lab117.exchangecam.R$drawable: int dashboard_background
+com.lab117.exchangecam.R$drawable: int dashboard_rule
+com.lab117.exchangecam.R$drawable: int ic_launcher
+com.lab117.exchangecam.R$drawable: int left
+com.lab117.exchangecam.R$drawable: int right
+com.lab117.exchangecam.R$drawable: int screen
+com.lab117.exchangecam.R$drawable: int shutter
+com.lab117.exchangecam.R$drawable: int shutter_button
+com.lab117.exchangecam.R$drawable: int shutter_pressed
+com.lab117.exchangecam.R$drawable: int top
+com.lab117.exchangecam.R$id: int adView
+com.lab117.exchangecam.R$id: int border_view
+com.lab117.exchangecam.R$id: int camera_preview
+com.lab117.exchangecam.R$id: int dashboard_container
+com.lab117.exchangecam.R$id: int dashboard_view
+com.lab117.exchangecam.R$id: int decode
+com.lab117.exchangecam.R$id: int decode_failed
+com.lab117.exchangecam.R$id: int decode_succeeded
+com.lab117.exchangecam.R$id: int done_button
+com.lab117.exchangecam.R$id: int exchange_rate_edit_text
+com.lab117.exchangecam.R$id: int help_contents
+com.lab117.exchangecam.R$id: int ocr_continuous_decode
+com.lab117.exchangecam.R$id: int ocr_continuous_decode_failed
+com.lab117.exchangecam.R$id: int ocr_continuous_decode_succeeded
+com.lab117.exchangecam.R$id: int preview_view
+com.lab117.exchangecam.R$id: int query_rate_toggle_button
+com.lab117.exchangecam.R$id: int quit
+com.lab117.exchangecam.R$id: int restart_preview
+com.lab117.exchangecam.R$id: int source_currency_spinner
+com.lab117.exchangecam.R$id: int source_currency_text_view
+com.lab117.exchangecam.R$id: int target_currency_spinner
+com.lab117.exchangecam.R$id: int target_currency_text_view
+com.lab117.exchangecam.R$id: int viewfinder_view
+com.lab117.exchangecam.R$layout: int capture
+com.lab117.exchangecam.R$layout: int currency_spinner
+com.lab117.exchangecam.R$layout: int dashboard
+com.lab117.exchangecam.R$layout: int dashboard_land
+com.lab117.exchangecam.R$layout: int help
+com.lab117.exchangecam.R$raw: int beep
+com.lab117.exchangecam.R$string: int app_name
+com.lab117.exchangecam.R$string: int dialog_exchange_cancel
+com.lab117.exchangecam.R$string: int dialog_exchange_error
+com.lab117.exchangecam.R$string: int dialog_exchange_error_title
+com.lab117.exchangecam.R$string: int dialog_exchange_manual
+com.lab117.exchangecam.R$string: int exchange_rate_edit_text_hint
+com.lab117.exchangecam.R$string: int exchange_rate_label
+com.lab117.exchangecam.R$string: int source_currency_label
+com.lab117.exchangecam.R$string: int target_currency_label
+com.lab117.exchangecam.R$style: int DashboardLabels
+com.lab117.exchangecam.R$style: int currencyDisplay
+com.lab117.exchangecam.R$style: int currencySpinner
+com.lab117.exchangecam.R$style: int dashboardFragmentStyle
+com.lab117.exchangecam.R$style: int dashboardRule
+com.lab117.exchangecam.R$style: int exchangeErrorDialog
+com.lab117.exchangecam.R$style: int indeterminateProgressDialog
+com.lab117.exchangecam.R$styleable: int[] CurrencyView
+com.lab117.exchangecam.R$styleable: int CurrencyView_customFont
+com.lab117.exchangecam.R$styleable: int[] ViewfinderView
+com.lab117.exchangecam.R$xml: int preferences
+com.lab117.exchangecam.ViewfinderView
+com.lab117.exchangecam.ViewfinderView: ViewfinderView(android.content.Context,android.util.AttributeSet)
+com.lab117.exchangecam.ViewfinderView: void setCameraManager(com.lab117.exchangecam.camera.CameraManager)

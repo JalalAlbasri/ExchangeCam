@@ -132,19 +132,9 @@ public class DashboardFragment extends Fragment implements ExchangeErrorDialogLi
 
 	public void updateTextViews(OcrResultText resultText, int priceIndex) {
 		Log.d(TAG, "updateTextViews");
-
-		String[] words = resultText.getText().replace("\n"," ").split(" ");
-		String price = "0";
-		String convertedPrice = "0";
-
-		if (priceIndex < words.length) {
-			price = words[priceIndex];
-			convertedPrice = CurrencyHelper.convert(mActivity, words[priceIndex]);				
-		}
-		Log.d(TAG, "format, price: " + price);
-		price = CurrencyHelper.formatPrice(price, mSourceCurrency);
-		mSourceCurrencyTextView.setText(price);
-		mTargetCurrencyTextView.setText(convertedPrice);
+		String[] prices = CurrencyHelper.extractPrices(resultText, priceIndex, getActivity());
+		mSourceCurrencyTextView.setText(prices[0]);
+		mTargetCurrencyTextView.setText(prices[1]);
 	}
 
 	public void removeResultText() {

@@ -7,6 +7,8 @@
     android:layout_gravity="right"
     android:orientation="vertical" >
 
+
+    
     <TextView
         android:paddingTop="2dp"
         style="@style/DashboardLabels"

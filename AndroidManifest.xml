@@ -28,6 +28,7 @@
     <uses-feature android:name="android.hardware.screen.landscape" />
 
     <application
+        android:debuggable="true"
      	android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -46,7 +47,7 @@
 
         <activity android:name="com.lab117.exchangecam.PreferencesActivity" />
         <activity
-            android:name="com.google.ads.AdActivitytivity"
+            android:name="com.google.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
     </application>
 

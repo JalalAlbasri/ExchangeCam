@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
 
-
-    
     <FrameLayout
         android:id="@+id/camera_preview"
         android:layout_width="fill_parent"
@@ -23,6 +22,16 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="#0000" />
+
+        <com.google.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            ads:adSize="BANNER"
+            ads:adUnitId="a150ed2988c29bd"
+            ads:loadAdOnCreate="true"
+            ads:testDevices="TEST_EMULATOR, c08087b0667865f" />
     </FrameLayout>
 
     <ImageView
@@ -30,8 +39,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/border"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:src="@drawable/border" />
 
     <FrameLayout
         android:id="@+id/dashboard_container"
@@ -40,7 +49,8 @@
         android:background="@drawable/dashboard_background" />
 
 </RelativeLayout><!--
-        android:background="@android:drawable/editbox_dropdown_dark_frame"
+                       ads:adUnitId="c08087b0667865f"
+            ads:adUnitId="a150ed2988c29bd"        android:background="@android:drawable/editbox_dropdown_dark_frame"
         android:background="@android:drawable/editbox_dropdown_dark_frame" />
         <RelativeLayout
         android:id="@+id/debug_status_views"
