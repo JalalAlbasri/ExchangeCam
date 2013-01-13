@@ -170,7 +170,7 @@ public class CurrencyHelper {
 
 		if (priceIndex < words.length) {
 			prices[0] = correctSuperscriptDecimal(words[priceIndex], resultText, sourceCurrencyCode);
-			prices[1] = CurrencyHelper.convert(context, words[priceIndex]);				
+			prices[1] = CurrencyHelper.convert(context, prices[0]);				
 		}
 		Log.d(TAG, "format, price: " + prices[0]);
 		prices[0] = CurrencyHelper.formatPrice(prices[0], sourceCurrencyCode);
@@ -179,7 +179,6 @@ public class CurrencyHelper {
 
 	public static String correctSuperscriptDecimal(String price, OcrResultText resultText, String currencyCode) {
 		Log.d(TAG, "correctSmallDecimal()");
-		//Scan through character boxes looking for matching price string.
 		int precision = getCurrencyPrecision(currencyCode);
 		String text = resultText.getText().replaceAll("\\s", "");
 		List<Rect> characterBoundingBoxes = resultText.getCharacterBoundingBoxes();
@@ -194,19 +193,12 @@ public class CurrencyHelper {
 			Log.d(TAG, "priceIndex: " + priceIndex + " characterBoundingBoxes: " + characterBoundingBoxes.size());
 			if (priceIndex != -1 && price.length() > precision) {
 				if (priceIndex < characterBoundingBoxes.size()) {
-					int h = characterBoundingBoxes.get(priceIndex).height();
-					double d = 0;
-					for (int i = 0; i < precision; i++) {
-						d += characterBoundingBoxes.get(priceIndex+price.length()-1-i).height();
-					}
-					if (d != 0 && precision != 0) {
-						double a = d / precision;
-						Log.d(TAG, "a: " + a + " h: " + h);
-						if (a < h * 0.6 && price.indexOf(".") == -1) {
-							StringBuffer sb = new StringBuffer(price);
-							price = sb.insert(price.length()-precision, ".").toString();
-							Log.d(TAG, "Corrected Decimal!: " + price);							
-						}
+					int first = characterBoundingBoxes.get(priceIndex).height();
+					int last = characterBoundingBoxes.get(priceIndex+price.length()-1).height();
+					if (last < first * 0.6 && price.indexOf(".") == -1) {
+						StringBuffer sb = new StringBuffer(price);
+						price = sb.insert(price.length()-precision, ".").toString();
+						Log.d(TAG, "Corrected Decimal!: " + price);							
 					}
 				}
 			}

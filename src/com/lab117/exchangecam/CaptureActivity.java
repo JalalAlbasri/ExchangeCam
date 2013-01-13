@@ -86,7 +86,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	 * UPPER AND LOWER THRESHOLDS FOR WORD CONFIDNCE DISPLAY OF RECOGNIZED WORDS
 	 */
 
-	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 40;
+	static final int UPPER_WORD_CONFIDENCE_THRESHOLD = 65;
 	static final int LOWER_WORD_CONFIDENCE_THRESHOLD = 5;
 
 	static final long EXCHANGE_RATE_TIMESTAMP = 0;
