@@ -141,13 +141,13 @@ public final class HelpActivity extends Activity {
               view.reload();
         }
         catch (ActivityNotFoundException e) {
-          Log.w(TAG, "Problem with Intent.ACTION_SEND", e);
+          //Log.w(TAG, "Problem with Intent.ACTION_SEND", e);
                   new AlertDialog.Builder(context)
                     .setTitle("Contact Info")
                     .setMessage( "Please send your feedback to: app.ocr@gmail.com" )
                     .setPositiveButton( "Done", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            Log.d("AlertDialog", "Positive");
+                            //Log.d("AlertDialog", "Positive");
                         }
                     })
                     .show();

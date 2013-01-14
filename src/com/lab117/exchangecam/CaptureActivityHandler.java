@@ -78,7 +78,7 @@ final class CaptureActivityHandler extends Handler {
         try {
           activity.handleOcrContinuousDecode((OcrResultFailure) message.obj);
         } catch (NullPointerException e) {
-          Log.w(TAG, "got bad OcrResultFailure", e);
+          //Log.w(TAG, "got bad OcrResultFailure", e);
         }
         if (state == State.CONTINUOUS) {
           restartOcrPreviewAndDecode();
@@ -114,7 +114,7 @@ final class CaptureActivityHandler extends Handler {
     // TODO See if this should be done by sending a quit message to decodeHandler as is done
     // below in quitSynchronously().
     
-    Log.d(TAG, "Setting state to CONTINUOUS_PAUSED.");
+    //Log.d(TAG, "Setting state to CONTINUOUS_PAUSED.");
     state = State.CONTINUOUS_PAUSED;
     removeMessages(R.id.ocr_continuous_decode);
 //    removeMessages(R.id.ocr_decode);
@@ -126,9 +126,9 @@ final class CaptureActivityHandler extends Handler {
   }
   
   void resetState() {
-    //Log.d(TAG, "in restart()");
+    ////Log.d(TAG, "in restart()");
     if (state == State.CONTINUOUS_PAUSED) {
-      Log.d(TAG, "Setting state to CONTINUOUS");
+      //Log.d(TAG, "Setting state to CONTINUOUS");
       state = State.CONTINUOUS;
       restartOcrPreviewAndDecode();
     }
@@ -146,13 +146,13 @@ final class CaptureActivityHandler extends Handler {
       // Wait at most half a second; should be enough time, and onPause() will timeout quickly
 //      decodeThread.join(500L);
 //    } catch (InterruptedException e) {
-//      Log.w(TAG, "Caught InterruptedException in quitSyncronously()", e);
+//      //Log.w(TAG, "Caught InterruptedException in quitSyncronously()", e);
       // continue
     } catch (RuntimeException e) {
-      Log.w(TAG, "Caught RuntimeException in quitSyncronously()", e);
+      //Log.w(TAG, "Caught RuntimeException in quitSyncronously()", e);
       // continue
     } catch (Exception e) {
-      Log.w(TAG, "Caught unknown Exception in quitSynchronously()", e);
+      //Log.w(TAG, "Caught unknown Exception in quitSynchronously()", e);
     }
 
     // Be absolutely sure we don't send any queued up messages

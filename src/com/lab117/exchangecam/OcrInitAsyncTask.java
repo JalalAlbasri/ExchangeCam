@@ -93,7 +93,7 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
     String destinationDirBase = params[0]; // The storage directory, minus the "tessdata" subdirectory
     File tessdataDir = new File(destinationDirBase + File.separator + "tessdata");
     if (!tessdataDir.exists() && !tessdataDir.mkdirs()) {
-      Log.e(TAG, "Couldn't make directory " + tessdataDir);
+      //Log.e(TAG, "Couldn't make directory " + tessdataDir);
       return false;
     }
 
@@ -107,29 +107,29 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
     // If language data files are not present, install them
     boolean installSuccess = false;
     if (!tesseractTestFile.exists()) {
-      Log.d(TAG, "Language data for eng not found in " + tessdataDir.toString());
+      //Log.d(TAG, "Language data for eng not found in " + tessdataDir.toString());
 
       // Check assets for language data to install. If not present, download from Internet
       try {
-        Log.d(TAG, "Checking for language data (" + destinationFilenameBase
-            + ".zip) in application assets...");
+        //Log.d(TAG, "Checking for language data (" + destinationFilenameBase
+            //+ ".zip) in application assets...");
         // Check for a file like "eng.traineddata.zip" or "tesseract-ocr-3.01.eng.tar.zip"
         installSuccess = installFromAssets(destinationFilenameBase + ".zip", tessdataDir, 
             installFile);
       } catch (IOException e) {
-        Log.e(TAG, "IOException", e);
+        //Log.e(TAG, "IOException", e);
       } catch (Exception e) {
-        Log.e(TAG, "Got exception", e);
+        //Log.e(TAG, "Got exception", e);
       }
 
       if (!installSuccess) {
         // File was not packaged in assets, so download it
-        Log.d(TAG, "Install language data failed.");
+        //Log.d(TAG, "Install language data failed.");
       }
 
     } else {
-      Log.d(TAG, "Language data for eng already installed in" 
-          + tessdataDir.toString());
+      //Log.d(TAG, "Language data for eng already installed in" 
+          //+ tessdataDir.toString());
       installSuccess = true;
     }
 
@@ -149,23 +149,23 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
           }
         }
         
-        Log.d(TAG, "Checking for OSD data (" + CaptureActivity.OSD_FILENAME_BASE
-            + ".zip) in application assets...");
+        //Log.d(TAG, "Checking for OSD data (" + CaptureActivity.OSD_FILENAME_BASE
+          //  + ".zip) in application assets...");
         // Check for "osd.traineddata.zip"
         osdInstallSuccess = installFromAssets(CaptureActivity.OSD_FILENAME_BASE + ".zip", 
             tessdataDir, new File(CaptureActivity.OSD_FILENAME));
       } catch (IOException e) {
-        Log.e(TAG, "IOException", e);
+        //Log.e(TAG, "IOException", e);
       } catch (Exception e) {
-        Log.e(TAG, "Got exception", e);
+        //Log.e(TAG, "Got exception", e);
       }
 
       if (!osdInstallSuccess) {
-        Log.d(TAG, "Intalling OSD Data File Failed.");
+        //Log.d(TAG, "Intalling OSD Data File Failed.");
       }
 
     } else {
-      Log.d(TAG, "OSD file already installed in " + tessdataDir.toString());
+      //Log.d(TAG, "OSD file already installed in " + tessdataDir.toString());
       osdInstallSuccess = true;
     }
     
@@ -203,7 +203,7 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
             + " is unsupported.");
       }
     } catch (FileNotFoundException e) {
-      Log.d(TAG, sourceFilename + " not packaged in application assets.");
+      //Log.d(TAG, sourceFilename + " not packaged in application assets.");
     }
     return false;
   }

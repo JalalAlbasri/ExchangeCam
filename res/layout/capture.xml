@@ -30,8 +30,7 @@
             android:layout_gravity="bottom"
             ads:adSize="BANNER"
             ads:adUnitId="a150ed2988c29bd"
-            ads:loadAdOnCreate="true"
-            ads:testDevices="TEST_EMULATOR, c08087b0667865f" />
+            ads:loadAdOnCreate="true" />
     </FrameLayout>
 
     <ImageView
@@ -49,6 +48,7 @@
         android:background="@drawable/dashboard_background" />
 
 </RelativeLayout><!--
+            ads:testDevices="TEST_EMULATOR, c08087b0667865f" 
                        ads:adUnitId="c08087b0667865f"
             ads:adUnitId="a150ed2988c29bd"        android:background="@android:drawable/editbox_dropdown_dark_frame"
         android:background="@android:drawable/editbox_dropdown_dark_frame" />

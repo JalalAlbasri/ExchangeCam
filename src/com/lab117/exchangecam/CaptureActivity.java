@@ -197,12 +197,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 //		.detectDiskReads()
 //		.detectDiskWrites()
 //		.detectNetwork()   // or .detectAll() for all detectable problems
-//		.penaltyLog()
+//		.penalty//Log()
 //		.build());
 //		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
 //		.detectLeakedSqlLiteObjects()
 //		.detectLeakedClosableObjects()
-//		.penaltyLog()
+//		.penalty//Log()
 //		.penaltyDeath()
 //		.build());
 
@@ -322,7 +322,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 							}     
 						}
 					} catch (NullPointerException e) {
-						Log.e(TAG, "Framing rect not available", e);
+						//Log.e(TAG, "Framing rect not available", e);
 					}
 
 					v.invalidate();
@@ -345,7 +345,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	protected void onResume() {
 		super.onResume();   
 		resetStatusView();
-		Log.d(TAG, "onResume()");
+		//Log.d(TAG, "onResume()");
 
 		String previousSourceLanguageCodeOcr = sourceLanguageCodeOcr;
 		int previousOcrEngineMode = ocrEngineMode;
@@ -391,7 +391,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	 * and requests camera initialization.
 	 */
 	void resumeOCR() {
-		Log.d(TAG, "resumeOCR()");
+		//Log.d(TAG, "resumeOCR()");
 
 		// This method is called when Tesseract has already been successfully initialized, so set 
 		// isEngineReady = true here.
@@ -430,15 +430,15 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		Log.d(TAG, "surfaceCreated()");
+		//Log.d(TAG, "surfaceCreated()");
 
 		if (holder == null) {
-			Log.e(TAG, "surfaceCreated gave us a null surface");
+			//Log.e(TAG, "surfaceCreated gave us a null surface");
 		}
 
 		// Only initialize the camera if the OCR engine is ready to go.
 		if (!hasSurface && isEngineReady) {
-			Log.d(TAG, "surfaceCreated(): calling initCamera()...");
+			//Log.d(TAG, "surfaceCreated(): calling initCamera()...");
 			initCamera(holder);
 		}
 		hasSurface = true;
@@ -446,7 +446,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	/** Initializes the camera and starts the handler to begin previewing. */
 	private void initCamera(SurfaceHolder surfaceHolder) {
-		Log.d(TAG, "initCamera()");
+		//Log.d(TAG, "initCamera()");
 		if (surfaceHolder == null) {
 			throw new IllegalStateException("No SurfaceHolder provided");
 		}
@@ -470,17 +470,17 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	@Override
 	protected void onPause() {
 		Long time = System.currentTimeMillis();
-		Log.d(TAG, "onPause()");
+		//Log.d(TAG, "onPause()");
 		if (handler != null) {
 			handler.quitSynchronously();
 		}
-		Log.d(TAG, "onPauseTimer, handler.quitSynchronously(): " + (System.currentTimeMillis()-time));
+		//Log.d(TAG, "onPauseTimer, handler.quitSynchronously(): " + (System.currentTimeMillis()-time));
 
 		time = System.currentTimeMillis();
 
 		// Stop using the camera, to avoid conflicting with other camera-based apps
 		cameraManager.closeDriver();
-		Log.d(TAG, "onPauseTimer, cameraManager.closeDriver(): " + (System.currentTimeMillis()-time));
+		//Log.d(TAG, "onPauseTimer, cameraManager.closeDriver(): " + (System.currentTimeMillis()-time));
 
 		time = System.currentTimeMillis();
 
@@ -489,7 +489,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			SurfaceHolder surfaceHolder = surfaceView.getHolder();
 			surfaceHolder.removeCallback(this);
 		}
-		Log.d(TAG, "onPauseTimer, surfaceHolder.removeCallback(this): " + (System.currentTimeMillis()-time));
+		//Log.d(TAG, "onPauseTimer, surfaceHolder.removeCallback(this): " + (System.currentTimeMillis()-time));
 			
 		super.onPause();
 	}
@@ -514,14 +514,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 		FragmentManager fm = getFragmentManager();
 		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
-		Log.d(TAG, "onPause after remove, dashboardFragment == null: " + (dashboardFragment == null));
+		//Log.d(TAG, "onPause after remove, dashboardFragment == null: " + (dashboardFragment == null));
 		if (dashboardFragment != null) {
-			Log.d(TAG, "removing fragment");
+			//Log.d(TAG, "removing fragment");
 			FragmentTransaction ft = fm.beginTransaction();
 			ft.remove(dashboardFragment);
 			ft.commit();
 		}
-		Log.d(TAG, "onPause before remove, dashboardFragment == null: " + (dashboardFragment == null));		
+		//Log.d(TAG, "onPause before remove, dashboardFragment == null: " + (dashboardFragment == null));		
 	}
 
 	@Override
@@ -532,7 +532,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			FragmentManager fm = getFragmentManager();
 			DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
 			if (dashboardFragment != null) {
-				Log.d(TAG, "Remove DashBoardFragment");
+				//Log.d(TAG, "Remove DashBoardFragment");
 				dashboardContainer.setVisibility(View.GONE);
 				FragmentTransaction ft = fm.beginTransaction();
 				ft.remove(dashboardFragment);
@@ -581,7 +581,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 				return true;
 			}
 			else {
-				Log.d(TAG, "Remove DashBoardFragment");
+				//Log.d(TAG, "Remove DashBoardFragment");
 				dashboardContainer.setVisibility(View.GONE);
 				FragmentTransaction ft = fm.beginTransaction();
 				ft.remove(dashboardFragment);
@@ -625,7 +625,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	//	}
 
 	public void surfaceDestroyed(SurfaceHolder holder) {
-		Log.d(TAG, "surfaceDestroyed()");
+		//Log.d(TAG, "surfaceDestroyed()");
 		hasSurface = false;
 	}
 
@@ -634,13 +634,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	/** Finds the proper location on the SD card where we can save files. */
 	private File getStorageDirectory() {
-		//Log.d(TAG, "getStorageDirectory(): API level is " + Integer.valueOf(android.os.Build.VERSION.SDK_INT));
+		////Log.d(TAG, "getStorageDirectory(): API level is " + Integer.valueOf(android.os.Build.VERSION.SDK_INT));
 
 		String state = null;
 		try {
 			state = Environment.getExternalStorageState();
 		} catch (RuntimeException e) {
-			Log.e(TAG, "Is the SD card visible?", e);
+			//Log.e(TAG, "Is the SD card visible?", e);
 			showErrorMessage("Error", "Required external storage (such as an SD card) is unavailable.", true);
 		}
 
@@ -654,7 +654,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 				return getExternalFilesDir(Environment.MEDIA_MOUNTED);
 			} catch (NullPointerException e) {
 				// We get an error here if the SD card is visible, but full
-				Log.e(TAG, "External storage is unavailable");
+				//Log.e(TAG, "External storage is unavailable");
 				showErrorMessage("Error", "Required external storage (such as an SD card) is full or unavailable.", true);
 			}
 
@@ -668,12 +668,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 		} else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
 			// We can only read the media
-			Log.e(TAG, "External storage is read-only");
+			//Log.e(TAG, "External storage is read-only");
 			showErrorMessage("Error", "Required external storage (such as an SD card) is unavailable for data storage.", true);
 		} else {
 			// Something else is wrong. It may be one of many other states, but all we need
 			// to know is we can neither read nor write
-			Log.e(TAG, "External storage is unavailable");
+			//Log.e(TAG, "External storage is unavailable");
 			showErrorMessage("Error", "Required external storage (such as an SD card) is unavailable or corrupted.", true);
 		}
 		return null;
@@ -690,9 +690,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		dialog = new ProgressDialog(c);
 		autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
 
-		Log.d(TAG, "initQueryConversionRate(), autoExchangeRate == " + (autoExchangeRate));
+		//Log.d(TAG, "initQueryConversionRate(), autoExchangeRate == " + (autoExchangeRate));
 		if (autoExchangeRate) {
-			Log.d(TAG, "Querying Exchange Rate");
+			//Log.d(TAG, "Querying Exchange Rate");
 			new QueryConversionRateAysncTask(this, dialog, sourceCurrencyCode, targetCurrencyCode).execute();
 		}
 	}
@@ -756,7 +756,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 						maxConfidenceIndex = i;
 					}
 				}
-				Log.d(TAG, "maxConfidence: " + maxConfidence);
+				//Log.d(TAG, "maxConfidence: " + maxConfidence);
 
 				if (!words[maxConfidenceIndex].equals("") &&
 						CurrencyHelper.isPrice(this, words[maxConfidenceIndex])) {
@@ -909,7 +909,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 				//				return true;
 			}
 		} catch (PackageManager.NameNotFoundException e) {
-			Log.w(TAG, e);
+			//Log.w(TAG, e);
 		}
 		return false;
 	}
@@ -1006,12 +1006,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
 	public void openDashboardFragment() {
 		//Open Dashboard
-		Log.d(TAG, "openDashboardFragment()");
+		//Log.d(TAG, "openDashboardFragment()");
 		FragmentManager fm = getFragmentManager();
 		DashboardFragment dashboardFragment = (DashboardFragment) fm.findFragmentByTag("DASHBOARD_FRAGMENT");
-		Log.d(TAG, "dashboardFragment == null: " + (dashboardFragment == null));
+		//Log.d(TAG, "dashboardFragment == null: " + (dashboardFragment == null));
 		if (dashboardFragment != null) {
-			Log.d(TAG, "removing fragment");
+			//Log.d(TAG, "removing fragment");
 			FragmentTransaction ft = fm.beginTransaction();
 			ft.remove(dashboardFragment);
 			ft.commit();
@@ -1053,13 +1053,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 		long millis = prefs.getLong(PreferencesActivity.KEY_EXCHANGE_RATE_TIMESTAMP, EXCHANGE_RATE_TIMESTAMP);
 		long diff = (new Date()).getTime() - millis;
 		Date diffDate = new Date(diff);
-		Log.d(TAG, "Freshness: " + diffDate.getMinutes());
+		//Log.d(TAG, "Freshness: " + diffDate.getMinutes());
 		return (diffDate.getMinutes() > EXCHANGE_RATE_REFRESH_MINS);
 	}
 
 	private OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
 		public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-			Log.d(TAG, "onSharedPreferenceChanged() " + key);
+			//Log.d(TAG, "onSharedPreferenceChanged() " + key);
 			autoExchangeRate = prefs.getBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, CaptureActivity.DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE);
 			if (key.equals(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE)) {
 				sourceCurrencyCode = prefs.getString(PreferencesActivity.KEY_SOURCE_CURRENCY_PREFERENCE, CaptureActivity.DEFAULT_SOURCE_CURRENCY);
@@ -1089,7 +1089,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 			adParams.gravity = Gravity.BOTTOM;
 			adView.setLayoutParams(adParams);
 			
-			Log.w(TAG, "adjustAdLocation, size.x: " + size.x + ", adView.getWidth():" + adView.getWidth() );
+			//Log.w(TAG, "adjustAdLocation, size.x: " + size.x + ", adView.getWidth():" + adView.getWidth() );
 //			adView.setX(());
 //			adView.setX(size.x/2 - adView.getWidth());
 		}
@@ -1097,7 +1097,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	  /** Called when an ad is clicked and about to return to the application. */
 	  @Override
 	  public void onDismissScreen(Ad ad) {
-	    Log.d(TAG, "onDismissScreen"); 
+	    //Log.d(TAG, "onDismissScreen"); 
 //	    Toast.makeText(this, "onDismissScreen", Toast.LENGTH_SHORT).show();
 	  }
 
@@ -1105,7 +1105,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	  @Override
 	  public void onFailedToReceiveAd(Ad ad, AdRequest.ErrorCode error) {
 	    String message = "onFailedToReceiveAd (" + error + ")";
-	    Log.d(TAG, message);
+	    //Log.d(TAG, message);
 //	    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 	  }
 
@@ -1116,7 +1116,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	   */
 	  @Override
 	  public void onLeaveApplication(Ad ad) {
-	    Log.d(TAG, "onLeaveApplication");
+	    //Log.d(TAG, "onLeaveApplication");
 //	    Toast.makeText(this, "onLeaveApplication", Toast.LENGTH_SHORT).show();
 	  }
 
@@ -1126,14 +1126,14 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 	   */
 	  @Override
 	  public void onPresentScreen(Ad ad) {
-	    Log.d(TAG, "onPresentScreen");
+	    //Log.d(TAG, "onPresentScreen");
 //	    Toast.makeText(this, "onPresentScreen", Toast.LENGTH_SHORT).show();
 	  }
 
 	  /** Called when an ad is received. */
 	  @Override
 	  public void onReceiveAd(Ad ad) {
-	    Log.w(TAG, "onReceiveAd");
+	    //Log.w(TAG, "onReceiveAd");
 	    adjustAdLocation();
 //	    Toast.makeText(this, "onReceiveAd", Toast.LENGTH_SHORT).show();
 	  }

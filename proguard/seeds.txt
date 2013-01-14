@@ -164,8 +164,6 @@ com.lab117.exchangecam.R$color: int viewfinder_corners
 com.lab117.exchangecam.R$color: int viewfinder_frame
 com.lab117.exchangecam.R$color: int viewfinder_mask
 com.lab117.exchangecam.R$drawable: int admob
-com.lab117.exchangecam.R$drawable: int background
-com.lab117.exchangecam.R$drawable: int background_pressed
 com.lab117.exchangecam.R$drawable: int border
 com.lab117.exchangecam.R$drawable: int bottom
 com.lab117.exchangecam.R$drawable: int dashboard_background
@@ -174,9 +172,6 @@ com.lab117.exchangecam.R$drawable: int ic_launcher
 com.lab117.exchangecam.R$drawable: int left
 com.lab117.exchangecam.R$drawable: int right
 com.lab117.exchangecam.R$drawable: int screen
-com.lab117.exchangecam.R$drawable: int shutter
-com.lab117.exchangecam.R$drawable: int shutter_button
-com.lab117.exchangecam.R$drawable: int shutter_pressed
 com.lab117.exchangecam.R$drawable: int top
 com.lab117.exchangecam.R$id: int adView
 com.lab117.exchangecam.R$id: int border_view

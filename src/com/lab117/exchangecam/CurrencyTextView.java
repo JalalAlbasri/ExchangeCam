@@ -35,10 +35,10 @@ public class CurrencyTextView extends TextView {
 	public boolean setCustomFont(Context context, String asset) {
 		Typeface tf = null;
 		try {
-			Log.d(TAG, "setCustomFont, asset: " + asset);
+			//Log.d(TAG, "setCustomFont, asset: " + asset);
 			tf = Typefaces.get(context, asset);
 		} catch (Exception e) {
-			Log.e(TAG, "Could not get typeface: " + e);
+			//Log.e(TAG, "Could not get typeface: " + e);
 		}
 		
 		setTypeface(tf);

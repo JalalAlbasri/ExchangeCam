@@ -294,7 +294,6 @@ com.googlecode.tesseract.android.TessBaseAPI:
     408:408:public com.googlecode.leptonica.android.Pixa getRegions()
     419:419:public com.googlecode.leptonica.android.Pixa getTextlines()
     430:430:public com.googlecode.leptonica.android.Pixa getStrips()
-    448:448:public com.googlecode.leptonica.android.Pixa getCharacters()
     private native void nativeFinalize()
     private native boolean nativeInit(java.lang.String,java.lang.String)
     private native java.lang.String nativeGetInitLanguagesAsString()
@@ -304,7 +303,6 @@ com.googlecode.tesseract.android.TessBaseAPI:
     private native int nativeGetRegions()
     private native int nativeGetTextlines()
     private native int nativeGetStrips()
-    private native int nativeGetCharacters()
 com.lab117.exchangecam.BeepManager:
     private static final float BEEP_VOLUME
     50:53:public void playBeepSoundAndVibrate()
@@ -439,7 +437,6 @@ com.lab117.exchangecam.OcrResult:
     174:175:public void setRegionBoundingBoxes(java.util.List)
     178:179:public void setTextlineBoundingBoxes(java.util.List)
     186:187:public void setStripBoundingBoxes(java.util.List)
-    190:191:public void setCharacterBoundingBoxes(java.util.List)
 com.lab117.exchangecam.OcrResultFailure:
     33:33:public long getTimeRequired()
     37:37:public long getTimestamp()
@@ -449,7 +446,6 @@ com.lab117.exchangecam.OcrResultText:
     76:76:public java.util.List getRegionBoundingBoxes()
     80:80:public java.util.List getTextlineBoundingBoxes()
     84:84:public java.util.List getStripBoundingBoxes()
-    92:92:public java.util.List getCharacterBoundingBoxes()
 com.lab117.exchangecam.PlanarYUVLuminanceSource:
     66:75:public byte[] getRow(int,byte[])
     80:106:public byte[] getMatrix()
@@ -478,7 +474,7 @@ com.lab117.exchangecam.R$raw
 com.lab117.exchangecam.R$string
 com.lab117.exchangecam.R$style
 com.lab117.exchangecam.R$styleable:
-    146:146:public R$styleable()
+    141:141:public R$styleable()
 com.lab117.exchangecam.R$xml
 com.lab117.exchangecam.Typefaces:
     private static final java.lang.String TAG
@@ -512,7 +508,8 @@ com.lab117.exchangecam.camera.CameraManager:
     private static final int MAX_FRAME_WIDTH
     private static final int MAX_FRAME_HEIGHT
 com.lab117.exchangecam.currency.CurrencyHelper:
-    39:50:public static java.lang.String getCurrencyName(android.content.Context,java.lang.String)
+    public static final boolean DETECT_SMALL_DECIMAL
+    46:57:public static java.lang.String getCurrencyName(android.content.Context,java.lang.String)
 com.lab117.exchangecam.currency.QueryConversionRate:
     public static final java.lang.String TAG
     public static final java.lang.String BAD_CONVERSION_MSG

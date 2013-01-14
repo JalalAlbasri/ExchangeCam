@@ -81,7 +81,7 @@ public final class BeepManager {
       mediaPlayer.setVolume(BEEP_VOLUME, BEEP_VOLUME);
       mediaPlayer.prepare();
     } catch (IOException ioe) {
-      Log.w(TAG, ioe);
+      //Log.w(TAG, ioe);
       mediaPlayer = null;
     }
     return mediaPlayer;

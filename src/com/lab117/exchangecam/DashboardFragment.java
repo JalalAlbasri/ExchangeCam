@@ -131,14 +131,14 @@ public class DashboardFragment extends Fragment implements ExchangeErrorDialogLi
 	}
 
 	public void updateTextViews(OcrResultText resultText, int priceIndex) {
-		Log.d(TAG, "updateTextViews");
+		//Log.d(TAG, "updateTextViews");
 		String[] prices = CurrencyHelper.extractPrices(resultText, priceIndex, getActivity());
 		mSourceCurrencyTextView.setText(prices[0]);
 		mTargetCurrencyTextView.setText(prices[1]);
 	}
 
 	public void removeResultText() {
-		//		Log.d(TAG, "removeResultText()");
+		//		//Log.d(TAG, "removeResultText()");
 		if (mSourceCurrencyTextView != null) {
 			mSourceCurrencyTextView.setText("0.00");
 		}
@@ -150,7 +150,7 @@ public class DashboardFragment extends Fragment implements ExchangeErrorDialogLi
 
 	private OnClickListener mToggleButtonListener = new OnClickListener() {
 		public void onClick(View v) {
-			Log.d(TAG, "onClick AutoButton isChecked?: " + mAutoExchangeRateToggleButton.isChecked());
+			//Log.d(TAG, "onClick AutoButton isChecked?: " + mAutoExchangeRateToggleButton.isChecked());
 			SharedPreferences.Editor editor = prefs.edit();
 			editor.putBoolean(PreferencesActivity.KEY_AUTO_EXCHANGE_RATE_PREFERENCE, mAutoExchangeRateToggleButton.isChecked());
 			editor.commit();

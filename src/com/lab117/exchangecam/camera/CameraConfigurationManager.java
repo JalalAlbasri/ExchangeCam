@@ -72,22 +72,22 @@ final class CameraConfigurationManager {
     // We're landscape-only, and have apparently seen issues with display thinking it's portrait 
     // when waking from sleep. If it's not landscape, assume it's mistaken and reverse them:
     if (width < height) {
-      Log.i(TAG, "Display reports portrait orientation; assuming this is incorrect");
+      //Log.i(TAG, "Display reports portrait orientation; assuming this is incorrect");
       int temp = width;
       width = height;
       height = temp;
     }
     screenResolution = new Point(width, height);
-    Log.i(TAG, "Screen resolution: " + screenResolution);
+    //Log.i(TAG, "Screen resolution: " + screenResolution);
     cameraResolution = findBestPreviewSizeValue(parameters, screenResolution);
-    Log.i(TAG, "Camera resolution: " + cameraResolution);
+    //Log.i(TAG, "Camera resolution: " + cameraResolution);
   }
 
   void setDesiredCameraParameters(Camera camera) {
     Camera.Parameters parameters = camera.getParameters();
 
     if (parameters == null) {
-      Log.w(TAG, "Device error: no camera parameters are available. Proceeding without configuration.");
+      //Log.w(TAG, "Device error: no camera parameters are available. Proceeding without configuration.");
       return;
     }
 
@@ -181,7 +181,7 @@ final class CameraConfigurationManager {
         previewSizesString.append(supportedPreviewSize.width).append('x')
         .append(supportedPreviewSize.height).append(' ');
       }
-      Log.i(TAG, "Supported preview sizes: " + previewSizesString);
+      //Log.i(TAG, "Supported preview sizes: " + previewSizesString);
     }
 
     Point bestSize = null;
@@ -200,7 +200,7 @@ final class CameraConfigurationManager {
       int maybeFlippedHeight = isCandidatePortrait ? realWidth : realHeight;
       if (maybeFlippedWidth == screenResolution.x && maybeFlippedHeight == screenResolution.y) {
         Point exactPoint = new Point(realWidth, realHeight);
-        Log.i(TAG, "Found preview size exactly matching screen size: " + exactPoint);
+        //Log.i(TAG, "Found preview size exactly matching screen size: " + exactPoint);
         return exactPoint;
       }
       float aspectRatio = (float) maybeFlippedWidth / (float) maybeFlippedHeight;
@@ -214,16 +214,16 @@ final class CameraConfigurationManager {
     if (bestSize == null) {
       Camera.Size defaultSize = parameters.getPreviewSize();
       bestSize = new Point(defaultSize.width, defaultSize.height);
-      Log.i(TAG, "No suitable preview sizes, using default: " + bestSize);
+      //Log.i(TAG, "No suitable preview sizes, using default: " + bestSize);
     }
 
-    Log.i(TAG, "Found best approximate preview size: " + bestSize);
+    //Log.i(TAG, "Found best approximate preview size: " + bestSize);
     return bestSize;
   }
 
   private static String findSettableValue(Collection<String> supportedValues,
                                           String... desiredValues) {
-    Log.i(TAG, "Supported values: " + supportedValues);
+    //Log.i(TAG, "Supported values: " + supportedValues);
     String result = null;
     if (supportedValues != null) {
       for (String desiredValue : desiredValues) {
@@ -233,7 +233,7 @@ final class CameraConfigurationManager {
         }
       }
     }
-    Log.i(TAG, "Settable value: " + result);
+    //Log.i(TAG, "Settable value: " + result);
     return result;
   }
 

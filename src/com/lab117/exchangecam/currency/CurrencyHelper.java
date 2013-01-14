@@ -49,11 +49,11 @@ public class CurrencyHelper {
 
 		for (int i = 0; i < currencyCodes.length; i++) {
 			if (currencyCodes[i].equals(currencyCode)) {
-				Log.d(TAG, "getCurrencyName: " + currencyCode + "->" + currencyNames[i]);
+				//Log.d(TAG, "getCurrencyName: " + currencyCode + "->" + currencyNames[i]);
 				return currencyNames[i];
 			}
 		}
-		Log.d(TAG, "currencyCode: Could not find currency name for " + currencyCode);
+		//Log.d(TAG, "currencyCode: Could not find currency name for " + currencyCode);
 		return currencyCode;
 	}
 
@@ -92,7 +92,7 @@ public class CurrencyHelper {
 			//Are there any exceptions to be caught here?
 			double sourceAmountDbl = Double.parseDouble(sourceAmount);
 			double conversionRateDbl = Double.parseDouble(conversionRate);
-			Log.d(TAG, "Conversion Rate Double: " + conversionRateDbl);
+			//Log.d(TAG, "Conversion Rate Double: " + conversionRateDbl);
 			String convertedValue = Double.toString(sourceAmountDbl * conversionRateDbl);
 			return formatPrice(convertedValue, targetCurrencyCode);
 		}
@@ -115,10 +115,10 @@ public class CurrencyHelper {
 		price = price.replaceAll("\\s", "");
 		//Remove all non-numeric or "," or "." characters from string
 		price = price.replaceAll("[^\\d.,]", "");
-		Log.d(TAG, "isPrice Stripped String: " + price);
+		//Log.d(TAG, "isPrice Stripped String: " + price);
 		//Match price pattern
 		boolean result = price.matches("([0-9]+)(,[0-9]{3})*((\\.|,)([0-9]{" + precision + "}))?$");
-		Log.d(TAG, "isPrice: " + result);
+		//Log.d(TAG, "isPrice: " + result);
 		return result;
 	}
 
@@ -172,13 +172,13 @@ public class CurrencyHelper {
 			prices[0] = correctSuperscriptDecimal(words[priceIndex], resultText, sourceCurrencyCode);
 			prices[1] = CurrencyHelper.convert(context, prices[0]);				
 		}
-		Log.d(TAG, "format, price: " + prices[0]);
+		//Log.d(TAG, "format, price: " + prices[0]);
 		prices[0] = CurrencyHelper.formatPrice(prices[0], sourceCurrencyCode);
 		return prices;
 	}
 
 	public static String correctSuperscriptDecimal(String price, OcrResultText resultText, String currencyCode) {
-		Log.d(TAG, "correctSmallDecimal()");
+		//Log.d(TAG, "correctSmallDecimal()");
 		int precision = getCurrencyPrecision(currencyCode);
 		String text = resultText.getText().replaceAll("\\s", "");
 		List<Rect> characterBoundingBoxes = resultText.getCharacterBoundingBoxes();
@@ -190,7 +190,7 @@ public class CurrencyHelper {
 		 */
 		try {
 			priceIndex = matchPrice(text, price);
-			Log.d(TAG, "priceIndex: " + priceIndex + " characterBoundingBoxes: " + characterBoundingBoxes.size());
+			//Log.d(TAG, "priceIndex: " + priceIndex + " characterBoundingBoxes: " + characterBoundingBoxes.size());
 			if (priceIndex != -1 && price.length() > precision) {
 				if (priceIndex < characterBoundingBoxes.size()) {
 					int first = characterBoundingBoxes.get(priceIndex).height();
@@ -198,16 +198,16 @@ public class CurrencyHelper {
 					if (last < first * 0.6 && price.indexOf(".") == -1) {
 						StringBuffer sb = new StringBuffer(price);
 						price = sb.insert(price.length()-precision, ".").toString();
-						Log.d(TAG, "Corrected Decimal!: " + price);							
+						//Log.d(TAG, "Corrected Decimal!: " + price);							
 					}
 				}
 			}
 		}
 		catch (IndexOutOfBoundsException e) {
-			Log.e(TAG, e.getMessage() + "\\n" + e.toString());
+			//Log.e(TAG, e.getMessage() + "\\n" + e.toString());
 		}
 		catch (NullPointerException e) {
-			Log.e(TAG, e.getMessage());
+			//Log.e(TAG, e.getMessage());
 		}
 		return price;
 	}

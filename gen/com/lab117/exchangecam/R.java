@@ -64,20 +64,15 @@ containing a value of this type.
     }
     public static final class drawable {
         public static final int admob=0x7f020000;
-        public static final int background=0x7f020001;
-        public static final int background_pressed=0x7f020002;
-        public static final int border=0x7f020003;
-        public static final int bottom=0x7f020004;
-        public static final int dashboard_background=0x7f020005;
-        public static final int dashboard_rule=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int left=0x7f020008;
-        public static final int right=0x7f020009;
-        public static final int screen=0x7f02000a;
-        public static final int shutter=0x7f02000b;
-        public static final int shutter_button=0x7f02000c;
-        public static final int shutter_pressed=0x7f02000d;
-        public static final int top=0x7f02000e;
+        public static final int border=0x7f020001;
+        public static final int bottom=0x7f020002;
+        public static final int dashboard_background=0x7f020003;
+        public static final int dashboard_rule=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int left=0x7f020006;
+        public static final int right=0x7f020007;
+        public static final int screen=0x7f020008;
+        public static final int top=0x7f020009;
     }
     public static final class id {
         public static final int adView=0x7f08000b;

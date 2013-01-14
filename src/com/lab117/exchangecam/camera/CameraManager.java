@@ -113,7 +113,7 @@ public final class CameraManager {
 			Long time = System.currentTimeMillis();
 			camera.release();
 			camera = null;
-			Log.d(TAG, "onPauseTimer, camera.release(): " + (System.currentTimeMillis()-time));
+			//Log.d(TAG, "onPauseTimer, camera.release(): " + (System.currentTimeMillis()-time));
 
 			// Make sure to clear these each time we close the camera, so that any scanning rect
 			// requested by intent is forgotten.

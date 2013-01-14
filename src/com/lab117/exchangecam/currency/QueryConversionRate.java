@@ -58,14 +58,14 @@ public class QueryConversionRate {
 			if (conversionRate != null && CurrencyHelper.isNumeric(conversionRate)) {
 		        BigDecimal roundVal = new BigDecimal(conversionRate);
 		        roundVal.round(new MathContext(4, RoundingMode.HALF_UP));
-		        Log.d(TAG, "getConversionRate.roundVal: " + roundVal);
+		        //Log.d(TAG, "getConversionRate.roundVal: " + roundVal);
 		        return roundVal.toString();
 		    }
 			return conversionRate;
 		}
 		catch (Exception ex)
 	    {
-	      Log.e(TAG, "Caught exceptioin in conversion request.");
+	      //Log.e(TAG, "Caught exceptioin in conversion request.");
 	      return QueryConversionRate.BAD_CONVERSION_MSG;
 	    }
 
