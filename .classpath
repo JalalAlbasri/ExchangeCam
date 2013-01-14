@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="lib" path="/home/jalal/Documents/GoogleAdMobAdsSdk-6.2.1/GoogleAdMobAdsSdk-6.2.1.jar"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/tess-two"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

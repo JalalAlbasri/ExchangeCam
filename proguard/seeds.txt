@@ -1,3 +1,97 @@
+com.cavemanninja.exchangecam.CaptureActivity
+com.cavemanninja.exchangecam.CaptureActivity: CaptureActivity()
+com.cavemanninja.exchangecam.CaptureActivityHandler$State: com.cavemanninja.exchangecam.CaptureActivityHandler$State[] values()
+com.cavemanninja.exchangecam.CaptureActivityHandler$State: com.cavemanninja.exchangecam.CaptureActivityHandler$State valueOf(java.lang.String)
+com.cavemanninja.exchangecam.CurrencyTextView
+com.cavemanninja.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context)
+com.cavemanninja.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context,android.util.AttributeSet)
+com.cavemanninja.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context,android.util.AttributeSet,int)
+com.cavemanninja.exchangecam.DashboardFragment
+com.cavemanninja.exchangecam.ExchangeErrorDialogFragment
+com.cavemanninja.exchangecam.HelpActivity
+com.cavemanninja.exchangecam.PreferencesActivity
+com.cavemanninja.exchangecam.PreferencesActivity: PreferencesActivity()
+com.cavemanninja.exchangecam.R$array: int capturemodes
+com.cavemanninja.exchangecam.R$array: int currencycodes
+com.cavemanninja.exchangecam.R$array: int currencynames
+com.cavemanninja.exchangecam.R$array: int pagesegmentationmodes
+com.cavemanninja.exchangecam.R$attr: int customFont
+com.cavemanninja.exchangecam.R$color: int character_boxes
+com.cavemanninja.exchangecam.R$color: int currency_text
+com.cavemanninja.exchangecam.R$color: int dashboard_labels
+com.cavemanninja.exchangecam.R$color: int help_button_view
+com.cavemanninja.exchangecam.R$color: int help_view
+com.cavemanninja.exchangecam.R$color: int result_minor_text
+com.cavemanninja.exchangecam.R$color: int result_text
+com.cavemanninja.exchangecam.R$color: int result_view
+com.cavemanninja.exchangecam.R$color: int status_text
+com.cavemanninja.exchangecam.R$color: int status_top_text_background
+com.cavemanninja.exchangecam.R$color: int translation_text
+com.cavemanninja.exchangecam.R$color: int viewfinder_corners
+com.cavemanninja.exchangecam.R$color: int viewfinder_frame
+com.cavemanninja.exchangecam.R$color: int viewfinder_mask
+com.cavemanninja.exchangecam.R$drawable: int admob
+com.cavemanninja.exchangecam.R$drawable: int border
+com.cavemanninja.exchangecam.R$drawable: int bottom
+com.cavemanninja.exchangecam.R$drawable: int dashboard_background
+com.cavemanninja.exchangecam.R$drawable: int dashboard_rule
+com.cavemanninja.exchangecam.R$drawable: int ic_launcher
+com.cavemanninja.exchangecam.R$drawable: int left
+com.cavemanninja.exchangecam.R$drawable: int right
+com.cavemanninja.exchangecam.R$drawable: int screen
+com.cavemanninja.exchangecam.R$drawable: int top
+com.cavemanninja.exchangecam.R$id: int adView
+com.cavemanninja.exchangecam.R$id: int border_view
+com.cavemanninja.exchangecam.R$id: int camera_preview
+com.cavemanninja.exchangecam.R$id: int dashboard_container
+com.cavemanninja.exchangecam.R$id: int dashboard_view
+com.cavemanninja.exchangecam.R$id: int decode
+com.cavemanninja.exchangecam.R$id: int decode_failed
+com.cavemanninja.exchangecam.R$id: int decode_succeeded
+com.cavemanninja.exchangecam.R$id: int done_button
+com.cavemanninja.exchangecam.R$id: int exchange_rate_edit_text
+com.cavemanninja.exchangecam.R$id: int help_contents
+com.cavemanninja.exchangecam.R$id: int ocr_continuous_decode
+com.cavemanninja.exchangecam.R$id: int ocr_continuous_decode_failed
+com.cavemanninja.exchangecam.R$id: int ocr_continuous_decode_succeeded
+com.cavemanninja.exchangecam.R$id: int preview_view
+com.cavemanninja.exchangecam.R$id: int query_rate_toggle_button
+com.cavemanninja.exchangecam.R$id: int quit
+com.cavemanninja.exchangecam.R$id: int restart_preview
+com.cavemanninja.exchangecam.R$id: int source_currency_spinner
+com.cavemanninja.exchangecam.R$id: int source_currency_text_view
+com.cavemanninja.exchangecam.R$id: int target_currency_spinner
+com.cavemanninja.exchangecam.R$id: int target_currency_text_view
+com.cavemanninja.exchangecam.R$id: int viewfinder_view
+com.cavemanninja.exchangecam.R$layout: int capture
+com.cavemanninja.exchangecam.R$layout: int currency_spinner
+com.cavemanninja.exchangecam.R$layout: int dashboard
+com.cavemanninja.exchangecam.R$layout: int dashboard_land
+com.cavemanninja.exchangecam.R$layout: int help
+com.cavemanninja.exchangecam.R$raw: int beep
+com.cavemanninja.exchangecam.R$string: int app_name
+com.cavemanninja.exchangecam.R$string: int dialog_exchange_cancel
+com.cavemanninja.exchangecam.R$string: int dialog_exchange_error
+com.cavemanninja.exchangecam.R$string: int dialog_exchange_error_title
+com.cavemanninja.exchangecam.R$string: int dialog_exchange_manual
+com.cavemanninja.exchangecam.R$string: int exchange_rate_edit_text_hint
+com.cavemanninja.exchangecam.R$string: int exchange_rate_label
+com.cavemanninja.exchangecam.R$string: int source_currency_label
+com.cavemanninja.exchangecam.R$string: int target_currency_label
+com.cavemanninja.exchangecam.R$style: int DashboardLabels
+com.cavemanninja.exchangecam.R$style: int currencyDisplay
+com.cavemanninja.exchangecam.R$style: int currencySpinner
+com.cavemanninja.exchangecam.R$style: int dashboardFragmentStyle
+com.cavemanninja.exchangecam.R$style: int dashboardRule
+com.cavemanninja.exchangecam.R$style: int exchangeErrorDialog
+com.cavemanninja.exchangecam.R$style: int indeterminateProgressDialog
+com.cavemanninja.exchangecam.R$styleable: int[] CurrencyView
+com.cavemanninja.exchangecam.R$styleable: int CurrencyView_customFont
+com.cavemanninja.exchangecam.R$styleable: int[] ViewfinderView
+com.cavemanninja.exchangecam.R$xml: int preferences
+com.cavemanninja.exchangecam.ViewfinderView
+com.cavemanninja.exchangecam.ViewfinderView: ViewfinderView(android.content.Context,android.util.AttributeSet)
+com.cavemanninja.exchangecam.ViewfinderView: void setCameraManager(com.cavemanninja.exchangecam.camera.CameraManager)
 com.google.ads.AdActivity
 com.google.ads.AdActivity: AdActivity()
 com.google.ads.AdActivity: void onClick(android.view.View)
@@ -131,97 +225,3 @@ com.googlecode.tesseract.android.TessBaseAPI: int nativeGetTextlines()
 com.googlecode.tesseract.android.TessBaseAPI: int nativeGetStrips()
 com.googlecode.tesseract.android.TessBaseAPI: int nativeGetWords()
 com.googlecode.tesseract.android.TessBaseAPI: int nativeGetCharacters()
-com.lab117.exchangecam.CaptureActivity
-com.lab117.exchangecam.CaptureActivity: CaptureActivity()
-com.lab117.exchangecam.CaptureActivityHandler$State: com.lab117.exchangecam.CaptureActivityHandler$State[] values()
-com.lab117.exchangecam.CaptureActivityHandler$State: com.lab117.exchangecam.CaptureActivityHandler$State valueOf(java.lang.String)
-com.lab117.exchangecam.CurrencyTextView
-com.lab117.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context)
-com.lab117.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context,android.util.AttributeSet)
-com.lab117.exchangecam.CurrencyTextView: CurrencyTextView(android.content.Context,android.util.AttributeSet,int)
-com.lab117.exchangecam.DashboardFragment
-com.lab117.exchangecam.ExchangeErrorDialogFragment
-com.lab117.exchangecam.HelpActivity
-com.lab117.exchangecam.PreferencesActivity
-com.lab117.exchangecam.PreferencesActivity: PreferencesActivity()
-com.lab117.exchangecam.R$array: int capturemodes
-com.lab117.exchangecam.R$array: int currencycodes
-com.lab117.exchangecam.R$array: int currencynames
-com.lab117.exchangecam.R$array: int pagesegmentationmodes
-com.lab117.exchangecam.R$attr: int customFont
-com.lab117.exchangecam.R$color: int character_boxes
-com.lab117.exchangecam.R$color: int currency_text
-com.lab117.exchangecam.R$color: int dashboard_labels
-com.lab117.exchangecam.R$color: int help_button_view
-com.lab117.exchangecam.R$color: int help_view
-com.lab117.exchangecam.R$color: int result_minor_text
-com.lab117.exchangecam.R$color: int result_text
-com.lab117.exchangecam.R$color: int result_view
-com.lab117.exchangecam.R$color: int status_text
-com.lab117.exchangecam.R$color: int status_top_text_background
-com.lab117.exchangecam.R$color: int translation_text
-com.lab117.exchangecam.R$color: int viewfinder_corners
-com.lab117.exchangecam.R$color: int viewfinder_frame
-com.lab117.exchangecam.R$color: int viewfinder_mask
-com.lab117.exchangecam.R$drawable: int admob
-com.lab117.exchangecam.R$drawable: int border
-com.lab117.exchangecam.R$drawable: int bottom
-com.lab117.exchangecam.R$drawable: int dashboard_background
-com.lab117.exchangecam.R$drawable: int dashboard_rule
-com.lab117.exchangecam.R$drawable: int ic_launcher
-com.lab117.exchangecam.R$drawable: int left
-com.lab117.exchangecam.R$drawable: int right
-com.lab117.exchangecam.R$drawable: int screen
-com.lab117.exchangecam.R$drawable: int top
-com.lab117.exchangecam.R$id: int adView
-com.lab117.exchangecam.R$id: int border_view
-com.lab117.exchangecam.R$id: int camera_preview
-com.lab117.exchangecam.R$id: int dashboard_container
-com.lab117.exchangecam.R$id: int dashboard_view
-com.lab117.exchangecam.R$id: int decode
-com.lab117.exchangecam.R$id: int decode_failed
-com.lab117.exchangecam.R$id: int decode_succeeded
-com.lab117.exchangecam.R$id: int done_button
-com.lab117.exchangecam.R$id: int exchange_rate_edit_text
-com.lab117.exchangecam.R$id: int help_contents
-com.lab117.exchangecam.R$id: int ocr_continuous_decode
-com.lab117.exchangecam.R$id: int ocr_continuous_decode_failed
-com.lab117.exchangecam.R$id: int ocr_continuous_decode_succeeded
-com.lab117.exchangecam.R$id: int preview_view
-com.lab117.exchangecam.R$id: int query_rate_toggle_button
-com.lab117.exchangecam.R$id: int quit
-com.lab117.exchangecam.R$id: int restart_preview
-com.lab117.exchangecam.R$id: int source_currency_spinner
-com.lab117.exchangecam.R$id: int source_currency_text_view
-com.lab117.exchangecam.R$id: int target_currency_spinner
-com.lab117.exchangecam.R$id: int target_currency_text_view
-com.lab117.exchangecam.R$id: int viewfinder_view
-com.lab117.exchangecam.R$layout: int capture
-com.lab117.exchangecam.R$layout: int currency_spinner
-com.lab117.exchangecam.R$layout: int dashboard
-com.lab117.exchangecam.R$layout: int dashboard_land
-com.lab117.exchangecam.R$layout: int help
-com.lab117.exchangecam.R$raw: int beep
-com.lab117.exchangecam.R$string: int app_name
-com.lab117.exchangecam.R$string: int dialog_exchange_cancel
-com.lab117.exchangecam.R$string: int dialog_exchange_error
-com.lab117.exchangecam.R$string: int dialog_exchange_error_title
-com.lab117.exchangecam.R$string: int dialog_exchange_manual
-com.lab117.exchangecam.R$string: int exchange_rate_edit_text_hint
-com.lab117.exchangecam.R$string: int exchange_rate_label
-com.lab117.exchangecam.R$string: int source_currency_label
-com.lab117.exchangecam.R$string: int target_currency_label
-com.lab117.exchangecam.R$style: int DashboardLabels
-com.lab117.exchangecam.R$style: int currencyDisplay
-com.lab117.exchangecam.R$style: int currencySpinner
-com.lab117.exchangecam.R$style: int dashboardFragmentStyle
-com.lab117.exchangecam.R$style: int dashboardRule
-com.lab117.exchangecam.R$style: int exchangeErrorDialog
-com.lab117.exchangecam.R$style: int indeterminateProgressDialog
-com.lab117.exchangecam.R$styleable: int[] CurrencyView
-com.lab117.exchangecam.R$styleable: int CurrencyView_customFont
-com.lab117.exchangecam.R$styleable: int[] ViewfinderView
-com.lab117.exchangecam.R$xml: int preferences
-com.lab117.exchangecam.ViewfinderView
-com.lab117.exchangecam.ViewfinderView: ViewfinderView(android.content.Context,android.util.AttributeSet)
-com.lab117.exchangecam.ViewfinderView: void setCameraManager(com.lab117.exchangecam.camera.CameraManager)

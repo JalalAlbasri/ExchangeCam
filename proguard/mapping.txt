@@ -1,27 +1,414 @@
+com.cavemanninja.exchangecam.BeepManager -> com.cavemanninja.exchangecam.a:
+    java.lang.String TAG -> TAG
+    android.app.Activity activity -> a
+    android.media.MediaPlayer mediaPlayer -> b
+    boolean playBeep -> c
+    void updatePrefs() -> a
+    android.media.MediaPlayer buildMediaPlayer(android.content.Context) -> a
+com.cavemanninja.exchangecam.BeepManager$1 -> com.cavemanninja.exchangecam.b:
+    void onCompletion(android.media.MediaPlayer) -> onCompletion
+com.cavemanninja.exchangecam.CaptureActivity -> com.cavemanninja.exchangecam.CaptureActivity:
+    java.lang.String TAG -> TAG
+    java.lang.Boolean DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE -> d
+    com.cavemanninja.exchangecam.camera.CameraManager cameraManager -> e
+    com.cavemanninja.exchangecam.CaptureActivityHandler handler -> f
+    com.cavemanninja.exchangecam.ViewfinderView viewfinderView -> g
+    android.view.SurfaceView surfaceView -> h
+    android.view.SurfaceHolder surfaceHolder -> i
+    android.view.View dashboardContainer -> j
+    com.google.ads.AdView adView -> k
+    com.cavemanninja.exchangecam.OcrResult lastResult -> l
+    java.lang.String currentPrice -> m
+    boolean hasSurface -> n
+    com.cavemanninja.exchangecam.BeepManager beepManager -> o
+    com.googlecode.tesseract.android.TessBaseAPI baseApi -> p
+    java.lang.String sourceLanguageCodeOcr -> q
+    java.lang.String sourceLanguageReadable -> r
+    int pageSegmentationMode -> s
+    int ocrEngineMode -> t
+    java.lang.String characterBlacklist -> u
+    java.lang.String characterWhitelist -> v
+    boolean isContinuousModeActive -> w
+    android.content.SharedPreferences prefs -> x
+    android.app.ProgressDialog dialog -> y
+    android.app.ProgressDialog indeterminateDialog -> z
+    boolean isEngineReady -> A
+    boolean isPaused -> B
+    boolean isFirstLaunch -> C
+    java.lang.String sourceCurrencyCode -> D
+    java.lang.String targetCurrencyCode -> E
+    java.lang.String conversionRate -> F
+    java.lang.Boolean autoExchangeRate -> G
+    java.lang.Boolean dashboardOpen -> H
+    android.content.SharedPreferences$OnSharedPreferenceChangeListener listener -> I
+    android.os.Handler getHandler() -> getHandler
+    com.googlecode.tesseract.android.TessBaseAPI getBaseApi() -> b
+    com.cavemanninja.exchangecam.camera.CameraManager getCameraManager() -> c
+    void onCreate(android.os.Bundle) -> onCreate
+    void onResume() -> onResume
+    void resumeOCR() -> d
+    void surfaceCreated(android.view.SurfaceHolder) -> surfaceCreated
+    void initCamera(android.view.SurfaceHolder) -> a
+    void onPause() -> onPause
+    void stopHandler() -> e
+    void onDestroy() -> onDestroy
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void surfaceDestroyed(android.view.SurfaceHolder) -> surfaceDestroyed
+    void surfaceChanged(android.view.SurfaceHolder,int,int,int) -> surfaceChanged
+    java.io.File getStorageDirectory() -> f
+    void initQueryConversionRate() -> g
+    void handleOcrContinuousDecode(com.cavemanninja.exchangecam.OcrResult) -> a
+    void dispatchResultToView(com.cavemanninja.exchangecam.OcrResultText,int) -> a
+    void handleOcrContinuousDecode$2a3e54ca() -> h
+    void showUpdatedExcahngeRate() -> i
+    void setStatusViewForContinuous() -> j
+    void drawViewfinder() -> k
+    boolean checkFirstLaunch() -> l
+    void showErrorMessage(java.lang.String,java.lang.String,java.lang.Boolean) -> a
+    void showExchangeErrorDialog() -> m
+    void openDashboardFragment() -> n
+    void onFailedToReceiveAd$7b642d25(com.google.ads.AdRequest$ErrorCode) -> a
+    void onReceiveAd$51b51722() -> o
+    void onWindowFocusChanged(boolean) -> onWindowFocusChanged
+    void access$0(com.cavemanninja.exchangecam.CaptureActivity,java.lang.Boolean) -> a
+    void access$1(com.cavemanninja.exchangecam.CaptureActivity,java.lang.String) -> a
+    java.lang.Boolean access$2(com.cavemanninja.exchangecam.CaptureActivity) -> a
+    void access$3(com.cavemanninja.exchangecam.CaptureActivity) -> b
+    void access$4(com.cavemanninja.exchangecam.CaptureActivity,java.lang.String) -> b
+    com.cavemanninja.exchangecam.camera.CameraManager access$5(com.cavemanninja.exchangecam.CaptureActivity) -> c
+    com.cavemanninja.exchangecam.ViewfinderView access$6(com.cavemanninja.exchangecam.CaptureActivity) -> d
+com.cavemanninja.exchangecam.CaptureActivity$1 -> com.cavemanninja.exchangecam.c:
+    com.cavemanninja.exchangecam.CaptureActivity this$0 -> J
+    void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
+com.cavemanninja.exchangecam.CaptureActivity$2 -> com.cavemanninja.exchangecam.d:
+    int lastX -> K
+    int lastY -> L
+    com.cavemanninja.exchangecam.CaptureActivity this$0 -> J
+    boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+com.cavemanninja.exchangecam.CaptureActivityHandler -> com.cavemanninja.exchangecam.e:
+    java.lang.String TAG -> TAG
+    com.cavemanninja.exchangecam.CaptureActivity activity -> M
+    com.cavemanninja.exchangecam.DecodeThread decodeThread -> N
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State state -> O
+    com.cavemanninja.exchangecam.camera.CameraManager cameraManager -> e
+    void handleMessage(android.os.Message) -> handleMessage
+    void stop() -> stop
+    void resetState() -> p
+    void quitSynchronously() -> q
+    void restartOcrPreview() -> r
+    void restartOcrPreviewAndDecode() -> s
+com.cavemanninja.exchangecam.CaptureActivityHandler$State -> com.cavemanninja.exchangecam.f:
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State PREVIEW -> P
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State PREVIEW_PAUSED -> Q
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State CONTINUOUS -> R
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State CONTINUOUS_PAUSED -> S
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State SUCCESS -> T
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State DONE -> U
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State[] ENUM$VALUES -> V
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State[] values() -> values
+    com.cavemanninja.exchangecam.CaptureActivityHandler$State valueOf(java.lang.String) -> valueOf
+com.cavemanninja.exchangecam.CurrencyTextView -> com.cavemanninja.exchangecam.CurrencyTextView:
+    java.lang.String TAG -> TAG
+    void setCustomFont(android.content.Context,android.util.AttributeSet) -> a
+    boolean setCustomFont(android.content.Context,java.lang.String) -> a
+com.cavemanninja.exchangecam.DashboardFragment -> com.cavemanninja.exchangecam.DashboardFragment:
+    java.lang.String TAG -> TAG
+    com.cavemanninja.exchangecam.CaptureActivity mActivity -> W
+    android.widget.ToggleButton mAutoExchangeRateToggleButton -> X
+    android.widget.EditText mExchangeRateEditText -> Y
+    android.widget.Spinner mSourceCurrencySpinner -> Z
+    android.widget.Spinner mTargetCurrencySpinner -> aa
+    android.widget.TextView mSourceCurrencyTextView -> ab
+    android.widget.TextView mTargetCurrencyTextView -> ac
+    java.lang.String[] mCurrencyCodes -> ad
+    java.lang.String mSourceCurrency -> ae
+    java.lang.String mTargetCurrency -> af
+    android.content.SharedPreferences prefs -> x
+    android.view.View$OnClickListener mToggleButtonListener -> ag
+    android.widget.AdapterView$OnItemSelectedListener mSourceCurrencySpinnerListener -> ah
+    android.widget.AdapterView$OnItemSelectedListener mTargetCurrencySpinnerListener -> ai
+    void onAttach(android.app.Activity) -> onAttach
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
+    void updateExchangeRateEditText() -> t
+    void updateTextViews(com.cavemanninja.exchangecam.OcrResultText,int) -> b
+    void removeResultText() -> u
+    void onDialogClickSetManually$2ae3d2c2() -> v
+    android.content.SharedPreferences access$0(com.cavemanninja.exchangecam.DashboardFragment) -> a
+    android.widget.ToggleButton access$1(com.cavemanninja.exchangecam.DashboardFragment) -> b
+    android.widget.EditText access$2(com.cavemanninja.exchangecam.DashboardFragment) -> c
+    java.lang.String[] access$3(com.cavemanninja.exchangecam.DashboardFragment) -> d
+com.cavemanninja.exchangecam.DashboardFragment$1 -> com.cavemanninja.exchangecam.g:
+    com.cavemanninja.exchangecam.DashboardFragment this$0 -> aj
+    void onClick(android.view.View) -> onClick
+com.cavemanninja.exchangecam.DashboardFragment$2 -> com.cavemanninja.exchangecam.h:
+    com.cavemanninja.exchangecam.DashboardFragment this$0 -> aj
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.cavemanninja.exchangecam.DashboardFragment$3 -> com.cavemanninja.exchangecam.i:
+    com.cavemanninja.exchangecam.DashboardFragment this$0 -> aj
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.cavemanninja.exchangecam.DecodeHandler -> com.cavemanninja.exchangecam.j:
+    com.cavemanninja.exchangecam.CaptureActivity activity -> M
+    boolean running -> ak
+    com.googlecode.tesseract.android.TessBaseAPI baseApi -> p
+    com.cavemanninja.exchangecam.BeepManager beepManager -> o
+    android.graphics.Bitmap bitmap -> bitmap
+    boolean isDecodePending -> al
+    long timeRequired -> am
+    void handleMessage(android.os.Message) -> handleMessage
+    com.cavemanninja.exchangecam.OcrResult getOcrResult() -> w
+    void sendContinuousOcrFailMessage() -> x
+com.cavemanninja.exchangecam.DecodeThread -> com.cavemanninja.exchangecam.k:
+    com.cavemanninja.exchangecam.CaptureActivity activity -> M
+    android.os.Handler handler -> handler
+    java.util.concurrent.CountDownLatch handlerInitLatch -> an
+    android.os.Handler getHandler() -> getHandler
+    void run() -> run
+com.cavemanninja.exchangecam.ExchangeErrorDialogFragment -> com.cavemanninja.exchangecam.ExchangeErrorDialogFragment:
+    com.cavemanninja.exchangecam.ExchangeErrorDialogFragment$ExchangeErrorDialogListener mListener -> ao
+    void onAttach(android.app.Activity) -> onAttach
+    android.app.Dialog onCreateDialog(android.os.Bundle) -> onCreateDialog
+com.cavemanninja.exchangecam.ExchangeErrorDialogFragment$1 -> com.cavemanninja.exchangecam.l:
+    com.cavemanninja.exchangecam.ExchangeErrorDialogFragment this$0 -> ap
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.cavemanninja.exchangecam.ExchangeErrorDialogFragment$2 -> com.cavemanninja.exchangecam.m:
+    com.cavemanninja.exchangecam.ExchangeErrorDialogFragment this$0 -> ap
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.cavemanninja.exchangecam.ExchangeErrorDialogFragment$ExchangeErrorDialogListener -> com.cavemanninja.exchangecam.n:
+    void onDialogClickSetManually$2ae3d2c2() -> v
+com.cavemanninja.exchangecam.FinishListener -> com.cavemanninja.exchangecam.o:
+    android.app.Activity activityToFinish -> aq
+    void onCancel(android.content.DialogInterface) -> onCancel
+    void onClick(android.content.DialogInterface,int) -> onClick
+    void run() -> run
+com.cavemanninja.exchangecam.HelpActivity -> com.cavemanninja.exchangecam.HelpActivity:
+    java.lang.String TAG -> TAG
+    android.webkit.WebView webView -> ar
+    android.view.View$OnClickListener doneListener -> as
+    void onCreate(android.os.Bundle) -> onCreate
+    void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+com.cavemanninja.exchangecam.HelpActivity$1 -> com.cavemanninja.exchangecam.p:
+    com.cavemanninja.exchangecam.HelpActivity this$0 -> at
+    void onClick(android.view.View) -> onClick
+com.cavemanninja.exchangecam.HelpActivity$HelpClient -> com.cavemanninja.exchangecam.q:
+    android.app.Activity context -> au
+    com.cavemanninja.exchangecam.HelpActivity this$0 -> at
+    void onPageFinished(android.webkit.WebView,java.lang.String) -> onPageFinished
+    boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String) -> shouldOverrideUrlLoading
+com.cavemanninja.exchangecam.HelpActivity$HelpClient$1 -> com.cavemanninja.exchangecam.r:
+    com.cavemanninja.exchangecam.HelpActivity$HelpClient this$1 -> av
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.cavemanninja.exchangecam.LuminanceSource -> com.cavemanninja.exchangecam.s:
+    int width -> width
+    int height -> height
+com.cavemanninja.exchangecam.OcrCharacterHelper -> com.cavemanninja.exchangecam.t:
+    java.lang.String getDefaultBlacklist(java.lang.String) -> a
+    java.lang.String getDefaultWhitelist(java.lang.String) -> b
+com.cavemanninja.exchangecam.OcrInitAsyncTask -> com.cavemanninja.exchangecam.u:
+    java.lang.String TAG -> TAG
+    com.cavemanninja.exchangecam.CaptureActivity activity -> M
+    android.content.Context context -> aw
+    com.googlecode.tesseract.android.TessBaseAPI baseApi -> p
+    android.app.ProgressDialog indeterminateDialog -> z
+    int ocrEngineMode -> t
+    void onPreExecute() -> onPreExecute
+    java.lang.Boolean doInBackground(java.lang.String[]) -> a
+    boolean installFromAssets$60b67bcf(java.lang.String,java.io.File) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+com.cavemanninja.exchangecam.OcrResult -> com.cavemanninja.exchangecam.v:
+    android.graphics.Bitmap bitmap -> bitmap
+    java.lang.String text -> ax
+    int[] wordConfidences -> ay
+    int meanConfidence -> az
+    java.util.List regionBoundingBoxes -> aA
+    java.util.List textlineBoundingBoxes -> aB
+    java.util.List wordBoundingBoxes -> aC
+    java.util.List stripBoundingBoxes -> aD
+    java.util.List characterBoundingBoxes -> aE
+    long timestamp -> timestamp
+    long recognitionTimeRequired -> aF
+    android.graphics.Paint paint -> aG
+    android.graphics.Point getBitmapDimensions() -> y
+    java.lang.String toString() -> toString
+com.cavemanninja.exchangecam.OcrResultFailure -> com.cavemanninja.exchangecam.w:
+    long timeRequired -> am
+    long timestamp -> timestamp
+    java.lang.String toString() -> toString
+com.cavemanninja.exchangecam.OcrResultText -> com.cavemanninja.exchangecam.x:
+    java.lang.String text -> ax
+    int[] wordConfidences -> ay
+    int meanConfidence -> az
+    android.graphics.Point bitmapDimensions -> aH
+    java.util.List regionBoundingBoxes -> aA
+    java.util.List textlineBoundingBoxes -> aB
+    java.util.List stripBoundingBoxes -> aD
+    java.util.List wordBoundingBoxes -> aC
+    java.util.List characterBoundingBoxes -> aE
+    java.lang.String toString() -> toString
+com.cavemanninja.exchangecam.PlanarYUVLuminanceSource -> com.cavemanninja.exchangecam.y:
+    byte[] yuvData -> aI
+    int dataWidth -> aJ
+    int dataHeight -> aK
+    int left -> left
+    int top -> top
+    void reverseHorizontal(int,int) -> a
+com.cavemanninja.exchangecam.PreferencesActivity -> com.cavemanninja.exchangecam.PreferencesActivity:
+    android.preference.ListPreference listPreferenceSourceCurrency -> aL
+    android.preference.ListPreference listPreferenceTargetCurrency -> aM
+    android.preference.EditTextPreference editTextPreferenceExchangeRate -> aN
+    android.content.SharedPreferences sharedPreferences -> aO
+    void onCreate(android.os.Bundle) -> onCreate
+    void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
+    void onResume() -> onResume
+    void onPause() -> onPause
+com.cavemanninja.exchangecam.R -> com.cavemanninja.exchangecam.z:
+com.cavemanninja.exchangecam.R$styleable -> com.cavemanninja.exchangecam.aa:
+    int[] CurrencyView -> CurrencyView
+    int CurrencyView_customFont -> CurrencyView_customFont
+    int[] ViewfinderView -> ViewfinderView
+com.cavemanninja.exchangecam.Typefaces -> com.cavemanninja.exchangecam.ab:
+    java.util.Hashtable cache -> aP
+    android.graphics.Typeface get(android.content.Context,java.lang.String) -> b
+com.cavemanninja.exchangecam.ViewfinderView -> com.cavemanninja.exchangecam.ViewfinderView:
+    java.lang.String TAG -> TAG
+    com.cavemanninja.exchangecam.camera.CameraManager cameraManager -> e
+    android.graphics.Paint paint -> aG
+    int maskColor -> aQ
+    int frameColor -> aR
+    int cornerColor -> aS
+    com.cavemanninja.exchangecam.OcrResultText resultText -> aT
+    int price -> aU
+    java.util.List wordBoundingBoxes -> aC
+    android.graphics.Rect previewFrame -> aV
+    android.graphics.Rect rect -> rect
+    com.cavemanninja.exchangecam.CaptureActivity activity -> M
+    android.graphics.Rect horizontal -> aW
+    android.graphics.Rect vertical -> aX
+    android.graphics.Rect bounds -> aY
+    android.graphics.Rect top -> aZ
+    android.graphics.Rect bottom -> ba
+    android.graphics.Rect left -> bb
+    android.graphics.Rect right -> bc
+    android.graphics.Bitmap topBmp -> bd
+    android.graphics.Bitmap bottomBmp -> be
+    android.graphics.Bitmap leftBmp -> bf
+    android.graphics.Bitmap rightBmp -> bg
+    void setCameraManager(com.cavemanninja.exchangecam.camera.CameraManager) -> setCameraManager
+    void onDraw(android.graphics.Canvas) -> onDraw
+    void drawViewfinder() -> k
+    void addResultText(com.cavemanninja.exchangecam.OcrResultText,int) -> c
+    void removeResultText() -> u
+com.cavemanninja.exchangecam.camera.AutoFocusManager -> com.cavemanninja.exchangecam.a.a:
+    java.lang.String TAG -> TAG
+    java.util.Collection FOCUS_MODES_CALLING_AF -> bh
+    boolean active -> bi
+    boolean manual -> bj
+    boolean useAutoFocus -> bk
+    android.hardware.Camera camera -> bl
+    java.util.Timer timer -> bm
+    java.util.TimerTask outstandingTask -> bn
+    void onAutoFocus(boolean,android.hardware.Camera) -> onAutoFocus
+    void checkAndStart() -> z
+    void start() -> start
+    void start$1349ef() -> A
+    void stop() -> stop
+    void access$0$47f406f7(com.cavemanninja.exchangecam.camera.AutoFocusManager) -> a
+com.cavemanninja.exchangecam.camera.AutoFocusManager$1 -> com.cavemanninja.exchangecam.a.b:
+    com.cavemanninja.exchangecam.camera.AutoFocusManager this$0 -> bo
+    void run() -> run
+com.cavemanninja.exchangecam.camera.AutoFocusManager$2 -> com.cavemanninja.exchangecam.a.c:
+    com.cavemanninja.exchangecam.camera.AutoFocusManager this$0 -> bo
+    void run() -> run
+com.cavemanninja.exchangecam.camera.CameraConfigurationManager -> com.cavemanninja.exchangecam.a.d:
+    android.content.Context context -> aw
+    android.graphics.Point screenResolution -> bp
+    android.graphics.Point cameraResolution -> bq
+    void setDesiredCameraParameters(android.hardware.Camera) -> a
+    android.graphics.Point findBestPreviewSizeValue(android.hardware.Camera$Parameters,android.graphics.Point) -> a
+    java.lang.String findSettableValue(java.util.Collection,java.lang.String[]) -> a
+com.cavemanninja.exchangecam.camera.CameraConfigurationManager$1 -> com.cavemanninja.exchangecam.a.e:
+    com.cavemanninja.exchangecam.camera.CameraConfigurationManager this$0 -> br
+    int compare(java.lang.Object,java.lang.Object) -> compare
+com.cavemanninja.exchangecam.camera.CameraManager -> com.cavemanninja.exchangecam.a.f:
+    java.lang.String TAG -> TAG
+    android.content.Context context -> aw
+    com.cavemanninja.exchangecam.camera.CameraConfigurationManager configManager -> bs
+    android.hardware.Camera camera -> bl
+    com.cavemanninja.exchangecam.camera.AutoFocusManager autoFocusManager -> bt
+    android.graphics.Rect framingRect -> bu
+    android.graphics.Rect framingRectInPreview -> bv
+    boolean initialized -> bw
+    boolean previewing -> bx
+    boolean reverseImage -> by
+    int requestedFramingRectWidth -> bz
+    int requestedFramingRectHeight -> bA
+    com.cavemanninja.exchangecam.camera.PreviewCallback previewCallback -> bB
+    void openDriver(android.view.SurfaceHolder) -> b
+    void closeDriver() -> B
+    void startPreview() -> startPreview
+    void stopPreview() -> stopPreview
+    void requestOcrDecode$2a8797e(android.os.Handler) -> a
+    void requestAutoFocus$1349ef() -> C
+    android.graphics.Rect getFramingRect() -> D
+    android.graphics.Rect getFramingRectInPreview() -> E
+    void adjustFramingRect(int,int) -> b
+    com.cavemanninja.exchangecam.PlanarYUVLuminanceSource buildLuminanceSource(byte[],int,int) -> a
+com.cavemanninja.exchangecam.camera.PreviewCallback -> com.cavemanninja.exchangecam.a.g:
+    java.lang.String TAG -> TAG
+    com.cavemanninja.exchangecam.camera.CameraConfigurationManager configManager -> bs
+    android.os.Handler previewHandler -> bC
+    int previewMessage -> bD
+    void setHandler(android.os.Handler,int) -> a
+    void onPreviewFrame(byte[],android.hardware.Camera) -> onPreviewFrame
+com.cavemanninja.exchangecam.currency.CurrencyHelper -> com.cavemanninja.exchangecam.b.a:
+    java.lang.String TAG -> TAG
+    java.lang.Boolean isPrice(android.content.Context,java.lang.String) -> c
+    java.lang.String formatPrice(java.lang.String,java.lang.String) -> a
+    boolean isNumeric(java.lang.String) -> c
+    java.lang.String[] extractPrices(com.cavemanninja.exchangecam.OcrResultText,int,android.content.Context) -> a
+    java.lang.String correctSuperscriptDecimal(java.lang.String,com.cavemanninja.exchangecam.OcrResultText,java.lang.String) -> a
+com.cavemanninja.exchangecam.currency.QueryConversionRate -> com.cavemanninja.exchangecam.b.b:
+    java.lang.String getConversionRate(java.lang.String,java.lang.String) -> b
+    java.lang.String extractConvertedValue(java.lang.String) -> d
+com.cavemanninja.exchangecam.currency.QueryConversionRateAysncTask -> com.cavemanninja.exchangecam.b.c:
+    java.lang.String TAG -> TAG
+    com.cavemanninja.exchangecam.CaptureActivity activity -> M
+    android.content.Context context -> aw
+    android.app.ProgressDialog dialog -> y
+    java.lang.String sourceCurrencyCode -> D
+    java.lang.String targetCurrencyCode -> E
+    java.lang.String conversionRate -> F
+    void onPreExecute() -> onPreExecute
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.google.ads.Ad -> com.google.ads.a:
 com.google.ads.AdActivity -> com.google.ads.AdActivity:
-    com.google.ads.internal.a a -> a
-    java.lang.Object b -> b
-    com.google.ads.AdActivity c -> c
-    com.google.ads.internal.d d -> d
-    com.google.ads.AdActivity e -> e
-    com.google.ads.AdActivity f -> f
-    com.google.ads.AdActivity$StaticMethodWrapper g -> g
-    com.google.ads.internal.AdWebView h -> h
-    android.widget.FrameLayout i -> i
-    int j -> j
-    android.view.ViewGroup k -> k
-    boolean l -> l
-    long m -> m
-    android.widget.RelativeLayout n -> n
-    com.google.ads.AdActivity o -> o
-    boolean p -> p
-    boolean q -> q
-    boolean r -> r
-    boolean s -> s
-    com.google.ads.internal.AdVideoView t -> t
-    com.google.ads.internal.AdVideoView getAdVideoView() -> a
-    com.google.ads.internal.AdWebView getOpeningAdWebView() -> b
+    com.google.ads.internal.a a -> bE
+    java.lang.Object b -> bF
+    com.google.ads.AdActivity c -> bG
+    com.google.ads.internal.d d -> bH
+    com.google.ads.AdActivity e -> bI
+    com.google.ads.AdActivity f -> bJ
+    com.google.ads.AdActivity$StaticMethodWrapper g -> bK
+    com.google.ads.internal.AdWebView h -> bL
+    android.widget.FrameLayout i -> bM
+    int j -> bN
+    android.view.ViewGroup k -> bO
+    boolean l -> bP
+    long m -> bQ
+    android.widget.RelativeLayout n -> bR
+    com.google.ads.AdActivity o -> bS
+    boolean p -> bT
+    boolean q -> bU
+    boolean r -> bV
+    boolean s -> bW
+    com.google.ads.internal.AdVideoView t -> bX
+    com.google.ads.internal.AdVideoView getAdVideoView() -> F
+    com.google.ads.internal.AdWebView getOpeningAdWebView() -> G
     boolean isShowing() -> isShowing
     void launchAdActivity(com.google.ads.internal.d,com.google.ads.internal.e) -> a
     void a(com.google.ads.internal.d) -> a
@@ -33,88 +420,88 @@ com.google.ads.AdActivity -> com.google.ads.AdActivity:
     void a(com.google.ads.internal.AdWebView,boolean,int,boolean,boolean) -> a
     void onDestroy() -> onDestroy
     void onPause() -> onPause
-    void d() -> c
+    void d() -> H
     void onWindowFocusChanged(boolean) -> onWindowFocusChanged
     void onActivityResult(int,int,android.content.Intent) -> onActivityResult
     void setCustomClose(boolean) -> setCustomClose
-    java.lang.Object a() -> d
-    com.google.ads.AdActivity b() -> e
-    com.google.ads.internal.d c() -> f
+    java.lang.Object a() -> I
+    com.google.ads.AdActivity b() -> J
+    com.google.ads.internal.d c() -> K
     com.google.ads.internal.d b(com.google.ads.internal.d) -> b
 com.google.ads.AdActivity$StaticMethodWrapper -> com.google.ads.b:
     boolean isShowing() -> isShowing
     void launchAdActivity(com.google.ads.internal.d,com.google.ads.internal.e) -> a
 com.google.ads.AdListener -> com.google.ads.c:
-    void onReceiveAd$51b51722() -> g
+    void onReceiveAd$51b51722() -> o
     void onFailedToReceiveAd$7b642d25(com.google.ads.AdRequest$ErrorCode) -> a
 com.google.ads.AdRequest -> com.google.ads.d:
-    java.text.SimpleDateFormat a -> u
-    java.lang.reflect.Method b -> v
-    java.lang.reflect.Method c -> w
-    com.google.ads.AdRequest$Gender d -> x
-    java.util.Date e -> y
-    java.util.Set f -> z
-    java.util.Map g -> A
-    java.util.Map h -> B
-    android.location.Location i -> C
-    boolean j -> D
-    boolean k -> E
-    java.lang.String TEST_EMULATOR -> F
-    java.util.Set l -> G
+    java.text.SimpleDateFormat a -> bY
+    java.lang.reflect.Method b -> bZ
+    java.lang.reflect.Method c -> ca
+    com.google.ads.AdRequest$Gender d -> cb
+    java.util.Date e -> cc
+    java.util.Set f -> cd
+    java.util.Map g -> ce
+    java.util.Map h -> cf
+    android.location.Location i -> cg
+    boolean j -> ch
+    boolean k -> ci
+    java.lang.String TEST_EMULATOR -> cj
+    java.util.Set l -> ck
     com.google.ads.AdRequest setKeywords(java.util.Set) -> a
     java.lang.Object getNetworkExtras(java.lang.Class) -> a
-    java.util.Map getRequestMap(android.content.Context) -> a
+    java.util.Map getRequestMap(android.content.Context) -> b
     com.google.ads.AdRequest setTestDevices(java.util.Set) -> b
-    boolean isTestDevice(android.content.Context) -> b
+    boolean isTestDevice(android.content.Context) -> c
 com.google.ads.AdRequest$ErrorCode -> com.google.ads.e:
-    com.google.ads.AdRequest$ErrorCode INVALID_REQUEST -> H
-    com.google.ads.AdRequest$ErrorCode NO_FILL -> I
-    com.google.ads.AdRequest$ErrorCode NETWORK_ERROR -> J
-    com.google.ads.AdRequest$ErrorCode INTERNAL_ERROR -> K
-    java.lang.String a -> L
-    com.google.ads.AdRequest$ErrorCode[] b -> M
+    com.google.ads.AdRequest$ErrorCode INVALID_REQUEST -> cl
+    com.google.ads.AdRequest$ErrorCode NO_FILL -> cm
+    com.google.ads.AdRequest$ErrorCode NETWORK_ERROR -> cn
+    com.google.ads.AdRequest$ErrorCode INTERNAL_ERROR -> co
+    java.lang.String a -> cp
+    com.google.ads.AdRequest$ErrorCode[] b -> cq
     com.google.ads.AdRequest$ErrorCode[] values() -> values
     com.google.ads.AdRequest$ErrorCode valueOf(java.lang.String) -> valueOf
     java.lang.String toString() -> toString
 com.google.ads.AdRequest$Gender -> com.google.ads.f:
-    com.google.ads.AdRequest$Gender UNKNOWN -> N
-    com.google.ads.AdRequest$Gender MALE -> O
-    com.google.ads.AdRequest$Gender FEMALE -> P
-    com.google.ads.AdRequest$Gender[] a -> Q
+    com.google.ads.AdRequest$Gender UNKNOWN -> cr
+    com.google.ads.AdRequest$Gender MALE -> cs
+    com.google.ads.AdRequest$Gender FEMALE -> ct
+    com.google.ads.AdRequest$Gender[] a -> cu
     com.google.ads.AdRequest$Gender[] values() -> values
     com.google.ads.AdRequest$Gender valueOf(java.lang.String) -> valueOf
 com.google.ads.AdSize -> com.google.ads.g:
-    com.google.ads.AdSize SMART_BANNER -> R
-    com.google.ads.AdSize BANNER -> S
-    com.google.ads.AdSize IAB_MRECT -> T
-    com.google.ads.AdSize IAB_BANNER -> U
-    com.google.ads.AdSize IAB_LEADERBOARD -> V
-    com.google.ads.AdSize IAB_WIDE_SKYSCRAPER -> W
-    int a -> X
-    int b -> Y
-    boolean c -> Z
-    boolean d -> aa
-    boolean e -> ab
-    java.lang.String f -> ac
+    com.google.ads.AdSize SMART_BANNER -> cv
+    com.google.ads.AdSize BANNER -> cw
+    com.google.ads.AdSize IAB_MRECT -> cx
+    com.google.ads.AdSize IAB_BANNER -> cy
+    com.google.ads.AdSize IAB_LEADERBOARD -> cz
+    com.google.ads.AdSize IAB_WIDE_SKYSCRAPER -> cA
+    int a -> cB
+    int b -> cC
+    boolean c -> cD
+    boolean d -> cE
+    boolean e -> cF
+    java.lang.String f -> cG
     com.google.ads.AdSize createAdSize(com.google.ads.AdSize,android.content.Context) -> a
     boolean equals(java.lang.Object) -> equals
     int hashCode() -> hashCode
     int getWidth() -> getWidth
     int getHeight() -> getHeight
-    boolean a() -> h
-    boolean isFullWidth() -> i
-    boolean isAutoHeight() -> j
-    boolean isCustomAdSize() -> k
+    boolean a() -> L
+    boolean isFullWidth() -> M
+    boolean isAutoHeight() -> N
+    boolean isCustomAdSize() -> O
     java.lang.String toString() -> toString
 com.google.ads.AdView -> com.google.ads.AdView:
-    com.google.ads.internal.d a -> ad
+    com.google.ads.internal.d a -> cH
     void a(android.content.Context,java.lang.String,int,com.google.ads.AdSize,android.util.AttributeSet) -> a
     int a(android.content.Context,int) -> a
     boolean a(android.content.Context,com.google.ads.AdSize,android.util.AttributeSet) -> a
     boolean b(android.content.Context,com.google.ads.AdSize,android.util.AttributeSet) -> b
     void destroy() -> destroy
     void a(android.content.Context,java.lang.String,com.google.ads.AdSize,android.util.AttributeSet) -> a
-    com.google.ads.AdSize[] a(java.lang.String) -> a
+    com.google.ads.AdSize[] a(java.lang.String) -> e
     boolean a$79917c4d(java.lang.String,android.content.Context,android.util.AttributeSet) -> a
     java.lang.String b(java.lang.String,android.content.Context,android.util.AttributeSet,boolean) -> a
     java.util.Set c$28003ea2(java.lang.String,android.content.Context,android.util.AttributeSet) -> b
@@ -127,231 +514,231 @@ com.google.ads.AdView -> com.google.ads.AdView:
 com.google.ads.AppEventListener -> com.google.ads.h:
 com.google.ads.InterstitialAd -> com.google.ads.i:
 com.google.ads.a -> com.google.ads.j:
-    java.lang.String a -> L
-    java.lang.String b -> ae
-    java.util.List c -> af
-    java.util.List d -> ag
-    java.util.HashMap e -> ah
+    java.lang.String a -> cp
+    java.lang.String b -> cI
+    java.util.List c -> cJ
+    java.util.List d -> cK
+    java.util.HashMap e -> cL
 com.google.ads.aa -> com.google.ads.k:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.ab -> com.google.ads.l:
-    com.google.ads.internal.a a -> a
+    com.google.ads.internal.a a -> bE
     int a(java.util.HashMap,java.lang.String,int,android.util.DisplayMetrics) -> a
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.ac -> com.google.ads.m:
-    android.content.Context a -> ai
-    java.lang.String b -> ae
+    android.content.Context a -> cM
+    java.lang.String b -> cI
     void run() -> run
 com.google.ads.ae -> com.google.ads.n:
-    java.lang.ref.WeakReference a -> aj
+    java.lang.ref.WeakReference a -> cN
     void run() -> run
 com.google.ads.af -> com.google.ads.o:
-    android.net.Uri a -> ak
-    android.net.Uri b -> al
-    java.lang.String[] c -> am
-    java.lang.String[] d -> an
+    android.net.Uri a -> cO
+    android.net.Uri b -> cP
+    java.lang.String[] c -> cQ
+    java.lang.String[] d -> cR
 com.google.ads.ag -> com.google.ads.p:
-    com.google.ads.internal.a a -> a
+    com.google.ads.internal.a a -> bE
     void a(android.webkit.WebView,boolean) -> a
     void a(android.webkit.WebView,java.lang.String) -> a
     void a(android.app.Activity,android.webkit.WebView,java.lang.String) -> a
     boolean a(android.content.Context,long) -> a
     void a(android.app.Activity) -> a
 com.google.ads.ag$a -> com.google.ads.q:
-    java.lang.ref.WeakReference a -> aj
-    android.content.SharedPreferences$Editor b -> ao
+    java.lang.ref.WeakReference a -> cN
+    android.content.SharedPreferences$Editor b -> cS
     void run() -> run
 com.google.ads.ag$b -> com.google.ads.r:
-    java.lang.ref.WeakReference a -> aj
-    android.webkit.WebView b -> ap
-    java.lang.String c -> aq
+    java.lang.ref.WeakReference a -> cN
+    android.webkit.WebView b -> cT
+    java.lang.String c -> cU
     void run() -> run
 com.google.ads.ag$c -> com.google.ads.s:
-    boolean a -> ar
-    android.webkit.WebView b -> ap
+    boolean a -> cV
+    android.webkit.WebView b -> cT
     void run() -> run
 com.google.ads.ah -> com.google.ads.t:
-    boolean a(android.content.Context) -> c
+    boolean a(android.content.Context) -> d
     boolean a(android.content.Intent,android.content.Context) -> a
 com.google.ads.ai -> com.google.ads.u:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.ai$a -> com.google.ads.v:
     void onClick(android.content.DialogInterface,int) -> onClick
 com.google.ads.ai$b -> com.google.ads.w:
-    com.google.ads.ai$b a -> as
-    com.google.ads.ai$b b -> at
-    java.lang.String c -> aq
-    com.google.ads.ai$b[] d -> au
+    com.google.ads.ai$b a -> cW
+    com.google.ads.ai$b b -> cX
+    java.lang.String c -> cU
+    com.google.ads.ai$b[] d -> cY
     com.google.ads.ai$b[] values() -> values
     com.google.ads.ai$b valueOf(java.lang.String) -> valueOf
 com.google.ads.ai$c -> com.google.ads.x:
-    com.google.ads.internal.d a -> ad
+    com.google.ads.internal.d a -> cH
     void onClick(android.content.DialogInterface,int) -> onClick
 com.google.ads.b -> com.google.ads.y:
-    java.math.BigInteger a -> av
-    java.math.BigInteger b -> aw
-    com.google.ads.b c -> ax
-    com.google.ads.b a() -> l
-    java.math.BigInteger b() -> m
-    java.math.BigInteger c() -> n
-    java.math.BigInteger d() -> o
+    java.math.BigInteger a -> cZ
+    java.math.BigInteger b -> da
+    com.google.ads.b c -> db
+    com.google.ads.b a() -> P
+    java.math.BigInteger b() -> Q
+    java.math.BigInteger c() -> R
+    java.math.BigInteger d() -> S
 com.google.ads.c -> com.google.ads.z:
-    java.util.Map a -> ay
-    java.lang.String b -> ae
-    java.lang.String c -> aq
-    java.util.List d -> ag
-    java.lang.Integer e -> az
-    java.lang.Integer f -> aA
-    java.util.List g -> aB
-    java.util.List h -> aC
-    java.util.List i -> aD
-    com.google.ads.c a(java.lang.String) -> b
-    boolean a() -> h
-    int b() -> p
-    java.lang.String c() -> q
-    boolean d() -> r
-    int e() -> s
-    java.util.List f() -> t
-    java.util.List g() -> u
-    java.util.List h() -> v
-    java.util.List i() -> w
+    java.util.Map a -> dc
+    java.lang.String b -> cI
+    java.lang.String c -> cU
+    java.util.List d -> cK
+    java.lang.Integer e -> dd
+    java.lang.Integer f -> de
+    java.util.List g -> df
+    java.util.List h -> dg
+    java.util.List i -> dh
+    com.google.ads.c a(java.lang.String) -> f
+    boolean a() -> L
+    int b() -> T
+    java.lang.String c() -> U
+    boolean d() -> V
+    int e() -> W
+    java.util.List f() -> X
+    java.util.List g() -> Y
+    java.util.List h() -> Z
+    java.util.List i() -> aa
     com.google.ads.a a(org.json.JSONObject) -> a
-    com.google.ads.internal.h j() -> x
+    com.google.ads.internal.h j() -> ab
     java.util.List a(org.json.JSONObject,java.lang.String) -> a
 com.google.ads.c$1 -> com.google.ads.aa:
 com.google.ads.d -> com.google.ads.ab:
-    com.google.ads.c a -> aE
-    long b -> aF
+    com.google.ads.c a -> di
+    long b -> dj
 com.google.ads.doubleclick.DfpAdView -> com.google.ads.doubleclick.DfpAdView:
     void setAppEventListener(com.google.ads.AppEventListener) -> setAppEventListener
     void setSupportedAdSizes(com.google.ads.AdSize[]) -> setSupportedAdSizes
 com.google.ads.doubleclick.DfpExtras -> com.google.ads.doubleclick.a:
-    java.lang.String a -> L
-    java.lang.String getPublisherProvidedId() -> y
-    com.google.ads.mediation.admob.AdMobAdapterExtras clearExtras() -> z
+    java.lang.String a -> cp
+    java.lang.String getPublisherProvidedId() -> ac
+    com.google.ads.mediation.admob.AdMobAdapterExtras clearExtras() -> ad
 com.google.ads.e -> com.google.ads.ac:
-    com.google.ads.internal.d a -> ad
-    com.google.ads.h b -> aG
-    java.lang.Object c -> aH
-    java.lang.Thread d -> aI
-    java.lang.Object e -> aJ
-    boolean f -> aK
-    java.lang.Object g -> aL
-    boolean a() -> h
+    com.google.ads.internal.d a -> cH
+    com.google.ads.h b -> dk
+    java.lang.Object c -> dl
+    java.lang.Thread d -> dm
+    java.lang.Object e -> dn
+    boolean f -> do
+    java.lang.Object g -> dp
+    boolean a() -> L
     void a(com.google.ads.c,com.google.ads.AdRequest) -> a
-    boolean d() -> r
+    boolean d() -> V
     boolean a(java.lang.String,android.app.Activity,com.google.ads.AdRequest,com.google.ads.f,java.util.HashMap,long) -> a
     boolean e(com.google.ads.h) -> a
     void d(com.google.ads.h) -> b
 com.google.ads.e$1 -> com.google.ads.ad:
-    com.google.ads.c a -> aE
-    com.google.ads.AdRequest b -> aM
-    com.google.ads.e c -> aN
+    com.google.ads.c a -> di
+    com.google.ads.AdRequest b -> dq
+    com.google.ads.e c -> dr
     void run() -> run
 com.google.ads.e$7 -> com.google.ads.ae:
-    com.google.ads.c a -> aE
-    com.google.ads.e b -> aO
+    com.google.ads.c a -> di
+    com.google.ads.e b -> ds
     void run() -> run
 com.google.ads.e$8 -> com.google.ads.af:
-    com.google.ads.h a -> aP
-    android.view.View b -> aQ
-    com.google.ads.f c -> aR
-    com.google.ads.e d -> aS
+    com.google.ads.h a -> dt
+    android.view.View b -> du
+    com.google.ads.f c -> dv
+    com.google.ads.e d -> dw
     void run() -> run
 com.google.ads.f -> com.google.ads.ag:
-    java.lang.String a -> L
-    java.lang.String b -> ae
-    java.lang.String c -> aq
-    java.util.List d -> ag
-    java.util.List e -> aT
-    java.util.List f -> aU
+    java.lang.String a -> cp
+    java.lang.String b -> cI
+    java.lang.String c -> cU
+    java.util.List d -> cK
+    java.util.List e -> dx
+    java.util.List f -> dy
 com.google.ads.g -> com.google.ads.ah:
 com.google.ads.g$a -> com.google.ads.ai:
-    com.google.ads.g$a a -> aV
-    com.google.ads.g$a b -> aW
-    com.google.ads.g$a c -> aX
-    com.google.ads.g$a d -> aY
-    com.google.ads.g$a e -> aZ
-    com.google.ads.g$a f -> ba
-    com.google.ads.g$a[] g -> bb
+    com.google.ads.g$a a -> dz
+    com.google.ads.g$a b -> dA
+    com.google.ads.g$a c -> dB
+    com.google.ads.g$a d -> dC
+    com.google.ads.g$a e -> dD
+    com.google.ads.g$a f -> dE
+    com.google.ads.g$a[] g -> dF
     com.google.ads.g$a[] values() -> values
     com.google.ads.g$a valueOf(java.lang.String) -> valueOf
 com.google.ads.h -> com.google.ads.aj:
-    com.google.ads.internal.h a -> bc
-    com.google.ads.f b -> bd
-    boolean c -> Z
-    boolean d -> aa
-    com.google.ads.g$a e -> aZ
-    com.google.ads.e f -> be
-    com.google.ads.mediation.MediationAdapter g -> bf
-    boolean h -> bg
-    boolean i -> bh
-    android.view.View j -> bi
-    android.os.Handler k -> bj
-    java.lang.String l -> bk
-    com.google.ads.AdRequest m -> bl
-    java.util.HashMap n -> bm
+    com.google.ads.internal.h a -> dG
+    com.google.ads.f b -> dH
+    boolean c -> cD
+    boolean d -> cE
+    com.google.ads.g$a e -> dD
+    com.google.ads.e f -> dI
+    com.google.ads.mediation.MediationAdapter g -> dJ
+    boolean h -> dK
+    boolean i -> dL
+    android.view.View j -> dM
+    android.os.Handler k -> dN
+    java.lang.String l -> dO
+    com.google.ads.AdRequest m -> dP
+    java.util.HashMap n -> dQ
     void a(android.app.Activity) -> a
-    void b() -> A
-    boolean c() -> B
-    boolean d() -> r
-    com.google.ads.g$a e() -> C
-    android.view.View f() -> D
-    java.lang.String h() -> E
+    void b() -> ae
+    boolean c() -> af
+    boolean d() -> V
+    com.google.ads.g$a e() -> ag
+    android.view.View f() -> ah
+    java.lang.String h() -> ai
     void a$3fda91(com.google.ads.g$a) -> a
     void a(com.google.ads.mediation.MediationAdapter) -> a
-    void k() -> F
-    boolean l() -> G
+    void k() -> aj
+    boolean l() -> ak
 com.google.ads.h$1 -> com.google.ads.ak:
-    com.google.ads.h a -> aP
+    com.google.ads.h a -> dt
     void run() -> run
 com.google.ads.i -> com.google.ads.al:
-    com.google.ads.h a -> aP
-    java.lang.String b -> ae
-    com.google.ads.AdRequest c -> bn
-    java.util.HashMap d -> bo
-    boolean e -> ab
-    java.lang.ref.WeakReference f -> bp
+    com.google.ads.h a -> dt
+    java.lang.String b -> cI
+    com.google.ads.AdRequest c -> dR
+    java.util.HashMap d -> dS
+    boolean e -> cF
+    java.lang.ref.WeakReference f -> dT
     void run() -> run
     void a$13c0f598(com.google.ads.g$a) -> b
 com.google.ads.i$a -> com.google.ads.am:
 com.google.ads.internal.AdVideoView -> com.google.ads.internal.AdVideoView:
-    com.google.ads.internal.a b -> bq
-    java.lang.ref.WeakReference c -> br
-    com.google.ads.internal.AdWebView d -> bs
-    android.widget.MediaController a -> bt
-    long e -> bu
-    android.widget.VideoView f -> bv
-    java.lang.String g -> bw
-    void b() -> A
+    com.google.ads.internal.a b -> dU
+    java.lang.ref.WeakReference c -> dV
+    com.google.ads.internal.AdWebView d -> dW
+    android.widget.MediaController a -> dX
+    long e -> dY
+    android.widget.VideoView f -> dZ
+    java.lang.String g -> ea
+    void b() -> ae
     void setMediaControllerEnabled(boolean) -> setMediaControllerEnabled
     void setSrc(java.lang.String) -> setSrc
     void onCompletion(android.media.MediaPlayer) -> onCompletion
     boolean onError(android.media.MediaPlayer,int,int) -> onError
     void onPrepared(android.media.MediaPlayer) -> onPrepared
-    void c() -> H
-    void d() -> c
+    void c() -> al
+    void d() -> H
     void a(int) -> a
     void a(android.view.MotionEvent) -> a
-    void e() -> I
-    void f() -> J
+    void e() -> am
+    void f() -> an
 com.google.ads.internal.AdVideoView$a -> com.google.ads.internal.a:
-    java.lang.ref.WeakReference a -> aj
-    android.os.Handler b -> bx
+    java.lang.ref.WeakReference a -> cN
+    android.os.Handler b -> eb
     void run() -> run
-    void a() -> K
+    void a() -> ao
 com.google.ads.internal.AdWebView -> com.google.ads.internal.AdWebView:
-    java.lang.ref.WeakReference a -> aj
-    com.google.ads.AdSize b -> by
-    boolean c -> Z
-    boolean d -> aa
-    boolean e -> ab
-    void a() -> K
-    void b() -> A
-    void c() -> H
-    com.google.ads.AdActivity d() -> L
-    boolean e() -> M
-    boolean f() -> N
+    java.lang.ref.WeakReference a -> cN
+    com.google.ads.AdSize b -> ec
+    boolean c -> cD
+    boolean d -> cE
+    boolean e -> cF
+    void a() -> ao
+    void b() -> ae
+    void c() -> al
+    com.google.ads.AdActivity d() -> ap
+    boolean e() -> aq
+    boolean f() -> ar
     void setAdActivity(com.google.ads.AdActivity) -> setAdActivity
     void loadDataWithBaseURL(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> loadDataWithBaseURL
     void loadUrl(java.lang.String) -> loadUrl
@@ -362,13 +749,13 @@ com.google.ads.internal.AdWebView -> com.google.ads.internal.AdWebView:
     void setCustomClose(boolean) -> setCustomClose
     void setIsExpandedMraid(boolean) -> setIsExpandedMraid
 com.google.ads.internal.AdWebView$1 -> com.google.ads.internal.b:
-    com.google.ads.internal.AdWebView a -> bz
+    com.google.ads.internal.AdWebView a -> ed
     void onDownloadStart(java.lang.String,java.lang.String,java.lang.String,java.lang.String,long) -> onDownloadStart
 com.google.ads.internal.a -> com.google.ads.internal.c:
-    com.google.ads.internal.a d -> bA
-    com.google.ads.util.f a -> bB
-    java.util.Map b -> bC
-    java.util.Map c -> bD
+    com.google.ads.internal.a d -> ee
+    com.google.ads.util.f a -> ef
+    java.util.Map b -> eg
+    java.util.Map c -> eh
     void a(com.google.ads.internal.d,java.util.Map,android.net.Uri,android.webkit.WebView) -> a
     boolean a(android.net.Uri) -> a
     boolean b(android.net.Uri) -> b
@@ -378,348 +765,348 @@ com.google.ads.internal.a -> com.google.ads.internal.c:
     void a(android.webkit.WebView,java.util.Map) -> a
     void a(android.webkit.WebView) -> a
     void b(android.webkit.WebView) -> b
-    com.google.ads.internal.a a() -> O
+    com.google.ads.internal.a a() -> as
 com.google.ads.internal.a$1 -> com.google.ads.internal.d:
 com.google.ads.internal.a$2 -> com.google.ads.internal.e:
-    java.lang.Object b() -> P
+    java.lang.Object b() -> at
 com.google.ads.internal.a$3 -> com.google.ads.internal.f:
 com.google.ads.internal.b -> com.google.ads.internal.g:
-    boolean a -> ar
-    void a(java.lang.String) -> c
-    void b(java.lang.String) -> d
-    java.lang.String c(java.lang.String) -> e
+    boolean a -> cV
+    void a(java.lang.String) -> g
+    void b(java.lang.String) -> h
+    java.lang.String c(java.lang.String) -> i
 com.google.ads.internal.c -> com.google.ads.internal.h:
-    java.lang.String b -> ae
-    java.lang.String c -> aq
-    java.lang.String d -> bE
-    java.lang.String e -> bF
-    boolean f -> aK
-    com.google.ads.internal.f g -> bG
-    com.google.ads.internal.d h -> bH
-    com.google.ads.AdRequest i -> bI
-    android.webkit.WebView j -> bJ
-    java.lang.String k -> bK
-    java.util.LinkedList l -> bL
-    java.lang.String m -> bM
-    com.google.ads.AdSize n -> bN
-    boolean o -> bO
-    boolean p -> p
-    com.google.ads.AdRequest$ErrorCode q -> bP
-    boolean r -> r
-    int s -> bQ
-    java.lang.Thread t -> bR
-    boolean u -> bS
-    com.google.ads.internal.c$d v -> bT
-    boolean a -> ar
-    void a(java.lang.String) -> c
-    void a() -> K
+    java.lang.String b -> cI
+    java.lang.String c -> cU
+    java.lang.String d -> ei
+    java.lang.String e -> ej
+    boolean f -> do
+    com.google.ads.internal.f g -> ek
+    com.google.ads.internal.d h -> el
+    com.google.ads.AdRequest i -> em
+    android.webkit.WebView j -> en
+    java.lang.String k -> eo
+    java.util.LinkedList l -> ep
+    java.lang.String m -> eq
+    com.google.ads.AdSize n -> er
+    boolean o -> es
+    boolean p -> bT
+    com.google.ads.AdRequest$ErrorCode q -> et
+    boolean r -> bV
+    int s -> eu
+    java.lang.Thread t -> ev
+    boolean u -> ew
+    com.google.ads.internal.c$d v -> ex
+    boolean a -> cV
+    void a(java.lang.String) -> g
+    void a() -> ao
     void a(com.google.ads.AdRequest) -> a
     void run() -> run
     java.lang.String a(java.util.Map,android.app.Activity) -> a
-    java.lang.String g() -> Q
+    java.lang.String g() -> au
     void a(com.google.ads.AdRequest$ErrorCode,boolean) -> a
     void a(boolean) -> a
-    void b(java.lang.String) -> d
-    void a(java.lang.String,java.lang.String) -> a
-    void c(java.lang.String) -> f
-    void d(java.lang.String) -> g
-    void e(java.lang.String) -> h
+    void b(java.lang.String) -> h
+    void a(java.lang.String,java.lang.String) -> c
+    void c(java.lang.String) -> j
+    void d(java.lang.String) -> k
+    void e(java.lang.String) -> l
     void a(com.google.ads.AdSize) -> a
     void a(com.google.ads.AdRequest$ErrorCode) -> b
-    void c() -> H
-    void b$1385ff() -> R
+    void c() -> al
+    void b$1385ff() -> av
     void a(int) -> a
     void c(boolean) -> b
     void a(com.google.ads.internal.c$d) -> a
     void d(boolean) -> c
 com.google.ads.internal.c$1 -> com.google.ads.internal.i:
-    com.google.ads.c a -> aE
-    com.google.ads.internal.c b -> bU
+    com.google.ads.c a -> di
+    com.google.ads.internal.c b -> ey
     void run() -> run
 com.google.ads.internal.c$2 -> com.google.ads.internal.j:
-    int[] a -> bV
+    int[] a -> ez
 com.google.ads.internal.c$a -> com.google.ads.internal.k:
-    com.google.ads.internal.d a -> ad
-    android.webkit.WebView b -> ap
-    com.google.ads.internal.f c -> bW
-    com.google.ads.AdRequest$ErrorCode d -> bX
-    boolean e -> ab
+    com.google.ads.internal.d a -> cH
+    android.webkit.WebView b -> cT
+    com.google.ads.internal.f c -> eA
+    com.google.ads.AdRequest$ErrorCode d -> eB
+    boolean e -> cF
     void run() -> run
 com.google.ads.internal.c$b -> com.google.ads.internal.l:
-    com.google.ads.internal.c a -> bY
+    com.google.ads.internal.c a -> eC
 com.google.ads.internal.c$c -> com.google.ads.internal.m:
-    java.lang.String b -> ae
-    java.lang.String c -> aq
-    android.webkit.WebView d -> bZ
-    com.google.ads.internal.c a -> bY
+    java.lang.String b -> cI
+    java.lang.String c -> cU
+    android.webkit.WebView d -> eD
+    com.google.ads.internal.c a -> eC
     void run() -> run
 com.google.ads.internal.c$d -> com.google.ads.internal.n:
-    com.google.ads.internal.c$d a -> ca
-    com.google.ads.internal.c$d b -> cb
-    com.google.ads.internal.c$d c -> cc
-    com.google.ads.internal.c$d d -> cd
-    java.lang.String e -> bF
-    com.google.ads.internal.c$d[] f -> ce
+    com.google.ads.internal.c$d a -> eE
+    com.google.ads.internal.c$d b -> eF
+    com.google.ads.internal.c$d c -> eG
+    com.google.ads.internal.c$d d -> eH
+    java.lang.String e -> ej
+    com.google.ads.internal.c$d[] f -> eI
     com.google.ads.internal.c$d[] values() -> values
     com.google.ads.internal.c$d valueOf(java.lang.String) -> valueOf
 com.google.ads.internal.c$e -> com.google.ads.internal.o:
-    com.google.ads.internal.d a -> ad
-    android.webkit.WebView b -> ap
-    java.util.LinkedList c -> cf
-    int d -> cg
-    boolean e -> ab
-    java.lang.String f -> ac
-    com.google.ads.AdSize g -> ch
+    com.google.ads.internal.d a -> cH
+    android.webkit.WebView b -> cT
+    java.util.LinkedList c -> eJ
+    int d -> eK
+    boolean e -> cF
+    java.lang.String f -> cG
+    com.google.ads.AdSize g -> eL
     void run() -> run
 com.google.ads.internal.d -> com.google.ads.internal.p:
-    java.lang.Object a -> ci
-    com.google.ads.m b -> cj
-    com.google.ads.internal.c c -> ck
-    com.google.ads.AdRequest d -> cl
-    com.google.ads.internal.g e -> cm
-    com.google.ads.internal.AdWebView f -> cn
-    com.google.ads.internal.i g -> co
-    android.os.Handler h -> cp
-    long i -> cq
-    boolean j -> D
-    boolean k -> E
-    boolean l -> l
-    boolean m -> cr
-    boolean n -> cs
-    android.content.SharedPreferences o -> ct
-    long p -> cu
-    com.google.ads.ae q -> cv
-    boolean r -> r
-    java.util.LinkedList s -> cw
-    java.util.LinkedList t -> cx
-    int u -> cy
-    java.lang.Boolean v -> cz
-    com.google.ads.d w -> cA
-    com.google.ads.e x -> cB
-    com.google.ads.f y -> cC
-    java.lang.String z -> cD
-    void a() -> K
-    void b() -> A
-    void a(java.lang.String) -> c
-    java.lang.String c() -> q
-    void d() -> c
-    void e() -> I
-    void f() -> J
-    com.google.ads.m h() -> S
-    com.google.ads.d i() -> T
-    com.google.ads.internal.c j() -> U
-    com.google.ads.internal.AdWebView k() -> V
-    com.google.ads.internal.i l() -> W
-    com.google.ads.internal.g m() -> X
+    java.lang.Object a -> eM
+    com.google.ads.m b -> eN
+    com.google.ads.internal.c c -> eO
+    com.google.ads.AdRequest d -> eP
+    com.google.ads.internal.g e -> eQ
+    com.google.ads.internal.AdWebView f -> eR
+    com.google.ads.internal.i g -> eS
+    android.os.Handler h -> eT
+    long i -> eU
+    boolean j -> ch
+    boolean k -> ci
+    boolean l -> bP
+    boolean m -> eV
+    boolean n -> eW
+    android.content.SharedPreferences o -> eX
+    long p -> eY
+    com.google.ads.ae q -> eZ
+    boolean r -> bV
+    java.util.LinkedList s -> fa
+    java.util.LinkedList t -> fb
+    int u -> fc
+    java.lang.Boolean v -> fd
+    com.google.ads.d w -> fe
+    com.google.ads.e x -> ff
+    com.google.ads.f y -> fg
+    java.lang.String z -> fh
+    void a() -> ao
+    void b() -> ae
+    void a(java.lang.String) -> g
+    java.lang.String c() -> U
+    void d() -> H
+    void e() -> am
+    void f() -> an
+    com.google.ads.m h() -> aw
+    com.google.ads.d i() -> ax
+    com.google.ads.internal.c j() -> ay
+    com.google.ads.internal.AdWebView k() -> az
+    com.google.ads.internal.i l() -> aA
+    com.google.ads.internal.g m() -> aB
     void a(int) -> a
-    int n() -> Y
-    long o() -> Z
-    boolean p() -> aa
-    boolean q() -> ab
-    boolean s() -> ac
+    int n() -> aC
+    long o() -> aD
+    boolean p() -> aE
+    boolean q() -> aF
+    boolean s() -> aG
     void a(com.google.ads.AdRequest) -> a
     void a(com.google.ads.AdRequest$ErrorCode) -> b
     void a(com.google.ads.c) -> a
     void a$413ecd99(android.view.View,com.google.ads.h,com.google.ads.f) -> a
     void b(com.google.ads.c) -> b
-    void t() -> ad
-    void u() -> ae
-    void v() -> af
-    void a$16da05f7() -> ag
-    void w() -> ah
+    void t() -> aH
+    void u() -> aI
+    void v() -> aJ
+    void a$16da05f7() -> aK
+    void w() -> aL
     void a(java.util.List,java.lang.String,java.lang.String,java.lang.String,java.lang.Boolean,java.lang.String,java.lang.String) -> a
-    void x() -> ai
+    void x() -> aM
     void a(java.lang.Runnable) -> a
-    void y() -> aj
+    void y() -> aN
     void a(long) -> a
     void a(boolean) -> a
     void a(android.view.View) -> a
     void a(float) -> a
     void b(long) -> b
-    void A() -> ak
-    void B() -> al
-    void C() -> am
-    void b(java.lang.String) -> d
+    void A() -> aO
+    void B() -> aP
+    void C() -> aQ
+    void b(java.lang.String) -> h
     void a(java.util.LinkedList) -> a
     void b(boolean) -> d
 com.google.ads.internal.e -> com.google.ads.internal.q:
-    java.lang.String a -> L
-    java.util.HashMap b -> cE
+    java.lang.String a -> cp
+    java.util.HashMap b -> fi
 com.google.ads.internal.f -> com.google.ads.internal.r:
-    com.google.ads.internal.c a -> bY
-    com.google.ads.internal.d b -> cF
-    com.google.ads.internal.f$a c -> cG
-    boolean d -> aa
-    boolean e -> ab
-    java.lang.String f -> ac
-    java.lang.Thread g -> cH
+    com.google.ads.internal.c a -> eC
+    com.google.ads.internal.d b -> fj
+    com.google.ads.internal.f$a c -> fk
+    boolean d -> cE
+    boolean e -> cF
+    java.lang.String f -> cG
+    java.lang.Thread g -> fl
     void a(java.net.HttpURLConnection) -> a
-    void a(java.lang.String) -> c
+    void a(java.lang.String) -> g
     void run() -> run
 com.google.ads.internal.f$1 -> com.google.ads.internal.s:
     java.net.HttpURLConnection a(java.net.URL) -> a
 com.google.ads.internal.f$a -> com.google.ads.internal.t:
     java.net.HttpURLConnection a(java.net.URL) -> a
 com.google.ads.internal.g -> com.google.ads.internal.u:
-    java.util.LinkedList a -> cI
-    long b -> aF
-    long c -> cJ
-    long d -> cK
-    java.util.LinkedList e -> cL
-    long f -> cM
-    long g -> cN
-    long h -> cO
-    long i -> cq
-    long j -> cP
-    boolean k -> E
-    boolean l -> l
-    java.lang.String m -> bM
-    long n -> cQ
-    java.util.LinkedList o -> cR
-    java.util.LinkedList p -> cS
-    void a() -> K
-    void b() -> A
-    void c() -> H
+    java.util.LinkedList a -> fm
+    long b -> dj
+    long c -> fn
+    long d -> fo
+    java.util.LinkedList e -> fp
+    long f -> fq
+    long g -> fr
+    long h -> fs
+    long i -> eU
+    long j -> ft
+    boolean k -> ci
+    boolean l -> bP
+    java.lang.String m -> eq
+    long n -> fu
+    java.util.LinkedList o -> fv
+    java.util.LinkedList p -> fw
+    void a() -> ao
+    void b() -> ae
+    void c() -> al
     void a(com.google.ads.g$a) -> c
-    java.lang.String d() -> an
-    java.lang.String e() -> ao
-    void f() -> J
-    void g() -> ap
-    void h() -> aq
-    void i() -> ar
-    long j() -> as
-    java.lang.String k() -> at
-    java.lang.String l() -> au
-    long m() -> av
-    long n() -> aw
-    long o() -> Z
-    long p() -> ax
-    void q() -> ay
-    void r() -> az
-    long s() -> aA
-    void t() -> ad
-    void u() -> ae
-    long v() -> aB
-    void w() -> ah
-    void x() -> ai
-    boolean y() -> aC
-    void z() -> aD
-    boolean A() -> aE
-    void B() -> al
-    void C() -> am
-    java.lang.String D() -> aF
-    void a(java.lang.String) -> c
-    long E() -> aG
+    java.lang.String d() -> aR
+    java.lang.String e() -> aS
+    void f() -> an
+    void g() -> aT
+    void h() -> aU
+    void i() -> aV
+    long j() -> aW
+    java.lang.String k() -> aX
+    java.lang.String l() -> aY
+    long m() -> aZ
+    long n() -> ba
+    long o() -> aD
+    long p() -> bb
+    void q() -> bc
+    void r() -> bd
+    long s() -> be
+    void t() -> aH
+    void u() -> aI
+    long v() -> bf
+    void w() -> aL
+    void x() -> aM
+    boolean y() -> bg
+    void z() -> bh
+    boolean A() -> bi
+    void B() -> aP
+    void C() -> aQ
+    java.lang.String D() -> bj
+    void a(java.lang.String) -> g
+    long E() -> bk
 com.google.ads.internal.h -> com.google.ads.internal.v:
-    com.google.ads.AdSize b -> by
-    boolean c -> Z
-    com.google.ads.internal.h a -> bc
+    com.google.ads.AdSize b -> ec
+    boolean c -> cD
+    com.google.ads.internal.h a -> dG
     com.google.ads.internal.h a(com.google.ads.AdSize,android.content.Context) -> b
     com.google.ads.internal.h a(com.google.ads.AdSize) -> b
-    boolean a() -> h
-    com.google.ads.AdSize b() -> aH
+    boolean a() -> L
+    com.google.ads.AdSize b() -> bl
     void b(com.google.ads.AdSize) -> c
 com.google.ads.internal.i -> com.google.ads.internal.w:
-    com.google.ads.internal.a c -> cT
-    com.google.ads.internal.d a -> ad
-    java.util.Map d -> cU
-    boolean b -> cV
-    boolean e -> ab
-    boolean f -> aK
-    boolean g -> cW
-    boolean h -> bg
+    com.google.ads.internal.a c -> fx
+    com.google.ads.internal.d a -> cH
+    java.util.Map d -> fy
+    boolean b -> fz
+    boolean e -> cF
+    boolean f -> do
+    boolean g -> fA
+    boolean h -> dK
     com.google.ads.internal.i a(com.google.ads.internal.d,java.util.Map,boolean,boolean) -> a
     boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String) -> shouldOverrideUrlLoading
     void onPageFinished(android.webkit.WebView,java.lang.String) -> onPageFinished
-    void a$1385ff() -> aI
-    void b$1385ff() -> R
-    void c$1385ff() -> aJ
-    void d$1385ff() -> aK
+    void a$1385ff() -> bm
+    void b$1385ff() -> av
+    void c$1385ff() -> bn
+    void d$1385ff() -> bo
 com.google.ads.internal.j -> com.google.ads.internal.x:
-    byte[] a -> cX
+    byte[] a -> fB
     android.view.ViewGroup a(android.app.Activity,com.google.ads.internal.d) -> a
 com.google.ads.internal.j$a -> com.google.ads.internal.y:
-    android.gesture.GestureStore a -> cY
-    android.app.Activity b -> cZ
-    com.google.ads.internal.d c -> da
+    android.gesture.GestureStore a -> fC
+    android.app.Activity b -> fD
+    com.google.ads.internal.d c -> fE
     void onGesturePerformed(android.gesture.GestureOverlayView,android.gesture.Gesture) -> onGesturePerformed
     android.app.Activity a(com.google.ads.internal.j$a) -> a
 com.google.ads.internal.j$a$1 -> com.google.ads.internal.z:
-    com.google.ads.internal.j$a a -> db
+    com.google.ads.internal.j$a a -> fF
     void onClick(android.content.DialogInterface,int) -> onClick
 com.google.ads.internal.j$a$2 -> com.google.ads.internal.aa:
-    java.lang.String a -> L
-    com.google.ads.internal.j$a b -> dc
+    java.lang.String a -> cp
+    com.google.ads.internal.j$a b -> fG
     void onClick(android.content.DialogInterface,int) -> onClick
 com.google.ads.j -> com.google.ads.an:
-    com.google.ads.h a -> aP
+    com.google.ads.h a -> dt
 com.google.ads.k -> com.google.ads.ao:
-    com.google.ads.h a -> aP
+    com.google.ads.h a -> dt
 com.google.ads.l -> com.google.ads.ap:
-    com.google.ads.l b -> dd
-    com.google.ads.util.i$b a -> de
-    com.google.ads.l a() -> aL
+    com.google.ads.l b -> fH
+    com.google.ads.util.i$b a -> fI
+    com.google.ads.l a() -> bp
 com.google.ads.l$a -> com.google.ads.aq:
-    com.google.ads.util.i$c a -> df
-    com.google.ads.util.i$c b -> dg
-    com.google.ads.util.i$c c -> dh
-    com.google.ads.util.i$c d -> di
-    com.google.ads.util.i$c e -> dj
-    com.google.ads.util.i$c f -> dk
-    com.google.ads.util.i$c g -> dl
-    com.google.ads.util.i$c h -> dm
-    com.google.ads.util.i$c i -> dn
-    com.google.ads.util.i$c j -> do
-    com.google.ads.util.i$c k -> dp
-    com.google.ads.util.i$c l -> dq
+    com.google.ads.util.i$c a -> fJ
+    com.google.ads.util.i$c b -> fK
+    com.google.ads.util.i$c c -> fL
+    com.google.ads.util.i$c d -> fM
+    com.google.ads.util.i$c e -> fN
+    com.google.ads.util.i$c f -> fO
+    com.google.ads.util.i$c g -> fP
+    com.google.ads.util.i$c h -> fQ
+    com.google.ads.util.i$c i -> fR
+    com.google.ads.util.i$c j -> fS
+    com.google.ads.util.i$c k -> fT
+    com.google.ads.util.i$c l -> fU
 com.google.ads.m -> com.google.ads.ar:
-    com.google.ads.util.i$b a -> de
-    com.google.ads.util.i$c b -> dg
-    com.google.ads.util.i$c c -> dh
-    com.google.ads.util.i$b d -> dr
-    com.google.ads.util.i$d e -> ds
-    com.google.ads.util.i$b f -> dt
-    com.google.ads.util.i$b g -> du
-    com.google.ads.util.i$b h -> dv
-    com.google.ads.util.i$b i -> dw
-    com.google.ads.util.i$b j -> dx
-    com.google.ads.util.i$b k -> dy
-    com.google.ads.util.i$c l -> dq
-    com.google.ads.util.i$c m -> dz
-    com.google.ads.util.i$c n -> dA
-    boolean a() -> h
-    boolean b() -> aM
+    com.google.ads.util.i$b a -> fI
+    com.google.ads.util.i$c b -> fK
+    com.google.ads.util.i$c c -> fL
+    com.google.ads.util.i$b d -> fV
+    com.google.ads.util.i$d e -> fW
+    com.google.ads.util.i$b f -> fX
+    com.google.ads.util.i$b g -> fY
+    com.google.ads.util.i$b h -> fZ
+    com.google.ads.util.i$b i -> ga
+    com.google.ads.util.i$b j -> gb
+    com.google.ads.util.i$b k -> gc
+    com.google.ads.util.i$c l -> fU
+    com.google.ads.util.i$c m -> gd
+    com.google.ads.util.i$c n -> ge
+    boolean a() -> L
+    boolean b() -> bq
 com.google.ads.mediation.MediationAdRequest -> com.google.ads.a.a:
-    com.google.ads.AdRequest a -> dB
-    boolean b -> cV
-    boolean c -> Z
+    com.google.ads.AdRequest a -> gf
+    boolean b -> fz
+    boolean c -> cD
 com.google.ads.mediation.MediationAdapter -> com.google.ads.a.b:
     void destroy() -> destroy
-    java.lang.Class getAdditionalParametersType() -> aN
-    java.lang.Class getServerParametersType() -> aO
+    java.lang.Class getAdditionalParametersType() -> br
+    java.lang.Class getServerParametersType() -> bs
 com.google.ads.mediation.MediationBannerAdapter -> com.google.ads.a.c:
-    void requestBannerAd$3a67d0d9() -> aP
+    void requestBannerAd$3a67d0d9() -> bt
 com.google.ads.mediation.MediationInterstitialAdapter -> com.google.ads.a.d:
-    void requestInterstitialAd$732d5d79() -> aQ
+    void requestInterstitialAd$732d5d79() -> bu
 com.google.ads.mediation.MediationServerParameters -> com.google.ads.a.e:
     void load(java.util.Map) -> a
 com.google.ads.mediation.MediationServerParameters$MappingException -> com.google.ads.a.f:
 com.google.ads.mediation.MediationServerParameters$Parameter -> com.google.ads.a.g:
     java.lang.String name() -> name
-    boolean required() -> aR
+    boolean required() -> bv
 com.google.ads.mediation.admob.AdMobAdapterExtras -> com.google.ads.a.a.a:
-    boolean a -> ar
-    boolean b -> cV
-    java.util.Map c -> bD
-    boolean getPlusOneOptOut() -> aS
-    java.util.Map getExtras() -> aT
-    com.google.ads.mediation.admob.AdMobAdapterExtras clearExtras() -> z
+    boolean a -> cV
+    boolean b -> fz
+    java.util.Map c -> eh
+    boolean getPlusOneOptOut() -> bw
+    java.util.Map getExtras() -> bx
+    com.google.ads.mediation.admob.AdMobAdapterExtras clearExtras() -> ad
 com.google.ads.n -> com.google.ads.as:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.o -> com.google.ads.at:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.p -> com.google.ads.au:
-    com.google.ads.internal.a a -> a
+    com.google.ads.internal.a a -> bE
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.q -> com.google.ads.av:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
@@ -728,72 +1115,72 @@ com.google.ads.r -> com.google.ads.aw:
 com.google.ads.s -> com.google.ads.ax:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.searchads.SearchAdRequest -> com.google.ads.b.a:
-    java.lang.String a -> L
-    int b -> Y
-    int c -> dC
-    int d -> cg
-    int e -> dD
-    int f -> dE
-    int g -> dF
-    java.lang.String h -> dG
-    int i -> dH
-    int j -> j
-    com.google.ads.searchads.SearchAdRequest$BorderType k -> dI
-    int l -> dJ
-    java.lang.String m -> bM
-    java.util.Map getRequestMap(android.content.Context) -> a
+    java.lang.String a -> cp
+    int b -> cC
+    int c -> gg
+    int d -> eK
+    int e -> gh
+    int f -> gi
+    int g -> gj
+    java.lang.String h -> gk
+    int i -> gl
+    int j -> bN
+    com.google.ads.searchads.SearchAdRequest$BorderType k -> gm
+    int l -> gn
+    java.lang.String m -> eq
+    java.util.Map getRequestMap(android.content.Context) -> b
     java.lang.String a(int) -> b
 com.google.ads.searchads.SearchAdRequest$BorderType -> com.google.ads.b.b:
-    com.google.ads.searchads.SearchAdRequest$BorderType NONE -> dK
-    com.google.ads.searchads.SearchAdRequest$BorderType DASHED -> dL
-    com.google.ads.searchads.SearchAdRequest$BorderType DOTTED -> dM
-    com.google.ads.searchads.SearchAdRequest$BorderType SOLID -> dN
-    java.lang.String a -> L
-    com.google.ads.searchads.SearchAdRequest$BorderType[] b -> dO
+    com.google.ads.searchads.SearchAdRequest$BorderType NONE -> go
+    com.google.ads.searchads.SearchAdRequest$BorderType DASHED -> gp
+    com.google.ads.searchads.SearchAdRequest$BorderType DOTTED -> gq
+    com.google.ads.searchads.SearchAdRequest$BorderType SOLID -> gr
+    java.lang.String a -> cp
+    com.google.ads.searchads.SearchAdRequest$BorderType[] b -> gs
     com.google.ads.searchads.SearchAdRequest$BorderType[] values() -> values
     com.google.ads.searchads.SearchAdRequest$BorderType valueOf(java.lang.String) -> valueOf
     java.lang.String toString() -> toString
 com.google.ads.t -> com.google.ads.ay:
-    com.google.ads.internal.a a -> a
+    com.google.ads.internal.a a -> bE
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.u -> com.google.ads.az:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.util.AdUtil -> com.google.ads.util.AdUtil:
-    int a -> X
-    java.lang.Boolean b -> dP
-    java.lang.String c -> aq
-    java.lang.String d -> bE
-    java.lang.String e -> bF
-    android.media.AudioManager f -> dQ
-    boolean g -> cW
-    boolean h -> bg
-    java.lang.String i -> dR
+    int a -> cB
+    java.lang.Boolean b -> gt
+    java.lang.String c -> cU
+    java.lang.String d -> ei
+    java.lang.String e -> ej
+    android.media.AudioManager f -> gu
+    boolean g -> fA
+    boolean h -> dK
+    java.lang.String i -> gv
     boolean a(android.content.Intent,android.content.Context) -> a
     java.lang.String a(java.lang.Readable) -> a
-    int a(java.lang.String) -> i
-    java.lang.String a(android.content.Context) -> d
-    int a() -> aU
-    int b() -> p
+    int a(java.lang.String) -> m
+    java.lang.String a(android.content.Context) -> e
+    int a() -> by
+    int b() -> T
     int a(android.content.Context,android.util.DisplayMetrics) -> a
     int b(android.content.Context,android.util.DisplayMetrics) -> b
-    boolean b(android.content.Context) -> e
+    boolean b(android.content.Context) -> f
     boolean a(int,int,java.lang.String) -> a
-    boolean c(android.content.Context) -> f
-    boolean c() -> B
+    boolean c(android.content.Context) -> g
+    boolean c() -> af
     boolean a(android.net.Uri) -> a
-    java.lang.String b(java.lang.String) -> j
-    java.lang.String d(android.content.Context) -> g
-    java.lang.String e(android.content.Context) -> h
-    java.lang.String f(android.content.Context) -> i
-    com.google.ads.util.AdUtil$a g(android.content.Context) -> j
+    java.lang.String b(java.lang.String) -> n
+    java.lang.String d(android.content.Context) -> h
+    java.lang.String e(android.content.Context) -> i
+    java.lang.String f(android.content.Context) -> j
+    com.google.ads.util.AdUtil$a g(android.content.Context) -> k
     android.util.DisplayMetrics a(android.app.Activity) -> b
     java.lang.String a(android.location.Location) -> a
-    java.lang.String c(java.lang.String) -> e
+    java.lang.String c(java.lang.String) -> i
     java.util.HashMap b(android.net.Uri) -> d
-    boolean d() -> r
+    boolean d() -> V
     void a(boolean) -> a
-    void h(android.content.Context) -> k
-    java.lang.String i(android.content.Context) -> l
+    void h(android.content.Context) -> l
+    java.lang.String i(android.content.Context) -> m
     void a(android.webkit.WebView) -> a
     void a(java.net.HttpURLConnection,android.content.Context) -> a
     java.lang.String a(java.util.Map) -> b
@@ -802,95 +1189,95 @@ com.google.ads.util.AdUtil -> com.google.ads.util.AdUtil:
 com.google.ads.util.AdUtil$UserActivityReceiver -> com.google.ads.util.AdUtil$UserActivityReceiver:
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
 com.google.ads.util.AdUtil$a -> com.google.ads.util.a:
-    com.google.ads.util.AdUtil$a a -> dS
-    com.google.ads.util.AdUtil$a b -> dT
-    com.google.ads.util.AdUtil$a c -> dU
-    com.google.ads.util.AdUtil$a d -> dV
-    com.google.ads.util.AdUtil$a e -> dW
-    com.google.ads.util.AdUtil$a f -> dX
-    com.google.ads.util.AdUtil$a[] g -> dY
+    com.google.ads.util.AdUtil$a a -> gw
+    com.google.ads.util.AdUtil$a b -> gx
+    com.google.ads.util.AdUtil$a c -> gy
+    com.google.ads.util.AdUtil$a d -> gz
+    com.google.ads.util.AdUtil$a e -> gA
+    com.google.ads.util.AdUtil$a f -> gB
+    com.google.ads.util.AdUtil$a[] g -> gC
     com.google.ads.util.AdUtil$a[] values() -> values
     com.google.ads.util.AdUtil$a valueOf(java.lang.String) -> valueOf
 com.google.ads.util.a -> com.google.ads.util.b:
-    boolean a -> ar
+    boolean a -> cV
     void a(boolean,java.lang.String) -> a
     void b(boolean) -> d
     void b(boolean,java.lang.String) -> b
     void b(java.lang.Object) -> a
     void a(java.lang.Object,java.lang.Object) -> a
-    void a(java.lang.String) -> c
+    void a(java.lang.String) -> g
     void c(boolean,java.lang.String) -> c
 com.google.ads.util.a$a -> com.google.ads.util.c:
 com.google.ads.util.b -> com.google.ads.util.d:
-    com.google.ads.util.b$b a -> dZ
-    int b -> Y
-    void a$4ae80d28() -> aV
-    void a$552c4e01() -> aW
-    void a$f3e38aa() -> aX
-    void b$552c4e01() -> aY
-    void b$f3e38aa() -> aZ
-    void c$552c4e01() -> ba
-    void c$f3e38aa() -> bb
-    void d$552c4e01() -> bc
-    void e$552c4e01() -> bd
-    void d$f3e38aa() -> be
+    com.google.ads.util.b$b a -> gD
+    int b -> cC
+    void a$4ae80d28() -> bz
+    void a$552c4e01() -> bA
+    void a$f3e38aa() -> bB
+    void b$552c4e01() -> bC
+    void b$f3e38aa() -> bD
+    void c$552c4e01() -> bE
+    void c$f3e38aa() -> bF
+    void d$552c4e01() -> bG
+    void e$552c4e01() -> bH
+    void d$f3e38aa() -> bI
     boolean a(java.lang.String,int) -> a
 com.google.ads.util.b$a -> com.google.ads.util.e:
-    com.google.ads.util.b$a a -> ea
-    com.google.ads.util.b$a b -> eb
-    com.google.ads.util.b$a c -> ec
-    com.google.ads.util.b$a d -> ed
-    com.google.ads.util.b$a e -> ee
-    int f -> dE
-    com.google.ads.util.b$a[] g -> ef
+    com.google.ads.util.b$a a -> gE
+    com.google.ads.util.b$a b -> gF
+    com.google.ads.util.b$a c -> gG
+    com.google.ads.util.b$a d -> gH
+    com.google.ads.util.b$a e -> gI
+    int f -> gi
+    com.google.ads.util.b$a[] g -> gJ
     com.google.ads.util.b$a[] values() -> values
     com.google.ads.util.b$a valueOf(java.lang.String) -> valueOf
 com.google.ads.util.b$b -> com.google.ads.util.f:
 com.google.ads.util.c -> com.google.ads.util.g:
-    boolean a -> ar
-    byte[] a(java.lang.String) -> k
+    boolean a -> cV
+    byte[] a(java.lang.String) -> o
     java.lang.String b$79bb807(byte[]) -> a
 com.google.ads.util.c$a -> com.google.ads.util.h:
-    byte[] a -> cX
-    int b -> Y
+    byte[] a -> fB
+    int b -> cC
 com.google.ads.util.c$b -> com.google.ads.util.i:
-    int[] c -> eg
-    int[] d -> eh
-    int e -> dD
-    int f -> dE
-    int[] g -> ei
+    int[] c -> gK
+    int[] d -> gL
+    int e -> gh
+    int f -> gi
+    int[] g -> gM
     boolean a$7dcd25fc$1cf967a0(byte[],int) -> a
 com.google.ads.util.c$c -> com.google.ads.util.j:
-    byte[] h -> ej
-    byte[] i -> ek
-    byte[] j -> el
-    int c -> dC
-    int k -> em
-    boolean d -> aa
-    boolean e -> ab
-    boolean f -> aK
-    byte[] l -> en
-    boolean g -> cW
+    byte[] h -> gN
+    byte[] i -> gO
+    byte[] j -> gP
+    int c -> gg
+    int k -> gQ
+    boolean d -> cE
+    boolean e -> cF
+    boolean f -> do
+    byte[] l -> gR
+    boolean g -> fA
     boolean a$7dcd25fc$1cf967a0(byte[],int) -> a
 com.google.ads.util.d -> com.google.ads.util.k:
-    java.lang.String a -> L
-    java.lang.String b -> ae
-    java.lang.String c -> aq
-    com.google.ads.util.d d -> eo
-    com.google.ads.util.d e -> ep
+    java.lang.String a -> cp
+    java.lang.String b -> cI
+    java.lang.String c -> cU
+    com.google.ads.util.d d -> gS
+    com.google.ads.util.d e -> gT
     boolean equals(java.lang.Object) -> equals
-    boolean a(java.lang.String,java.lang.String) -> b
+    boolean a(java.lang.String,java.lang.String) -> d
     int hashCode() -> hashCode
 com.google.ads.util.e -> com.google.ads.util.l:
     int a(android.content.Context,float,int) -> a
 com.google.ads.util.f -> com.google.ads.util.m:
-    java.lang.Object b() -> P
+    java.lang.Object b() -> at
 com.google.ads.util.g -> com.google.ads.util.n:
     void a(android.webkit.WebSettings,com.google.ads.m) -> a
 com.google.ads.util.g$1 -> com.google.ads.util.o:
-    int[] a -> bV
+    int[] a -> ez
 com.google.ads.util.g$a -> com.google.ads.util.p:
-    com.google.ads.m a -> eq
+    com.google.ads.m a -> gU
     void onCloseWindow(android.webkit.WebView) -> onCloseWindow
     boolean onConsoleMessage(android.webkit.ConsoleMessage) -> onConsoleMessage
     void onExceededDatabaseQuota(java.lang.String,java.lang.String,long,long,long,android.webkit.WebStorage$QuotaUpdater) -> onExceededDatabaseQuota
@@ -902,23 +1289,23 @@ com.google.ads.util.g$a -> com.google.ads.util.p:
     void onShowCustomView(android.view.View,android.webkit.WebChromeClient$CustomViewCallback) -> onShowCustomView
     boolean a(android.webkit.WebView,java.lang.String,java.lang.String,java.lang.String,android.webkit.JsResult,android.webkit.JsPromptResult,boolean) -> a
 com.google.ads.util.g$a$1 -> com.google.ads.util.q:
-    android.webkit.JsResult a -> er
+    android.webkit.JsResult a -> gV
     void onCancel(android.content.DialogInterface) -> onCancel
 com.google.ads.util.g$a$2 -> com.google.ads.util.r:
-    android.webkit.JsResult a -> er
+    android.webkit.JsResult a -> gV
     void onClick(android.content.DialogInterface,int) -> onClick
 com.google.ads.util.g$a$3 -> com.google.ads.util.s:
-    android.webkit.JsResult a -> er
+    android.webkit.JsResult a -> gV
     void onClick(android.content.DialogInterface,int) -> onClick
 com.google.ads.util.g$a$4 -> com.google.ads.util.t:
-    android.webkit.JsPromptResult a -> es
+    android.webkit.JsPromptResult a -> gW
     void onCancel(android.content.DialogInterface) -> onCancel
 com.google.ads.util.g$a$5 -> com.google.ads.util.u:
-    android.webkit.JsPromptResult a -> es
+    android.webkit.JsPromptResult a -> gW
     void onClick(android.content.DialogInterface,int) -> onClick
 com.google.ads.util.g$a$6 -> com.google.ads.util.v:
-    android.webkit.JsPromptResult a -> es
-    android.widget.EditText b -> et
+    android.webkit.JsPromptResult a -> gW
+    android.widget.EditText b -> gX
     void onClick(android.content.DialogInterface,int) -> onClick
 com.google.ads.util.g$b -> com.google.ads.util.w:
     android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView,java.lang.String) -> shouldInterceptRequest
@@ -927,32 +1314,32 @@ com.google.ads.util.h -> com.google.ads.util.x:
 com.google.ads.util.h$a -> com.google.ads.util.y:
     void onShowCustomView(android.view.View,int,android.webkit.WebChromeClient$CustomViewCallback) -> onShowCustomView
 com.google.ads.util.i -> com.google.ads.util.z:
-    java.lang.Object a -> ci
-    int b -> Y
-    java.util.HashMap c -> eu
-    int o -> ev
-    java.util.ArrayList d -> ew
+    java.lang.Object a -> eM
+    int b -> cC
+    java.util.HashMap c -> gY
+    int o -> gZ
+    java.util.ArrayList d -> ha
     void finalize() -> finalize
     java.lang.String toString() -> toString
     void a(com.google.ads.util.i,com.google.ads.util.i$a) -> a
 com.google.ads.util.i$a -> com.google.ads.util.aa:
-    java.lang.Object a -> ci
-    java.lang.String b -> ae
-    com.google.ads.util.i c -> ex
+    java.lang.Object a -> eM
+    java.lang.String b -> cI
+    com.google.ads.util.i c -> hb
     java.lang.String toString() -> toString
 com.google.ads.util.i$b -> com.google.ads.util.ab:
-    com.google.ads.util.i d -> ey
-    java.lang.Object a() -> d
+    com.google.ads.util.i d -> hc
+    java.lang.Object a() -> I
     java.lang.String toString() -> toString
 com.google.ads.util.i$c -> com.google.ads.util.ac:
-    boolean e -> ab
-    com.google.ads.util.i d -> ey
-    java.lang.Object a() -> d
+    boolean e -> cF
+    com.google.ads.util.i d -> hc
+    java.lang.Object a() -> I
     void a(java.lang.Object) -> b
     java.lang.String toString() -> toString
 com.google.ads.util.i$d -> com.google.ads.util.ad:
-    com.google.ads.util.i d -> ey
-    java.lang.Object a() -> d
+    com.google.ads.util.i d -> hc
+    java.lang.Object a() -> I
     java.lang.String toString() -> toString
 com.google.ads.v -> com.google.ads.ba:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
@@ -966,34 +1353,34 @@ com.google.ads.x -> com.google.ads.bc:
 com.google.ads.y -> com.google.ads.bd:
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.google.ads.z -> com.google.ads.be:
-    com.google.ads.AdActivity$StaticMethodWrapper a -> ez
+    com.google.ads.AdActivity$StaticMethodWrapper a -> hd
     void a(com.google.ads.internal.d,java.util.HashMap,android.webkit.WebView) -> a
 com.googlecode.leptonica.android.Pix -> com.googlecode.leptonica.android.Pix:
-    int mNativePix -> eA
-    boolean mRecycled -> eB
-    int getNativePix() -> bf
+    int mNativePix -> he
+    boolean mRecycled -> hf
+    int getNativePix() -> bJ
     void finalize() -> finalize
     int nativeClone(int) -> nativeClone
     void nativeDestroy(int) -> nativeDestroy
     java.lang.Object clone() -> clone
 com.googlecode.leptonica.android.Pixa -> com.googlecode.leptonica.android.Pixa:
-    int mNativePixa -> eC
-    int mWidth -> eD
-    int mHeight -> eE
-    boolean mRecycled -> eB
+    int mNativePixa -> hg
+    int mWidth -> hh
+    int mHeight -> hi
+    boolean mRecycled -> hf
     int size() -> size
     void recycle() -> recycle
     void finalize() -> finalize
     com.googlecode.leptonica.android.Pix getPix(int) -> c
-    java.util.ArrayList getBoxRects() -> bg
+    java.util.ArrayList getBoxRects() -> bK
     java.util.Iterator iterator() -> iterator
     int nativeGetCount(int) -> nativeGetCount
     void nativeDestroy(int) -> nativeDestroy
     int nativeGetPix(int,int) -> nativeGetPix
     boolean nativeGetBoxGeometry(int,int,int[]) -> nativeGetBoxGeometry
 com.googlecode.leptonica.android.Pixa$PixIterator -> com.googlecode.leptonica.android.a:
-    int mIndex -> eF
-    com.googlecode.leptonica.android.Pixa this$0 -> eG
+    int mIndex -> hj
+    com.googlecode.leptonica.android.Pixa this$0 -> hk
     boolean hasNext() -> hasNext
     void remove() -> remove
     java.lang.Object next() -> next
@@ -1006,14 +1393,14 @@ com.googlecode.tesseract.android.TessBaseAPI -> com.googlecode.tesseract.android
     boolean init(java.lang.String,java.lang.String,int) -> a
     void clear() -> clear
     void end() -> end
-    boolean setVariable(java.lang.String,java.lang.String) -> c
+    boolean setVariable(java.lang.String,java.lang.String) -> e
     void setPageSegMode(int) -> d
     void setImage(com.googlecode.leptonica.android.Pix) -> a
-    java.lang.String getUTF8Text() -> bh
-    int meanConfidence() -> bi
-    int[] wordConfidences() -> bj
-    com.googlecode.leptonica.android.Pixa getWords() -> bk
-    com.googlecode.leptonica.android.Pixa getCharacters() -> bl
+    java.lang.String getUTF8Text() -> bL
+    int meanConfidence() -> bM
+    int[] wordConfidences() -> bN
+    com.googlecode.leptonica.android.Pixa getWords() -> bO
+    com.googlecode.leptonica.android.Pixa getCharacters() -> bP
     void nativeClassInit() -> nativeClassInit
     void nativeConstruct() -> nativeConstruct
     boolean nativeInitOem(java.lang.String,java.lang.String,int) -> nativeInitOem
@@ -1027,390 +1414,3 @@ com.googlecode.tesseract.android.TessBaseAPI -> com.googlecode.tesseract.android
     void nativeSetPageSegMode(int) -> nativeSetPageSegMode
     int nativeGetWords() -> nativeGetWords
     int nativeGetCharacters() -> nativeGetCharacters
-com.lab117.exchangecam.BeepManager -> com.lab117.exchangecam.a:
-    java.lang.String TAG -> TAG
-    android.app.Activity activity -> eH
-    android.media.MediaPlayer mediaPlayer -> eI
-    boolean playBeep -> eJ
-    void updatePrefs() -> bm
-    android.media.MediaPlayer buildMediaPlayer(android.content.Context) -> m
-com.lab117.exchangecam.BeepManager$1 -> com.lab117.exchangecam.b:
-    void onCompletion(android.media.MediaPlayer) -> onCompletion
-com.lab117.exchangecam.CaptureActivity -> com.lab117.exchangecam.CaptureActivity:
-    java.lang.String TAG -> TAG
-    java.lang.Boolean DEFAULT_AUTO_EXCHANGE_RATE_PREFERENCE -> eK
-    com.lab117.exchangecam.camera.CameraManager cameraManager -> eL
-    com.lab117.exchangecam.CaptureActivityHandler handler -> eM
-    com.lab117.exchangecam.ViewfinderView viewfinderView -> eN
-    android.view.SurfaceView surfaceView -> eO
-    android.view.SurfaceHolder surfaceHolder -> eP
-    android.view.View dashboardContainer -> eQ
-    com.google.ads.AdView adView -> eR
-    com.lab117.exchangecam.OcrResult lastResult -> eS
-    java.lang.String currentPrice -> eT
-    boolean hasSurface -> eU
-    com.lab117.exchangecam.BeepManager beepManager -> eV
-    com.googlecode.tesseract.android.TessBaseAPI baseApi -> eW
-    java.lang.String sourceLanguageCodeOcr -> eX
-    java.lang.String sourceLanguageReadable -> eY
-    int pageSegmentationMode -> eZ
-    int ocrEngineMode -> fa
-    java.lang.String characterBlacklist -> fb
-    java.lang.String characterWhitelist -> fc
-    boolean isContinuousModeActive -> fd
-    android.content.SharedPreferences prefs -> fe
-    android.app.ProgressDialog dialog -> ff
-    android.app.ProgressDialog indeterminateDialog -> fg
-    boolean isEngineReady -> fh
-    boolean isPaused -> fi
-    boolean isFirstLaunch -> fj
-    java.lang.String sourceCurrencyCode -> fk
-    java.lang.String targetCurrencyCode -> fl
-    java.lang.String conversionRate -> fm
-    java.lang.Boolean autoExchangeRate -> fn
-    java.lang.Boolean dashboardOpen -> fo
-    android.content.SharedPreferences$OnSharedPreferenceChangeListener listener -> fp
-    android.os.Handler getHandler() -> getHandler
-    com.googlecode.tesseract.android.TessBaseAPI getBaseApi() -> bn
-    com.lab117.exchangecam.camera.CameraManager getCameraManager() -> bo
-    void onCreate(android.os.Bundle) -> onCreate
-    void onResume() -> onResume
-    void resumeOCR() -> bp
-    void surfaceCreated(android.view.SurfaceHolder) -> surfaceCreated
-    void initCamera(android.view.SurfaceHolder) -> a
-    void onPause() -> onPause
-    void stopHandler() -> bq
-    void onDestroy() -> onDestroy
-    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
-    void surfaceDestroyed(android.view.SurfaceHolder) -> surfaceDestroyed
-    void surfaceChanged(android.view.SurfaceHolder,int,int,int) -> surfaceChanged
-    java.io.File getStorageDirectory() -> br
-    void initQueryConversionRate() -> bs
-    void handleOcrContinuousDecode(com.lab117.exchangecam.OcrResult) -> a
-    void dispatchResultToView(com.lab117.exchangecam.OcrResultText,int) -> a
-    void handleOcrContinuousDecode$2ca6d5dd() -> bt
-    void showUpdatedExcahngeRate() -> bu
-    void setStatusViewForContinuous() -> bv
-    void drawViewfinder() -> bw
-    boolean checkFirstLaunch() -> bx
-    void showErrorMessage(java.lang.String,java.lang.String,java.lang.Boolean) -> a
-    void showExchangeErrorDialog() -> by
-    void openDashboardFragment() -> bz
-    void onFailedToReceiveAd$7b642d25(com.google.ads.AdRequest$ErrorCode) -> a
-    void onReceiveAd$51b51722() -> g
-    void onWindowFocusChanged(boolean) -> onWindowFocusChanged
-    void access$0(com.lab117.exchangecam.CaptureActivity,java.lang.Boolean) -> a
-    void access$1(com.lab117.exchangecam.CaptureActivity,java.lang.String) -> a
-    java.lang.Boolean access$2(com.lab117.exchangecam.CaptureActivity) -> a
-    void access$3(com.lab117.exchangecam.CaptureActivity) -> b
-    void access$4(com.lab117.exchangecam.CaptureActivity,java.lang.String) -> b
-    com.lab117.exchangecam.camera.CameraManager access$5(com.lab117.exchangecam.CaptureActivity) -> c
-    com.lab117.exchangecam.ViewfinderView access$6(com.lab117.exchangecam.CaptureActivity) -> d
-com.lab117.exchangecam.CaptureActivity$1 -> com.lab117.exchangecam.c:
-    com.lab117.exchangecam.CaptureActivity this$0 -> fq
-    void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
-com.lab117.exchangecam.CaptureActivity$2 -> com.lab117.exchangecam.d:
-    int lastX -> fr
-    int lastY -> fs
-    com.lab117.exchangecam.CaptureActivity this$0 -> fq
-    boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.lab117.exchangecam.CaptureActivityHandler -> com.lab117.exchangecam.e:
-    java.lang.String TAG -> TAG
-    com.lab117.exchangecam.CaptureActivity activity -> ft
-    com.lab117.exchangecam.DecodeThread decodeThread -> fu
-    com.lab117.exchangecam.CaptureActivityHandler$State state -> fv
-    com.lab117.exchangecam.camera.CameraManager cameraManager -> eL
-    void handleMessage(android.os.Message) -> handleMessage
-    void stop() -> stop
-    void resetState() -> bA
-    void quitSynchronously() -> bB
-    void restartOcrPreview() -> bC
-    void restartOcrPreviewAndDecode() -> bD
-com.lab117.exchangecam.CaptureActivityHandler$State -> com.lab117.exchangecam.f:
-    com.lab117.exchangecam.CaptureActivityHandler$State PREVIEW -> fw
-    com.lab117.exchangecam.CaptureActivityHandler$State PREVIEW_PAUSED -> fx
-    com.lab117.exchangecam.CaptureActivityHandler$State CONTINUOUS -> fy
-    com.lab117.exchangecam.CaptureActivityHandler$State CONTINUOUS_PAUSED -> fz
-    com.lab117.exchangecam.CaptureActivityHandler$State SUCCESS -> fA
-    com.lab117.exchangecam.CaptureActivityHandler$State DONE -> fB
-    com.lab117.exchangecam.CaptureActivityHandler$State[] ENUM$VALUES -> fC
-    com.lab117.exchangecam.CaptureActivityHandler$State[] values() -> values
-    com.lab117.exchangecam.CaptureActivityHandler$State valueOf(java.lang.String) -> valueOf
-com.lab117.exchangecam.CurrencyTextView -> com.lab117.exchangecam.CurrencyTextView:
-    java.lang.String TAG -> TAG
-    void setCustomFont(android.content.Context,android.util.AttributeSet) -> a
-    boolean setCustomFont(android.content.Context,java.lang.String) -> a
-com.lab117.exchangecam.DashboardFragment -> com.lab117.exchangecam.DashboardFragment:
-    java.lang.String TAG -> TAG
-    com.lab117.exchangecam.CaptureActivity mActivity -> fD
-    android.widget.ToggleButton mAutoExchangeRateToggleButton -> fE
-    android.widget.EditText mExchangeRateEditText -> fF
-    android.widget.Spinner mSourceCurrencySpinner -> fG
-    android.widget.Spinner mTargetCurrencySpinner -> fH
-    android.widget.TextView mSourceCurrencyTextView -> fI
-    android.widget.TextView mTargetCurrencyTextView -> fJ
-    java.lang.String[] mCurrencyCodes -> fK
-    java.lang.String mSourceCurrency -> fL
-    java.lang.String mTargetCurrency -> fM
-    android.content.SharedPreferences prefs -> fe
-    android.view.View$OnClickListener mToggleButtonListener -> fN
-    android.widget.AdapterView$OnItemSelectedListener mSourceCurrencySpinnerListener -> fO
-    android.widget.AdapterView$OnItemSelectedListener mTargetCurrencySpinnerListener -> fP
-    void onAttach(android.app.Activity) -> onAttach
-    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
-    void updateExchangeRateEditText() -> bE
-    void updateTextViews(com.lab117.exchangecam.OcrResultText,int) -> b
-    void removeResultText() -> bF
-    void onDialogClickSetManually$2ae3d2c2() -> bG
-    android.content.SharedPreferences access$0(com.lab117.exchangecam.DashboardFragment) -> a
-    android.widget.ToggleButton access$1(com.lab117.exchangecam.DashboardFragment) -> b
-    android.widget.EditText access$2(com.lab117.exchangecam.DashboardFragment) -> c
-    java.lang.String[] access$3(com.lab117.exchangecam.DashboardFragment) -> d
-com.lab117.exchangecam.DashboardFragment$1 -> com.lab117.exchangecam.g:
-    com.lab117.exchangecam.DashboardFragment this$0 -> fQ
-    void onClick(android.view.View) -> onClick
-com.lab117.exchangecam.DashboardFragment$2 -> com.lab117.exchangecam.h:
-    com.lab117.exchangecam.DashboardFragment this$0 -> fQ
-    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
-    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
-com.lab117.exchangecam.DashboardFragment$3 -> com.lab117.exchangecam.i:
-    com.lab117.exchangecam.DashboardFragment this$0 -> fQ
-    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
-    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
-com.lab117.exchangecam.DecodeHandler -> com.lab117.exchangecam.j:
-    com.lab117.exchangecam.CaptureActivity activity -> ft
-    boolean running -> fR
-    com.googlecode.tesseract.android.TessBaseAPI baseApi -> eW
-    com.lab117.exchangecam.BeepManager beepManager -> eV
-    android.graphics.Bitmap bitmap -> bitmap
-    boolean isDecodePending -> fS
-    long timeRequired -> fT
-    void handleMessage(android.os.Message) -> handleMessage
-    com.lab117.exchangecam.OcrResult getOcrResult() -> bH
-    void sendContinuousOcrFailMessage() -> bI
-com.lab117.exchangecam.DecodeThread -> com.lab117.exchangecam.k:
-    com.lab117.exchangecam.CaptureActivity activity -> ft
-    android.os.Handler handler -> handler
-    java.util.concurrent.CountDownLatch handlerInitLatch -> fU
-    android.os.Handler getHandler() -> getHandler
-    void run() -> run
-com.lab117.exchangecam.ExchangeErrorDialogFragment -> com.lab117.exchangecam.ExchangeErrorDialogFragment:
-    com.lab117.exchangecam.ExchangeErrorDialogFragment$ExchangeErrorDialogListener mListener -> fV
-    void onAttach(android.app.Activity) -> onAttach
-    android.app.Dialog onCreateDialog(android.os.Bundle) -> onCreateDialog
-com.lab117.exchangecam.ExchangeErrorDialogFragment$1 -> com.lab117.exchangecam.l:
-    com.lab117.exchangecam.ExchangeErrorDialogFragment this$0 -> fW
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.lab117.exchangecam.ExchangeErrorDialogFragment$2 -> com.lab117.exchangecam.m:
-    com.lab117.exchangecam.ExchangeErrorDialogFragment this$0 -> fW
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.lab117.exchangecam.ExchangeErrorDialogFragment$ExchangeErrorDialogListener -> com.lab117.exchangecam.n:
-    void onDialogClickSetManually$2ae3d2c2() -> bG
-com.lab117.exchangecam.FinishListener -> com.lab117.exchangecam.o:
-    android.app.Activity activityToFinish -> fX
-    void onCancel(android.content.DialogInterface) -> onCancel
-    void onClick(android.content.DialogInterface,int) -> onClick
-    void run() -> run
-com.lab117.exchangecam.HelpActivity -> com.lab117.exchangecam.HelpActivity:
-    java.lang.String TAG -> TAG
-    android.webkit.WebView webView -> fY
-    android.view.View$OnClickListener doneListener -> fZ
-    void onCreate(android.os.Bundle) -> onCreate
-    void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
-    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
-com.lab117.exchangecam.HelpActivity$1 -> com.lab117.exchangecam.p:
-    com.lab117.exchangecam.HelpActivity this$0 -> ga
-    void onClick(android.view.View) -> onClick
-com.lab117.exchangecam.HelpActivity$HelpClient -> com.lab117.exchangecam.q:
-    android.app.Activity context -> gb
-    com.lab117.exchangecam.HelpActivity this$0 -> ga
-    void onPageFinished(android.webkit.WebView,java.lang.String) -> onPageFinished
-    boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String) -> shouldOverrideUrlLoading
-com.lab117.exchangecam.HelpActivity$HelpClient$1 -> com.lab117.exchangecam.r:
-    com.lab117.exchangecam.HelpActivity$HelpClient this$1 -> gc
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.lab117.exchangecam.LuminanceSource -> com.lab117.exchangecam.s:
-    int width -> width
-    int height -> height
-com.lab117.exchangecam.OcrCharacterHelper -> com.lab117.exchangecam.t:
-    java.lang.String getDefaultBlacklist(java.lang.String) -> l
-    java.lang.String getDefaultWhitelist(java.lang.String) -> m
-com.lab117.exchangecam.OcrInitAsyncTask -> com.lab117.exchangecam.u:
-    java.lang.String TAG -> TAG
-    com.lab117.exchangecam.CaptureActivity activity -> ft
-    android.content.Context context -> gd
-    com.googlecode.tesseract.android.TessBaseAPI baseApi -> eW
-    android.app.ProgressDialog indeterminateDialog -> fg
-    int ocrEngineMode -> fa
-    void onPreExecute() -> onPreExecute
-    java.lang.Boolean doInBackground(java.lang.String[]) -> a
-    boolean installFromAssets$60b67bcf(java.lang.String,java.io.File) -> a
-    void onPostExecute(java.lang.Object) -> onPostExecute
-    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
-com.lab117.exchangecam.OcrResult -> com.lab117.exchangecam.v:
-    android.graphics.Bitmap bitmap -> bitmap
-    java.lang.String text -> ge
-    int[] wordConfidences -> gf
-    int meanConfidence -> gg
-    java.util.List regionBoundingBoxes -> gh
-    java.util.List textlineBoundingBoxes -> gi
-    java.util.List wordBoundingBoxes -> gj
-    java.util.List stripBoundingBoxes -> gk
-    java.util.List characterBoundingBoxes -> gl
-    long timestamp -> timestamp
-    long recognitionTimeRequired -> gm
-    android.graphics.Paint paint -> gn
-    android.graphics.Point getBitmapDimensions() -> bJ
-    java.lang.String toString() -> toString
-com.lab117.exchangecam.OcrResultFailure -> com.lab117.exchangecam.w:
-    long timeRequired -> fT
-    long timestamp -> timestamp
-    java.lang.String toString() -> toString
-com.lab117.exchangecam.OcrResultText -> com.lab117.exchangecam.x:
-    java.lang.String text -> ge
-    int[] wordConfidences -> gf
-    int meanConfidence -> gg
-    android.graphics.Point bitmapDimensions -> go
-    java.util.List regionBoundingBoxes -> gh
-    java.util.List textlineBoundingBoxes -> gi
-    java.util.List stripBoundingBoxes -> gk
-    java.util.List wordBoundingBoxes -> gj
-    java.util.List characterBoundingBoxes -> gl
-    java.lang.String toString() -> toString
-com.lab117.exchangecam.PlanarYUVLuminanceSource -> com.lab117.exchangecam.y:
-    byte[] yuvData -> gp
-    int dataWidth -> gq
-    int dataHeight -> gr
-    int left -> left
-    int top -> top
-    void reverseHorizontal(int,int) -> a
-com.lab117.exchangecam.PreferencesActivity -> com.lab117.exchangecam.PreferencesActivity:
-    android.preference.ListPreference listPreferenceSourceCurrency -> gs
-    android.preference.ListPreference listPreferenceTargetCurrency -> gt
-    android.preference.EditTextPreference editTextPreferenceExchangeRate -> gu
-    android.content.SharedPreferences sharedPreferences -> gv
-    void onCreate(android.os.Bundle) -> onCreate
-    void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
-    void onResume() -> onResume
-    void onPause() -> onPause
-com.lab117.exchangecam.R -> com.lab117.exchangecam.z:
-com.lab117.exchangecam.R$styleable -> com.lab117.exchangecam.aa:
-    int[] CurrencyView -> CurrencyView
-    int CurrencyView_customFont -> CurrencyView_customFont
-    int[] ViewfinderView -> ViewfinderView
-com.lab117.exchangecam.Typefaces -> com.lab117.exchangecam.ab:
-    java.util.Hashtable cache -> gw
-    android.graphics.Typeface get(android.content.Context,java.lang.String) -> b
-com.lab117.exchangecam.ViewfinderView -> com.lab117.exchangecam.ViewfinderView:
-    java.lang.String TAG -> TAG
-    com.lab117.exchangecam.camera.CameraManager cameraManager -> eL
-    android.graphics.Paint paint -> gn
-    int maskColor -> gx
-    int frameColor -> gy
-    int cornerColor -> gz
-    com.lab117.exchangecam.OcrResultText resultText -> gA
-    int price -> gB
-    java.util.List wordBoundingBoxes -> gj
-    android.graphics.Rect previewFrame -> gC
-    android.graphics.Rect rect -> rect
-    com.lab117.exchangecam.CaptureActivity activity -> ft
-    android.graphics.Rect horizontal -> gD
-    android.graphics.Rect vertical -> gE
-    android.graphics.Rect bounds -> gF
-    android.graphics.Rect top -> gG
-    android.graphics.Rect bottom -> gH
-    android.graphics.Rect left -> gI
-    android.graphics.Rect right -> gJ
-    android.graphics.Bitmap topBmp -> gK
-    android.graphics.Bitmap bottomBmp -> gL
-    android.graphics.Bitmap leftBmp -> gM
-    android.graphics.Bitmap rightBmp -> gN
-    void setCameraManager(com.lab117.exchangecam.camera.CameraManager) -> setCameraManager
-    void onDraw(android.graphics.Canvas) -> onDraw
-    void drawViewfinder() -> bw
-    void addResultText(com.lab117.exchangecam.OcrResultText,int) -> c
-    void removeResultText() -> bF
-com.lab117.exchangecam.camera.AutoFocusManager -> com.lab117.exchangecam.a.a:
-    java.lang.String TAG -> TAG
-    java.util.Collection FOCUS_MODES_CALLING_AF -> gO
-    boolean active -> gP
-    boolean manual -> gQ
-    boolean useAutoFocus -> gR
-    android.hardware.Camera camera -> gS
-    java.util.Timer timer -> gT
-    java.util.TimerTask outstandingTask -> gU
-    void onAutoFocus(boolean,android.hardware.Camera) -> onAutoFocus
-    void checkAndStart() -> bK
-    void start() -> start
-    void start$1349ef() -> bL
-    void stop() -> stop
-    void access$0$4f77b71c(com.lab117.exchangecam.camera.AutoFocusManager) -> a
-com.lab117.exchangecam.camera.AutoFocusManager$1 -> com.lab117.exchangecam.a.b:
-    com.lab117.exchangecam.camera.AutoFocusManager this$0 -> gV
-    void run() -> run
-com.lab117.exchangecam.camera.AutoFocusManager$2 -> com.lab117.exchangecam.a.c:
-    com.lab117.exchangecam.camera.AutoFocusManager this$0 -> gV
-    void run() -> run
-com.lab117.exchangecam.camera.CameraConfigurationManager -> com.lab117.exchangecam.a.d:
-    android.content.Context context -> gd
-    android.graphics.Point screenResolution -> gW
-    android.graphics.Point cameraResolution -> gX
-    void setDesiredCameraParameters(android.hardware.Camera) -> a
-    android.graphics.Point findBestPreviewSizeValue(android.hardware.Camera$Parameters,android.graphics.Point) -> a
-    java.lang.String findSettableValue(java.util.Collection,java.lang.String[]) -> a
-com.lab117.exchangecam.camera.CameraConfigurationManager$1 -> com.lab117.exchangecam.a.e:
-    com.lab117.exchangecam.camera.CameraConfigurationManager this$0 -> gY
-    int compare(java.lang.Object,java.lang.Object) -> compare
-com.lab117.exchangecam.camera.CameraManager -> com.lab117.exchangecam.a.f:
-    java.lang.String TAG -> TAG
-    android.content.Context context -> gd
-    com.lab117.exchangecam.camera.CameraConfigurationManager configManager -> gZ
-    android.hardware.Camera camera -> gS
-    com.lab117.exchangecam.camera.AutoFocusManager autoFocusManager -> ha
-    android.graphics.Rect framingRect -> hb
-    android.graphics.Rect framingRectInPreview -> hc
-    boolean initialized -> hd
-    boolean previewing -> he
-    boolean reverseImage -> hf
-    int requestedFramingRectWidth -> hg
-    int requestedFramingRectHeight -> hh
-    com.lab117.exchangecam.camera.PreviewCallback previewCallback -> hi
-    void openDriver(android.view.SurfaceHolder) -> b
-    void closeDriver() -> bM
-    void startPreview() -> startPreview
-    void stopPreview() -> stopPreview
-    void requestOcrDecode$2a8797e(android.os.Handler) -> a
-    void requestAutoFocus$1349ef() -> bN
-    android.graphics.Rect getFramingRect() -> bO
-    android.graphics.Rect getFramingRectInPreview() -> bP
-    void adjustFramingRect(int,int) -> b
-    com.lab117.exchangecam.PlanarYUVLuminanceSource buildLuminanceSource(byte[],int,int) -> a
-com.lab117.exchangecam.camera.PreviewCallback -> com.lab117.exchangecam.a.g:
-    java.lang.String TAG -> TAG
-    com.lab117.exchangecam.camera.CameraConfigurationManager configManager -> gZ
-    android.os.Handler previewHandler -> hj
-    int previewMessage -> hk
-    void setHandler(android.os.Handler,int) -> a
-    void onPreviewFrame(byte[],android.hardware.Camera) -> onPreviewFrame
-com.lab117.exchangecam.currency.CurrencyHelper -> com.lab117.exchangecam.b.a:
-    java.lang.String TAG -> TAG
-    java.lang.Boolean isPrice(android.content.Context,java.lang.String) -> c
-    java.lang.String formatPrice(java.lang.String,java.lang.String) -> d
-    boolean isNumeric(java.lang.String) -> n
-    java.lang.String[] extractPrices(com.lab117.exchangecam.OcrResultText,int,android.content.Context) -> a
-    java.lang.String correctSuperscriptDecimal(java.lang.String,com.lab117.exchangecam.OcrResultText,java.lang.String) -> a
-com.lab117.exchangecam.currency.QueryConversionRate -> com.lab117.exchangecam.b.b:
-    java.lang.String getConversionRate(java.lang.String,java.lang.String) -> e
-    java.lang.String extractConvertedValue(java.lang.String) -> o
-com.lab117.exchangecam.currency.QueryConversionRateAysncTask -> com.lab117.exchangecam.b.c:
-    java.lang.String TAG -> TAG
-    com.lab117.exchangecam.CaptureActivity activity -> ft
-    android.content.Context context -> gd
-    android.app.ProgressDialog dialog -> ff
-    java.lang.String sourceCurrencyCode -> fk
-    java.lang.String targetCurrencyCode -> fl
-    java.lang.String conversionRate -> fm
-    void onPreExecute() -> onPreExecute
-    void onPostExecute(java.lang.Object) -> onPostExecute
-    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
