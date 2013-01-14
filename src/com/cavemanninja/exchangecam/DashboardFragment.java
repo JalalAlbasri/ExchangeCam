@@ -1,15 +1,15 @@
 package com.cavemanninja.exchangecam;
 
 import android.app.Activity;
-//import android.app.DialogFragment;
-//import android.app.Fragment;
+import android.app.DialogFragment;
+import android.app.Fragment;
 
 //Fragment, support library
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.DialogFragment;
+//import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentActivity;
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.app.FragmentTransaction;
+//import android.support.v4.app.DialogFragment;
 
 import android.util.Log;
 import android.graphics.Rect;
@@ -43,7 +43,7 @@ import android.preference.PreferenceManager;
 
 
 
-public class DashboardFragment extends FragmentActivity implements ExchangeErrorDialogListener {
+public class DashboardFragment extends Fragment implements ExchangeErrorDialogListener {
 	private static final String TAG = DashboardFragment.class.getSimpleName();
 	private CaptureActivity mActivity;
 
@@ -219,13 +219,6 @@ public class DashboardFragment extends FragmentActivity implements ExchangeError
 	@Override
 	public void onDialogClickCancel(DialogFragment dialog) {
 		//revert....
-	}
-
-
-	@Override
-	public void onDialogClickSetManually(android.app.DialogFragment dialog) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

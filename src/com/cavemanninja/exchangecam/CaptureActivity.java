@@ -2,17 +2,17 @@
 package com.cavemanninja.exchangecam;
 
 //Fragment, native
-//import android.app.DialogFragment;
-//import android.app.Fragment;
-//import android.app.FragmentManager;
-//import android.app.FragmentTransaction;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 
 //Fragment, support library
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.DialogFragment;
+//import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentActivity;
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.app.FragmentTransaction;
+//import android.support.v4.app.DialogFragment;
 
 import com.cavemanninja.exchangecam.BeepManager;
 import com.cavemanninja.exchangecam.HelpActivity;
